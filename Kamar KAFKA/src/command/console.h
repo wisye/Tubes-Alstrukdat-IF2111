@@ -1,5 +1,8 @@
 #include "../ADT_H/boolean.h"
 #include "../ADT_H/mesinkata.h"
+#include "../ADT_H/list.h"
+#include "../ADT_H/queue.h"
+#include "../ADT_H/stack.h"
 #include <stdio.h>
 #include <stdlib.h>
 
