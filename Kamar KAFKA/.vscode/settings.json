@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "mesinkarakter.h": "c",
+        "console.h": "c",
+        "floatn.h": "c",
+        "boolean.h": "c"
+    }
+}

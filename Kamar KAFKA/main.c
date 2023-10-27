@@ -1,5 +1,5 @@
-#include "/src/command/console.h"
 #include <stdio.h>
+#include "src/command/console.h"
 
 boolean stringComp(char *x, char *y){
     int i = 0;

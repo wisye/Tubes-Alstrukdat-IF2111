@@ -1,8 +1,8 @@
 #include "../ADT_H/boolean.h"
 #include "../ADT_H/mesinkata.h"
-#include "../ADT_H/list.h"
-#include "../ADT_H/queue.h"
-#include "../ADT_H/stack.h"
+// #include "../ADT_H/list.h"
+// #include "../ADT_H/queue.h"
+// #include "../ADT_H/stack.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -12,7 +12,7 @@
 void startSpotify();
 /*Dibaca file konfigurasi default yang berisi daftar penyanyi serta album yang dimiliki*/
 
-void loadSpotify(FILE *file);
+int loadSpotify();
 /*Dibaca save file input yang berisi list game yang dapat dimainkan, histori, dan scoreboard game*/
 
 void listSpotify();
