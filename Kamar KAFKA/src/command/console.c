@@ -28,7 +28,7 @@ int loadSpotify(){
     //         printf("%s", buffer);
     // }
 
-    printf("\n");
+    // printf("\n");
     fclose(file);
 
     printf("Save file berhasil dibaca. WayangWave berhasil dijalankan.\n");
@@ -40,9 +40,11 @@ void quitSpotify(){
     printf("Apakah kamu ingin menyimpan data sesi sekarang?\n");
     scanf("%c", &input);
     if (input == 'Y' || input == 'y') {
-        saveSpotify();
+        printf("WHY IS THIS NOT WORKING\n");
+        // saveSpotify();
     }
     printf("Kamu keluar dari WayangWave.\n");
     printf("Dadah ^_^/\n");
+    exit(0);
 }
 /*Keluar dari sesi aplikasi WayangWave (SPOTIFY)*/
