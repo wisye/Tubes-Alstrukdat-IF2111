@@ -34,6 +34,11 @@ int loadSpotify(){
     printf("Save file berhasil dibaca. WayangWave berhasil dijalankan.\n");
     return 0;
 }
+
+void saveSpotify(){
+
+}
+
 /*Dibaca save file input yang berisi list game yang dapat dimainkan, histori, dan scoreboard game*/
 void quitSpotify(){
     char input;
