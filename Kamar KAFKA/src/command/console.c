@@ -36,7 +36,55 @@ int loadSpotify(){
 }
 
 void saveSpotify(){
+    char NamaFile[100];
+    scanf("%s" , &NamaFile);
+    const char* validtxt = ".txt";
+    const char* data = "...";//Ini buat isi file  = (Isi File)
+    char fullPath[100]; 
+    FILE* file;
+    int NamaFileLength = 0;
+    int extensionLength = 0;
 
+    while (NamaFile[NamaFileLength] != '\0') {
+        NamaFileLength++;
+    }
+
+    while (validtxt[extensionLength] != '\0') {
+        extensionLength++;
+    }
+
+    int valid = 1;
+    int j;
+
+    if (NamaFileLength < extensionLength) {
+        valid = 0;
+    } else {
+        for (int i = NamaFileLength - extensionLength, j = 0; i < NamaFileLength; i++, j++) {
+            if (NamaFile[i] != validtxt[j]) {
+                valid = 0;
+                break;
+            }
+        }
+    }
+
+    if (!valid) {
+        printf("Nama file tidak valid. Nama file harus berakhir dengan '.txt'.\n");
+        return;
+    }
+
+    snprintf(fullPath, sizeof(fullPath), "save/%s", NamaFile);
+
+    file = fopen(fullPath, "w");
+
+    if (file == NULL) {
+        printf("Gagal membuka file untuk penyimpanan.\n");
+        return;
+    }
+
+    fprintf(file, "%s", data);
+
+    fclose(file);
+    printf("Save file berhasil disimpan.\n");
 }
 
 /*Dibaca save file input yang berisi list game yang dapat dimainkan, histori, dan scoreboard game*/

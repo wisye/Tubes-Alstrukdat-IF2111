@@ -33,6 +33,9 @@ int main(){
     }
     else if(stringComp(command, "LOAD")){
         loadSpotify();
+    }   
+    else if(stringComp(command, "SAVE")){
+        saveSpotify();
     }
     else if(stringComp(command, "QUIT")){
         quitSpotify();
