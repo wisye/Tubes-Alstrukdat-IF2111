@@ -3,6 +3,7 @@
         "mesinkarakter.h": "c",
         "console.h": "c",
         "floatn.h": "c",
-        "boolean.h": "c"
+        "boolean.h": "c",
+        "mesinkata.h": "c"
     }
 }

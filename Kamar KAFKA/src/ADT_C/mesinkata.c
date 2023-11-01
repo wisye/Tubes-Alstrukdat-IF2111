@@ -5,7 +5,7 @@ Word currentWord;
 
 
 void IgnoreBlanks(){
-    while (currentChar == BLANK){
+    while (currentChar == BLANK || currentChar == MARK_newline){
         ADV();
     }
 }

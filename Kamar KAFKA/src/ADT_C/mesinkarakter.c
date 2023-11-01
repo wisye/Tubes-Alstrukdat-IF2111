@@ -22,12 +22,6 @@ void START(){
 
 void ADV(){
     retval = fscanf(pita, "%c", &currentChar);
-    EOP = (currentChar == MARK);
-
-    if (EOP)
-    {
-        fclose(pita);
-    }
 }
 /* Pita dimajukan satu karakter.
    I.S. : Karakter pada jendela = currentChar, currentChar != MARK
