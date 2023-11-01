@@ -1,7 +1,7 @@
 #include "console.h"
 // #include "func.h"
 
-ListDefault l;
+// ListDefault l;
 
 /*Implementation of console.h goes here*/
 int loadSpotify(){
@@ -58,32 +58,48 @@ void quitSpotify(){
     exit(0);
 }
  /*Keluar dari sesi aplikasi WayangWave (SPOTIFY)*/ 
-void listSpotify(){
+void listSpotify(ListDefault l){
+    printf(">> ");
     STARTWORD();
     ADVWORD();
+    // printf("%s\n", currentWord.TabWord);
     if (stringComp(currentWord.TabWord, "DEFAULT")){
         printf("Daftar Penyanyi :\n");
         showPenyanyi(l);
 
         printf("Ingin melihat album yang ada?(Y/N): ");
-        char pilihan[10];
+        char pilihan;
+        STARTWORD();
+        ADVWORD();
+        // printf("%s\n", charToWord(currentWord.TabWord[0]));
 
-        scanf("%s", pilihan);
-        Word word_pilihan = charToWord(pilihan);
+        // scanf("%s", pilihan); UBAH JADI CHAR, BUKAN WORD
+        for(;;){
+            if(currentWord.TabWord[0] == 'Y' || currentWord.TabWord[0] == 'y' || currentWord.TabWord[0] == 'N' || currentWord.TabWord[0] == 'n'){
+                break;
+            }
+            printf("Input salah. Masukkan Y atau N: ");
+            STARTWORD();
+            ADVWORD();
+        }
+        pilihan = currentWord.TabWord[0];
         
-        printf("%s\n", word_pilihan.TabWord);
+        // printf("%c\n", pilihan);
 
         // comparing string
-        if(stringComp(word_pilihan.TabWord, "N")){
+        if(pilihan == 'N' || pilihan == 'n'){
             return;
         }
 
         // pilih album
         printf("Pilih penyanyi untuk melihat album mereka: ");
         char penyanyi[100];
-        scanf("%s", penyanyi);
+        STARTWORD();
+        ADVWORD();
+        stringCopy(penyanyi, currentWord.TabWord);
+        // scanf("%s", penyanyi);
 
-        printf("%s\n", penyanyi);
+        // printf("%s\n", currentWord.TabWord);
         printf("Daftar Album oleh %s:\n", penyanyi);
         int idx_penyanyi = showAlbum(charToWord(penyanyi), l);
 
@@ -91,16 +107,23 @@ void listSpotify(){
         // pilih lagu
         printf("Masukkan nama Album yang dipilih : ");
         char album[100];
-        scanf("%s", album);
+        ADVWORD();
+        STARTWORD();
+        ADVWORD();
+        // printf("%s\n", currentWord.TabWord);
+        stringCopy(album, currentWord.TabWord);
 
         printf("Daftar Lagu Album %s oleh %s\n", album, penyanyi);
         showLagu(charToWord(album), idx_penyanyi, l);
+        return;
     }
     else if (stringComp(currentWord.TabWord, "PLAYLIST")){
         printf("PLAYLIST\n");
+        return;
     }
     else{
         printf("invalid command\n");
+        return;
     }
 }
 
@@ -114,6 +137,15 @@ boolean stringComp(char *x, char *y){
         i ++;
     }
     return true;
+}
+
+void stringCopy(char *x, char *y){
+    int i = 0;
+    while (y[i] != '\0' && y[i] != MARK){
+        // printf("%c", x[i]);
+        x[i] = y[i];
+        i++;
+    }
 }
 
 Word charToWord(char str[]){

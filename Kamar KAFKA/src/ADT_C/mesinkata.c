@@ -14,6 +14,14 @@ void IgnoreBlanks(){
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
 
 void STARTWORD(){
+    int i;
+    currentWord.Length = 0;
+    for (int i=0; i<NMax; i++) {
+        currentWord.TabWord[i] = '\0';
+    }
+    // for(i=0; i<NMax; i++){
+    //     currentWord.TabWord[i] = " ";
+    // }
     START();
     IgnoreBlanks();
     if (currentChar == MARK){

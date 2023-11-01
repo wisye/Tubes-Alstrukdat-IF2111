@@ -26,7 +26,7 @@ void startSpotify();
 int loadSpotify();
 /*Dibaca save file input yang berisi list game yang dapat dimainkan, histori, dan scoreboard game*/
 
-void listSpotify();
+void listSpotify(ListDefault l);
 /*Menampilkan list penyanyi yang ada jika LIST DEFAULT
   Menampilkan list playlist yang ada pada pengguna jika LIST PLAYLIST*/
 
@@ -68,6 +68,8 @@ void helpSpotify();
 
 //EXTRA
 boolean stringComp(char* str1, char* str2);
+
+void stringCopy(char* str1, char* str2);
 
 Word charToWord(char str[]);
 
