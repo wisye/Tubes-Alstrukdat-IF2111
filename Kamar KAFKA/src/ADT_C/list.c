@@ -1,5 +1,5 @@
 #include "../ADT_H/list.h"
-#include <stdio.h>
+// #include <stdio.h>
 
 List MakeList(){
     List L;

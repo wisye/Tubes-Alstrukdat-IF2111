@@ -4,6 +4,9 @@
         "console.h": "c",
         "floatn.h": "c",
         "boolean.h": "c",
-        "mesinkata.h": "c"
+        "mesinkata.h": "c",
+        "list.h": "c",
+        "moreadt.h": "c",
+        "stdio.h": "c"
     }
 }

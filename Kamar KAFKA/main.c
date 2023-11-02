@@ -11,6 +11,8 @@ void help(){
 }
 
 int main(){
+    ListDefault l;
+
     for(;;){
         printf(">> ");
         STARTWORD();
@@ -25,7 +27,7 @@ int main(){
             loadSpotify();
         }
         else if(stringComp(currentWord.TabWord, "LIST")){
-            listSpotify();
+            listSpotify(l);
         }
         else if(stringComp(currentWord.TabWord, "QUIT")){
             quitSpotify();
@@ -33,6 +35,6 @@ int main(){
         else{
             printf("invalid command\n");
         }
-        ADVWORD();
+        // ADVWORD();
     }
 }
