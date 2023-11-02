@@ -46,7 +46,7 @@ void playlistSpotify();
 void statusSpotify();
 /*Menampilkan lagu yang sedang dimainkan beserta queue song yang ada dan dari playlist mana lagu itu diputar*/
 
-void saveSpotify();
+int saveSpotify();
 /*Menyimpan state aplikasi terbaru kedalam suatu file jika SAVE <filename>*/
 
 void quitSpotify();

@@ -35,56 +35,44 @@ int loadSpotify(){
     return 0;
 }
 
-void saveSpotify(){
-    char NamaFile[100];
-    scanf("%s" , &NamaFile);
-    const char* validtxt = ".txt";
-    const char* data = "...";//Ini buat isi file  = (Isi File)
-    char fullPath[100]; 
-    FILE* file;
-    int NamaFileLength = 0;
-    int extensionLength = 0;
+int saveSpotify(){
+    FILE *file;
+    Word fileName;
+    char buffer[1000];
 
-    while (NamaFile[NamaFileLength] != '\0') {
-        NamaFileLength++;
+    STARTWORD();
+    char fullPath[80] = "save/"; 
+    int i = 5, j = 0;
+    while (i < (currentWord.Length + 5)) {
+        fullPath[i] = currentWord.TabWord[j];
+        i++;
+        j++;
     }
 
-    while (validtxt[extensionLength] != '\0') {
-        extensionLength++;
+    int fullPathLength = 0;
+    while (fullPath[fullPathLength] != '\0') {
+        fullPathLength++;
     }
 
-    int valid = 1;
-    int j;
-
-    if (NamaFileLength < extensionLength) {
-        valid = 0;
-    } else {
-        for (int i = NamaFileLength - extensionLength, j = 0; i < NamaFileLength; i++, j++) {
-            if (NamaFile[i] != validtxt[j]) {
-                valid = 0;
-                break;
-            }
-        }
+    if (fullPathLength < 4 || fullPath[fullPathLength - 4] != '.' || fullPath[fullPathLength - 3] != 't' || fullPath[fullPathLength - 2] != 'x' || fullPath[fullPathLength - 1] != 't') {
+        printf("Save file gagal disimpan. Nama file harus berakhir dengan '.txt'.\n");
+        return 1;
     }
 
-    if (!valid) {
-        printf("Nama file tidak valid. Nama file harus berakhir dengan '.txt'.\n");
-        return;
-    }
-
-    snprintf(fullPath, sizeof(fullPath), "save/%s", NamaFile);
-
-    file = fopen(fullPath, "w");
-
+    file = fopen(fullPath, "w"); 
     if (file == NULL) {
-        printf("Gagal membuka file untuk penyimpanan.\n");
-        return;
+        printf("Save file gagal disimpan.\n");
+        return 1;
     }
 
-    fprintf(file, "%s", data);
+    // Contoh data yang ingin Anda simpan (ganti dengan data yang sesuai)
+    char dataToSave[] = "Data yang ingin disimpan.\n";
+    fputs(dataToSave, file);
 
     fclose(file);
+
     printf("Save file berhasil disimpan.\n");
+    return 0;
 }
 
 /*Dibaca save file input yang berisi list game yang dapat dimainkan, histori, dan scoreboard game*/
