@@ -1,7 +1,10 @@
 #include "../ADT_H/mesinkata.h"
+// #include "../ADT_H/moreADT.h"
+// #include <stdio.h>
 
 boolean EndWord;
 Word currentWord;
+// Line currentLine;
 
 
 void IgnoreBlanks(){
@@ -70,3 +73,35 @@ void CopyWord(){
           currentChar = BLANK atau currentChar = MARK;
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
+
+void readFileLine(FILE * file){
+    int i;
+    currentWord.Length = 0;
+    for (int i=0; i<NMax; i++) {
+        currentWord.TabWord[i] = '\0';
+    }
+    // for(i=0; i<NMax; i++){
+    //     currentWord.TabWord[i] = " ";
+    // }
+    readFileChar(file);
+    IgnoreBlanks();
+    if (currentChar == MARK){
+        EndWord = true;
+    }
+    else{
+        EndWord = false;
+        fileCopyWord();
+    }
+}
+
+void fileCopyWord(){
+    int i = 0;
+
+    while ((currentChar != MARK) && (currentChar != MARK_newline) && (i < NMax)){
+        currentWord.TabWord[i] = currentChar;
+        ADV();
+        i ++;
+    }
+
+    currentWord.Length = i;
+}

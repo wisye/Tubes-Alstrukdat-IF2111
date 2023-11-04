@@ -1,5 +1,7 @@
 #include "mesinkata.h"
 
+
+
 typedef struct Album{
     int NEFF;
     Word nama_album;
@@ -16,3 +18,23 @@ typedef struct ListDefault{
     int NEFF;
     Penyanyi list_penyanyi[10];
 } ListDefault;
+
+boolean stringComp(char* str1, char* str2);
+
+void stringCopy(char* str1, char* str2);
+
+Word charToWord(char str[]);
+
+void showPenyanyi(ListDefault l);
+
+int showAlbum(Word w, ListDefault l);
+
+void showLagu(Word w, int idx_penyanyi, ListDefault l);
+
+boolean ListDefaultIsEmpty(ListDefault l);
+
+int stringLen(char *x);
+
+int wordToInt(Word w);
+
+// Word lineToWord(Line l);

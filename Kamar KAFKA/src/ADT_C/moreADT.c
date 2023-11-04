@@ -90,3 +90,35 @@ void showLagu(Word w, int idx_penyanyi, ListDefault l){
         printf("\t%d. %s\n", j+1, l.list_penyanyi[idx_penyanyi].list_album[i].list_lagu[j].TabWord);
     }
 }
+
+boolean ListDefaultIsEmpty(ListDefault l){
+    return (l.NEFF == 0);
+}
+
+int stringLen(char *x){
+    int i = 0;
+    while(x[i] != '\0'){
+        i++;
+    }
+    return i;
+}
+
+int wordToInt(Word w){
+    int num=0;
+    int j=1;
+    for(int i=w.Length-1; i>=0; i--){
+        num += ((int) w.TabWord[i] - '0') * j;
+        j *= 10;
+    }
+    return num;
+}
+
+// Word lineToWord(Line l){
+//     Word w;
+//     while((currentChar != BLANK) && (currentChar != MARK_newline)){
+//         w.TabWord[w.Length] = currentChar;
+//         w.Length++;
+//         ADV();
+//     }
+//     return w;
+// }

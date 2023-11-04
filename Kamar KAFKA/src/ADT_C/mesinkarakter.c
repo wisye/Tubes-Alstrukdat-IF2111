@@ -1,6 +1,6 @@
 #include "../ADT_H/mesinkarakter.h"
 #include "../ADT_H/boolean.h"
-#include <stdio.h>
+// #include <stdio.h>
 
 char currentChar;
 boolean EOP;
@@ -8,7 +8,7 @@ boolean EOP;
 static FILE * pita;
 static int retval;
 
-void START(){
+void START(){ // CHANGE PITA TO FILE INPUT WHEN LOAD THEN BACK TO STDIN
     pita = stdin;
     ADV();
 }
@@ -38,3 +38,12 @@ boolean IsEOP(){
     return (currentChar == MARK);
 }
 /* Mengirimkan true jika currentChar = MARK */
+void closePita(){
+    fclose(pita);
+}
+
+void readFileChar(FILE *f){
+    pita = f;
+    ADV();
+    // retval = fscanf(pita, "%c", &currentChar);
+}

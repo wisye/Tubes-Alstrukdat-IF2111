@@ -8,6 +8,7 @@
 // #include <stdio.h>
 // #include <stdlib.h>
 // #include "../ADT_H/boolean.h"
+#include "../ADT_H/mesinkarakter.h"
 #include "../ADT_H/mesinkata.h"
 #include "../ADT_H/list.h"
 #include "../ADT_H/queue.h"
@@ -26,7 +27,7 @@ void startSpotify();
 int loadSpotify();
 /*Dibaca save file input yang berisi list game yang dapat dimainkan, histori, dan scoreboard game*/
 
-void listSpotify(ListDefault l);
+void listSpotify();
 /*Menampilkan list penyanyi yang ada jika LIST DEFAULT
   Menampilkan list playlist yang ada pada pengguna jika LIST PLAYLIST*/
 
@@ -66,19 +67,6 @@ void quitSpotify();
 void helpSpotify();
 /*Menampilkan daftar command yang mungkin untuk dieksekusi dengan deskripsinya*/
 
-//EXTRA
-boolean stringComp(char* str1, char* str2);
-
-void stringCopy(char* str1, char* str2);
-
-Word charToWord(char str[]);
-
-void showPenyanyi(ListDefault l);
-
-int showAlbum(Word w, ListDefault l);
-
-void showLagu(Word w, int idx_penyanyi, ListDefault l);
-// FUNC_H
 
 
 #endif

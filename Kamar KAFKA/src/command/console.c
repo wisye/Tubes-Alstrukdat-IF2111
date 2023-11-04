@@ -1,19 +1,25 @@
 #include "console.h"
 // #include "func.h"
 
-// ListDefault l;
+ListDefault l;
 
 /*Implementation of console.h goes here*/
 int loadSpotify(){
+    // printf("LOADED\n");
     FILE *file;
     // Word fileName;
-    char buffer[1000];
-    char *temp;
-    stringCopy(temp, currentWord.TabWord);
+    // char buffer[100];
+    // char *temp;
+    // stringCopy(temp, currentWord.TabWord);
 
     ADVWORD();
 
-    if(stringComp(temp, currentWord.TabWord)){
+    if(stringComp(currentWord.TabWord, "DEFAULT")){
+        stringCopy(currentWord.TabWord, "ghostrule.txt"); //DEFAULT LIST
+        currentWord.Length = stringLen(currentWord.TabWord);
+    }
+
+    if(stringComp(currentWord.TabWord, "LOAD")){
         printf("Input berupa LOAD <nama file>.txt\n");
         return 1;
     }
@@ -28,22 +34,53 @@ int loadSpotify(){
     }
 
     // printf("%s\n", fullPath);
+    // closePita();
+    // STARTWORD();
 
     file = fopen(fullPath, "r");
     if (file == NULL) {
         printf("Save file tidak ditemukan. WayangWave gagal dijalankan.\n");
         return 1;
     }
-    fgets(buffer, 1000, file);
+    
+    // fgets(buffer, 1000, file);
+    // fscanf(file, "%s", buffer);
+    // fscanf(file, "%s", buffer);
+    // fscanf(file, "%s", buffer);
+    // fscanf(file, "%s", buffer); // FSCANF IS TAKING 1 WORD IF USING %S
+    readFileLine(file); //READING THE FIRST LINE OF THE FILE
+    // printf("%s\n", currentWord.TabWord);
+    // printf("%d\n", currentWord.Length);
 
-    // while (fgets(buffer, 1000, file) != NULL) {
-    //         printf("%s", buffer);
+    // char jumlahPenyanyi[10];
+    // fgets(jumlahPenyanyi, 10, file);
+    // printf("%b\n", jumlahPenyanyi[0]);
+    int IjumlahPenyanyi = wordToInt(currentWord);
+    int IjumlahAlbum;
+    // j=1;
+    // for(i=currentWord.Length-1; i>=0; i--){
+    //     IjumlahPenyanyi += (currentWord.TabWord[i]-'0') * j;
+    //     j *= 10;
+    // }
+    printf("%d\n", IjumlahPenyanyi);
+    
+    for(i=0; i<IjumlahPenyanyi; i++){
+        readFileLine(file);
+        IjumlahAlbum;
+        printf("%s\n", currentWord.TabWord);
+        // break;
+    }
+
+    // for(int k=0; k<40; k++) {
+    //     readFileLine(file);
+    //     printf("%s\n", currentWord.TabWord);
     // }
 
     // printf("%s", buffer);
 
     // printf("\n");
     fclose(file);
+
 
     printf("Save file berhasil dibaca. WayangWave berhasil dijalankan.\n");
     return 0;
@@ -67,13 +104,18 @@ void quitSpotify(){
     exit(0);
 }
  /*Keluar dari sesi aplikasi WayangWave (SPOTIFY)*/ 
-void listSpotify(ListDefault l){
+void listSpotify(){
     // printf(">> ");
     ADVWORD();      // TURN THIS OFF IF YOU WANT TO USE THE DRIVER
     // STARTWORD(); // TURN THIS ON IF YOU WANT TO USE THE DRIVER
     // ADVWORD();
     // printf("%s\n", currentWord.TabWord);
+
     if (stringComp(currentWord.TabWord, "DEFAULT")){
+        // IF DEFAULT PROCESS GHOSTRULE.TXT
+        // stringCopy(currentWord.TabWord, "ghostrule.txt");
+        loadSpotify();
+
         printf("Daftar Penyanyi :\n");
         showPenyanyi(l);
 
