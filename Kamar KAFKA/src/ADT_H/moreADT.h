@@ -37,4 +37,5 @@ int stringLen(char *x);
 
 int wordToInt(Word w);
 
+void stringMakeEmpty(char *x);
 // Word lineToWord(Line l);

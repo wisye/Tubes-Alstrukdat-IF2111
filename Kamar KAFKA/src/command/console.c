@@ -71,7 +71,7 @@ int loadSpotify(){
         // (&p + i*sizeof(Penyanyi));
         readFileWord(file);
         IjumlahAlbum = wordToInt(currentWord);
-        l.list_penyanyi->NEFF = IjumlahAlbum;
+        l.list_penyanyi[i].NEFF = IjumlahAlbum;
         // printf("%d\n", IjumlahAlbum);
         readFileLine(file);
         stringCopy(l.list_penyanyi[i].nama_penyanyi.TabWord, currentLine.TabWord);
@@ -79,14 +79,15 @@ int loadSpotify(){
         for(j=0; j<IjumlahAlbum; j++){
             readFileWord(file);
             IjumlahLagu = wordToInt(currentWord);
-            l.list_penyanyi->list_album->NEFF = IjumlahLagu;
+            // printf("%d\n", IjumlahLagu);
+            l.list_penyanyi[i].list_album[j].NEFF = IjumlahLagu;
             readFileLine(file);
             stringCopy(l.list_penyanyi[i].list_album[j].nama_album.TabWord, currentLine.TabWord);
             // printf("%s\n", l.list_penyanyi[i].list_album[j].nama_album.TabWord);
             for(k=0; k<IjumlahLagu; k++){
                 readFileLine(file);
                 stringCopy(l.list_penyanyi[i].list_album[j].list_lagu[k].TabWord, currentLine.TabWord);
-                // printf("%s\n", l.list_penyanyi[i].list_album[j].list_lagu[k].TabWord);
+                // printf("%d:%s\n",k, l.list_penyanyi[i].list_album[j].list_lagu[k].TabWord);
             }
         }
         // printf("%s\n", currentWord.TabWord);
@@ -94,7 +95,7 @@ int loadSpotify(){
         // break;
     }
 
-
+    // printf("%s", l.list_penyanyi[2].list_album[1].nama_album.TabWord);
     // for(int k=0; k<40; k++) {
     //     readFileLine(file);
     //     printf("%s\n", currentWord.TabWord);
@@ -170,12 +171,13 @@ void listSpotify(){
         // pilih album
         printf("Pilih penyanyi untuk melihat album mereka: ");
         char penyanyi[100];
-        STARTWORD();
+        stringMakeEmpty(penyanyi);
+        STARTLINE();
         // ADVWORD();
-        stringCopy(penyanyi, currentWord.TabWord);
+        stringCopy(penyanyi, currentLine.TabWord);
         // scanf("%s", penyanyi);
 
-        // printf("%s\n", currentWord.TabWord);
+        // printf("%s\n", penyanyi);
         printf("Daftar Album oleh %s:\n", penyanyi);
         int idx_penyanyi = showAlbum(charToWord(penyanyi), l);
 
@@ -183,11 +185,12 @@ void listSpotify(){
         // pilih lagu
         printf("Masukkan nama Album yang dipilih : ");
         char album[100];
+        stringMakeEmpty(album);
         // ADVWORD();
-        STARTWORD();
+        STARTLINE();
         // ADVWORD();
-        // printf("%s\n", currentWord.TabWord);
-        stringCopy(album, currentWord.TabWord);
+        // printf("%s\n", currentLine.TabWord);
+        stringCopy(album, currentLine.TabWord);
 
         printf("Daftar Lagu Album %s oleh %s\n", album, penyanyi);
         showLagu(charToWord(album), idx_penyanyi, l);
@@ -204,3 +207,11 @@ void listSpotify(){
 }
 
 
+// char *c;
+// c = address
+// string = array of char
+// char di string itu bersebelahan
+// char c[]
+// c[i] = *(&c + i) 
+// c[0] = *(&c)
+// [h][e][l][l][o][ ][w][o][r][l][d][!]

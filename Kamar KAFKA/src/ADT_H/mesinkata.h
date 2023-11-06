@@ -62,4 +62,5 @@ void readFileLine(FILE * file);
 
 void fileCopyLine();
 
+void STARTLINE();
 #endif

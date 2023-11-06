@@ -9,6 +9,9 @@ boolean stringComp(char *x, char *y){
         }
         i ++;
     }
+    if (x[i] != y[i]) {
+        return false;
+    }
     return true;
 }
 
@@ -125,6 +128,15 @@ int wordToInt(Word w){
     }
     // printf("%d\n", num);
     return num;
+}
+
+void stringMakeEmpty(char *x){
+    int i = 0;
+    while(x[i] != '\0'){
+        x[i] = '\0';
+        i++;
+    }
+
 }
 
 // Word lineToWord(Line l){

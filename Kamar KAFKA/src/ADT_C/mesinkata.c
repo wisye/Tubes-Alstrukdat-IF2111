@@ -59,7 +59,7 @@ void ADVWORD(){
 void CopyWord(){
     int i = 0;
 
-    while ((currentChar != MARK) && (currentChar != BLANK) && (i < NMax)){
+    while ((currentChar != MARK) && (currentChar !=  BLANK) && (i < NMax)){
         currentWord.TabWord[i] = currentChar;
         ADV();
         i ++;
@@ -136,4 +136,24 @@ void fileCopyLine(){
     }
 
     currentLine.Length = i;
+}
+
+void STARTLINE(){
+    int i;
+    currentLine.Length = 0;
+    for (int i=0; i<lineNMax; i++) {
+        currentLine.TabWord[i] = '\0';
+    }
+    // for(i=0; i<NMax; i++){
+    //     currentWord.TabWord[i] = " ";
+    // }
+    START();
+    IgnoreBlanks();
+    if (currentChar == MARK){
+        EndWord = true;
+    }
+    else{
+        EndWord = false;
+        fileCopyLine();
+    }
 }
