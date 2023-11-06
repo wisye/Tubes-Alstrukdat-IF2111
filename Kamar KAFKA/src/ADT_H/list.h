@@ -10,7 +10,7 @@
 /* Kamus Umum */
 #define ListMaxEl 100
 #define ListMark -9999  /* Nilai tak terdefinisi */
-#define InvalidIdx -1  /* Indeks tak terdefinisi */
+#define ListInvalidIdx -1  /* Indeks tak terdefinisi */
 
 /* Definisi elemen dan koleksi objek */
 #define ListIdxType int

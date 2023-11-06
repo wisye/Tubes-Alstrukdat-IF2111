@@ -3,14 +3,14 @@
 // EXTRA
 boolean stringComp(char *x, char *y){
     int i = 0;
+    if (stringLen(x) != stringLen(y)){
+        return false;
+    }
     while ((x[i] != '\0') && (y[i] != '\0')){
         if (x[i] != y[i]){
             return false;
         }
         i ++;
-    }
-    if (x[i] != y[i]) {
-        return false;
     }
     return true;
 }

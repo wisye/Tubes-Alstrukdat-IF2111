@@ -8,7 +8,7 @@ Line currentLine;
 
 
 void IgnoreBlanks(){
-    while (currentChar == BLANK || currentChar == MARK_newline){
+    while ((currentChar == BLANK || currentChar == MARK_newline) && currentChar != EOF){
         ADV();
     }
 }
@@ -85,12 +85,15 @@ void readFileWord(FILE * file){
     // }
     readFileChar(file);
     IgnoreBlanks();
-    if (currentChar == MARK){
+    if (currentChar == MARK || currentChar == EOF){
         EndWord = true;
     }
     else{
         EndWord = false;
         fileCopyWord();
+    }
+    if (currentChar == EOF) {
+        EndWord = true;
     }
 }
 

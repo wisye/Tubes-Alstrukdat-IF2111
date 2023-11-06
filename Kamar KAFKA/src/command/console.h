@@ -13,6 +13,8 @@
 #include "../ADT_H/list.h"
 #include "../ADT_H/queue.h"
 #include "../ADT_H/stack.h"
+#include "../ADT_H/set.h"
+#include "../ADT_H/map.h"
 #include "../ADT_H/moreADT.h"
 #include <stdio.h>
 #include <stdlib.h>
