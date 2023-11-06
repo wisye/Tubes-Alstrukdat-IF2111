@@ -104,12 +104,26 @@ int stringLen(char *x){
 }
 
 int wordToInt(Word w){
+    // Word numWord;
+    // numWord.Length = 0;
+
+    int i = 0;
+    // while((w.TabWord[i] != MARK) && (w.TabWord[i] != '\0') && (w.TabWord[i] != BLANK) && (i < NMax)){
+    //     numWord.TabWord[i] = w.TabWord[i];
+    //     ADV();
+    //     i ++;
+    // }
+    // printf("%s\n", numWord.TabWord);
+    // numWord.Length = i;
+    // printf("%d\n", numWord.Length);
     int num=0;
+
     int j=1;
-    for(int i=w.Length-1; i>=0; i--){
-        num += ((int) w.TabWord[i] - '0') * j;
+    for(i=currentWord.Length-1; i>=0; i--){
+        num += ((int) currentWord.TabWord[i] - '0') * j;
         j *= 10;
     }
+    // printf("%d\n", num);
     return num;
 }
 

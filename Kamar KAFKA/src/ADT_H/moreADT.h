@@ -6,13 +6,13 @@ typedef struct Album{
     int NEFF;
     Word nama_album;
     Word list_lagu[100]; // banyak lagu dalam 1 album
-} Album;
+} Album; // banyak album
 
 typedef struct Penyanyi{
     int NEFF;
     Word nama_penyanyi;
     Album list_album[10]; // banyak Album dalam 1 penyanyi
-} Penyanyi;
+} Penyanyi; // banyak penyanyi
 
 typedef struct ListDefault{
     int NEFF;

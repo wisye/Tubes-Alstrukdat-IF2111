@@ -10,7 +10,7 @@
 
 #define NMax 50
 #define BLANK ' '
-// #define lineNMax 100
+#define lineNMax 200
 
 typedef struct
 {
@@ -18,14 +18,14 @@ typedef struct
    int Length;
 } Word;
 
-// typedef struct Line{
-//    char TabWord[lineNMax]; /* container penyimpan kata, indeks yang dipakai [0..NMax-1] */
-//    int Length;
-// } Line;
+typedef struct Line{
+   char TabWord[lineNMax]; /* container penyimpan kata, indeks yang dipakai [0..NMax-1] */
+   int Length;
+} Line;
 /* State Mesin Kata */
 extern boolean EndWord;
 extern Word currentWord;
-// extern Line currentLine;
+extern Line currentLine;
 
 void IgnoreBlanks();
 /* Mengabaikan satu atau beberapa BLANK
@@ -53,9 +53,13 @@ void CopyWord();
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
 
-void readFileLine(FILE * f);
+void readFileWord(FILE * f);
 /* BACA DARI FILE PER BARIS SEPERTI FGETS NAMUN MENGGUNAKAN PRIMITIF MESIN KATA/MESIN KARAKTER */
 
 void fileCopyWord();
+
+void readFileLine(FILE * file);
+
+void fileCopyLine();
 
 #endif

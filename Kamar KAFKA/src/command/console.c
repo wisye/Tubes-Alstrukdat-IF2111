@@ -6,9 +6,10 @@ ListDefault l;
 /*Implementation of console.h goes here*/
 int loadSpotify(){
     // printf("LOADED\n");
+    int i = 0, j = 0, k = 0;
     FILE *file;
     // Word fileName;
-    // char buffer[100];
+    char buffer[100];
     // char *temp;
     // stringCopy(temp, currentWord.TabWord);
 
@@ -26,7 +27,7 @@ int loadSpotify(){
 
     // STARTWORD();
     char fullPath[80] = "save/"; //../../save/<nama file.txt>
-    int i = 5, j = 0;
+    i = 5;
     while (i < (currentWord.Length + 5)){
         fullPath[i] = currentWord.TabWord[j];
         i ++;
@@ -36,7 +37,7 @@ int loadSpotify(){
     // printf("%s\n", fullPath);
     // closePita();
     // STARTWORD();
-
+    
     file = fopen(fullPath, "r");
     if (file == NULL) {
         printf("Save file tidak ditemukan. WayangWave gagal dijalankan.\n");
@@ -48,7 +49,7 @@ int loadSpotify(){
     // fscanf(file, "%s", buffer);
     // fscanf(file, "%s", buffer);
     // fscanf(file, "%s", buffer); // FSCANF IS TAKING 1 WORD IF USING %S
-    readFileLine(file); //READING THE FIRST LINE OF THE FILE
+    readFileWord(file); //READING THE FIRST LINE OF THE FILE
     // printf("%s\n", currentWord.TabWord);
     // printf("%d\n", currentWord.Length);
 
@@ -57,19 +58,42 @@ int loadSpotify(){
     // printf("%b\n", jumlahPenyanyi[0]);
     int IjumlahPenyanyi = wordToInt(currentWord);
     int IjumlahAlbum;
+    int IjumlahLagu;
     // j=1;
     // for(i=currentWord.Length-1; i>=0; i--){
     //     IjumlahPenyanyi += (currentWord.TabWord[i]-'0') * j;
     //     j *= 10;
     // }
-    printf("%d\n", IjumlahPenyanyi);
-    
+    // printf("%d\n", IjumlahPenyanyi);
+    l.NEFF = IjumlahPenyanyi;
     for(i=0; i<IjumlahPenyanyi; i++){
+
+        // (&p + i*sizeof(Penyanyi));
+        readFileWord(file);
+        IjumlahAlbum = wordToInt(currentWord);
+        l.list_penyanyi->NEFF = IjumlahAlbum;
+        // printf("%d\n", IjumlahAlbum);
         readFileLine(file);
-        IjumlahAlbum;
-        printf("%s\n", currentWord.TabWord);
+        stringCopy(l.list_penyanyi[i].nama_penyanyi.TabWord, currentLine.TabWord);
+        // printf("%s\n", l.list_penyanyi[i].nama_penyanyi.TabWord);
+        for(j=0; j<IjumlahAlbum; j++){
+            readFileWord(file);
+            IjumlahLagu = wordToInt(currentWord);
+            l.list_penyanyi->list_album->NEFF = IjumlahLagu;
+            readFileLine(file);
+            stringCopy(l.list_penyanyi[i].list_album[j].nama_album.TabWord, currentLine.TabWord);
+            // printf("%s\n", l.list_penyanyi[i].list_album[j].nama_album.TabWord);
+            for(k=0; k<IjumlahLagu; k++){
+                readFileLine(file);
+                stringCopy(l.list_penyanyi[i].list_album[j].list_lagu[k].TabWord, currentLine.TabWord);
+                // printf("%s\n", l.list_penyanyi[i].list_album[j].list_lagu[k].TabWord);
+            }
+        }
+        // printf("%s\n", currentWord.TabWord);
+        // printf("%s\n", l.list_penyanyi->nama_penyanyi.TabWord);
         // break;
     }
+
 
     // for(int k=0; k<40; k++) {
     //     readFileLine(file);
