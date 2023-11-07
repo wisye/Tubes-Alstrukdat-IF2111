@@ -4,6 +4,56 @@
 ListDefault l;
 
 /*Implementation of console.h goes here*/
+void startSpotify() {
+    FILE *configFile = fopen("../../save/config.txt", "r");
+
+    readFileChar(configFile);
+
+    // Read the number of singers
+    STARTWORD();
+    int numSingers;
+    sscanf(currentWord.TabWord, "%d", &numSingers); //gatau gimana caranya kalo nggak scanf?
+
+    // Loop to read singers, albums, and songs
+    for (int singerIdx = 0; singerIdx < numSingers; singerIdx++) {
+        // Read singer name
+        ADVWORD();
+        char singerName[NMax];
+        strncpy(singerName, currentWord.TabWord, currentWord.Length);
+
+        // Read the number of albums
+        ADVWORD();
+        int numAlbums;
+        sscanf(currentWord.TabWord, "%d", &numAlbums);
+
+        for (int albumIdx = 0; albumIdx < numAlbums; albumIdx++) {
+            // Read album name
+            ADVWORD();
+            char albumName[NMax];
+            strncpy(albumName, currentWord.TabWord, currentWord.Length);
+
+            // Read songs within the album
+            ADVWORD();
+            int numSongs;
+            sscanf(currentWord.TabWord, "%d", &numSongs);
+
+            for (int songIdx = 0; songIdx < numSongs; songIdx++) {
+                // Read song name
+                ADVWORD();
+                char songName[NMax];
+                strncpy(songName, currentWord.TabWord, currentWord.Length);
+
+                
+               
+                // printf("Singer: %s, Album: %s, Song: %s\n", singerName, albumName, songName);
+            }
+        }
+    }
+    // Close the configuration file
+    fclose(configFile);
+    printf("File konfigurasi aplikasi berhasil dibaca. WayangWave berhasil dijalankan.");
+}
+
 int loadSpotify(){
     // printf("LOADED\n");
     FILE *file;

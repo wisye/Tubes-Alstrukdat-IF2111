@@ -15,6 +15,11 @@ void IgnoreBlanks(){
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
 
+void IgnoreDots()
+{
+    
+}
+
 void STARTWORD(){
     int i;
     currentWord.Length = 0;
@@ -72,7 +77,7 @@ void CopyWord(){
           currentChar = BLANK atau currentChar = MARK;
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
-
+          
 void readFileLine(FILE * file){
     int i;
     currentWord.Length = 0;
