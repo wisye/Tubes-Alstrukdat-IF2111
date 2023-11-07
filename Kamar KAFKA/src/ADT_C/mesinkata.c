@@ -4,7 +4,6 @@
 
 boolean EndWord;
 Word currentWord;
-// Line currentLine;
 
 
 void IgnoreBlanks(){
