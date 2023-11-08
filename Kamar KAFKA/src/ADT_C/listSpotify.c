@@ -23,7 +23,7 @@ typedef struct {
     Penyanyi list_penyanyi[10];
 } ListDefault;
 
-#define Mark '\0'
+// #define Mark '\0'
 /* END */
 
 Word charToWord(char str[]){
@@ -234,6 +234,6 @@ int main(){
     l.list_penyanyi[1] = penyanyi2;
     l.NEFF = 2;
 
-    debug;
+    // debug;
     showListDefault(l);
 }

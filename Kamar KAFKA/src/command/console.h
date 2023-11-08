@@ -1,10 +1,24 @@
-#include "../ADT_H/boolean.h"
-#include "../ADT_H/mesinkata.h"
+// #include "func.h"
+// #include "../ADT_H/boolean.h"
+// #include "../ADT_H/mesinkata.h"
 // #include "../ADT_H/list.h"
 // #include "../ADT_H/queue.h"
 // #include "../ADT_H/stack.h"
+// #include "../ADT_H/moreADT.h"
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include "../ADT_H/boolean.h"
+#include "../ADT_H/mesinkarakter.h"
+#include "../ADT_H/mesinkata.h"
+#include "../ADT_H/list.h"
+#include "../ADT_H/queue.h"
+#include "../ADT_H/stack.h"
+#include "../ADT_H/set.h"
+#include "../ADT_H/map.h"
+#include "../ADT_H/moreADT.h"
 #include <stdio.h>
 #include <stdlib.h>
+
 
 #ifndef CONSOLE_H
 #define CONSOLE_H
@@ -54,5 +68,7 @@ void quitSpotify();
 
 void helpSpotify();
 /*Menampilkan daftar command yang mungkin untuk dieksekusi dengan deskripsinya*/
+
+
 
 #endif

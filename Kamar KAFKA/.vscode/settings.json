@@ -3,6 +3,14 @@
         "mesinkarakter.h": "c",
         "console.h": "c",
         "floatn.h": "c",
+<<<<<<< HEAD
         "boolean.h": "c"
+=======
+        "boolean.h": "c",
+        "mesinkata.h": "c",
+        "list.h": "c",
+        "moreadt.h": "c",
+        "stdio.h": "c"
+>>>>>>> main
     }
 }

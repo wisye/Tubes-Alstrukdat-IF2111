@@ -5,8 +5,10 @@
 #define __MESIN_KAR_H_
 
 #include "boolean.h"
+#include <stdio.h>
 
 #define MARK ';'
+#define MARK_newline '\n'
 /* State Mesin */
 extern char currentChar;
 extern boolean EOP;
@@ -32,5 +34,8 @@ char GetCC();
 
 boolean IsEOP();
 /* Mengirimkan true jika currentChar = MARK */
+void closePita();
+
+void readFileChar(FILE * f);
 
 #endif
