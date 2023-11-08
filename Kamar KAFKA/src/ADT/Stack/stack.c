@@ -1,4 +1,4 @@
-#include "../ADT_H/stack.h"
+#include "stack.h"
 
 /* ************ Prototype ************ */
 /* *** Konstruktor/Kreator *** */

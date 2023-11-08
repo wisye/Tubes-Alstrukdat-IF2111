@@ -1,4 +1,4 @@
-#include "../ADT_H/moreADT.h"
+#include "moreADT.h"
 #include <stdio.h>
 // EXTRA
 boolean stringComp(char *x, char *y){
@@ -111,7 +111,7 @@ int wordToInt(Word w){
     // numWord.Length = 0;
 
     int i = 0;
-    // while((w.TabWord[i] != MARK) && (w.TabWord[i] != '\0') && (w.TabWord[i] != BLANK) && (i < NMax)){
+    // while((w.TabWord[i] != MARK) && (w.TabWord[i] != '\0') && (w.TabWord[i] != BLANK) && (i < wordNMax)){
     //     numWord.TabWord[i] = w.TabWord[i];
     //     ADV();
     //     i ++;

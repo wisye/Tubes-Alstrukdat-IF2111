@@ -4,24 +4,25 @@
 #ifndef __MESINKATA_H__
 #define __MESINKATA_H__
 
-#include "boolean.h"
+#include "../boolean.h"
 #include "mesinkarakter.h"
 #include <stdio.h>
 
-#define NMax 50
+#define wordNMax 50
 #define BLANK ' '
 #define lineNMax 200
 
 typedef struct
 {
-   char TabWord[NMax]; /* container penyimpan kata, indeks yang dipakai [0..NMax-1] */
+   char TabWord[wordNMax]; /* container penyimpan kata, indeks yang dipakai [0..wordNMax-1] */
    int Length;
 } Word;
 
 typedef struct Line{
-   char TabWord[lineNMax]; /* container penyimpan kata, indeks yang dipakai [0..NMax-1] */
+   char TabWord[lineNMax]; /* container penyimpan kata, indeks yang dipakai [0..wordNMax-1] */
    int Length;
 } Line;
+
 /* State Mesin Kata */
 extern boolean EndWord;
 extern Word currentWord;
@@ -51,7 +52,7 @@ void CopyWord();
    F.S. : currentWord berisi kata yang sudah diakuisisi;
           currentChar = BLANK atau currentChar = MARK;
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
-          Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
+          Jika panjang kata melebihi wordNMax, maka sisa kata "dipotong" */
 
 void readFileWord(FILE * f);
 /* BACA DARI FILE PER BARIS SEPERTI FGETS NAMUN MENGGUNAKAN PRIMITIF MESIN KATA/MESIN KARAKTER */

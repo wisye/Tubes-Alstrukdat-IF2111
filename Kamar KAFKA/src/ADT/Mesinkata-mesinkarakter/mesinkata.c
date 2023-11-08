@@ -1,4 +1,4 @@
-#include "../ADT_H/mesinkata.h"
+#include "mesinkata.h"
 // #include "../ADT_H/moreADT.h"
 // #include <stdio.h>
 
@@ -19,10 +19,10 @@ void IgnoreBlanks(){
 void STARTWORD(){
     int i;
     currentWord.Length = 0;
-    for (int i=0; i<NMax; i++) {
+    for (int i=0; i<wordNMax; i++) {
         currentWord.TabWord[i] = '\0';
     }
-    // for(i=0; i<NMax; i++){
+    // for(i=0; i<wordNMax; i++){
     //     currentWord.TabWord[i] = " ";
     // }
     START();
@@ -59,7 +59,7 @@ void ADVWORD(){
 void CopyWord(){
     int i = 0;
 
-    while ((currentChar != MARK) && (currentChar !=  BLANK) && (i < NMax)){
+    while ((currentChar != MARK) && (currentChar !=  BLANK) && (i < wordNMax)){
         currentWord.TabWord[i] = currentChar;
         ADV();
         i ++;
@@ -72,15 +72,15 @@ void CopyWord(){
    F.S. : currentWord berisi kata yang sudah diakuisisi;
           currentChar = BLANK atau currentChar = MARK;
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
-          Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
+          Jika panjang kata melebihi wordNMax, maka sisa kata "dipotong" */
 
 void readFileWord(FILE * file){
     int i;
     currentWord.Length = 0;
-    for (int i=0; i<NMax; i++) {
+    for (int i=0; i<wordNMax; i++) {
         currentWord.TabWord[i] = '\0';
     }
-    // for(i=0; i<NMax; i++){
+    // for(i=0; i<wordNMax; i++){
     //     currentWord.TabWord[i] = " ";
     // }
     readFileChar(file);
@@ -100,7 +100,7 @@ void readFileWord(FILE * file){
 void fileCopyWord(){
     int i = 0;
 
-    while ((currentChar != MARK)  && (currentChar != BLANK) && (currentChar != MARK_newline) && (i < NMax)){
+    while ((currentChar != MARK)  && (currentChar != BLANK) && (currentChar != MARK_newline) && (i < wordNMax)){
         currentWord.TabWord[i] = currentChar;
         ADV();
         i ++;
@@ -115,7 +115,7 @@ void readFileLine(FILE * file){
     for (int i=0; i<lineNMax; i++) {
         currentLine.TabWord[i] = '\0';
     }
-    // for(i=0; i<NMax; i++){
+    // for(i=0; i<wordNMax; i++){
     //     currentWord.TabWord[i] = " ";
     // }
     readFileChar(file);
@@ -147,7 +147,7 @@ void STARTLINE(){
     for (int i=0; i<lineNMax; i++) {
         currentLine.TabWord[i] = '\0';
     }
-    // for(i=0; i<NMax; i++){
+    // for(i=0; i<wordNMax; i++){
     //     currentWord.TabWord[i] = " ";
     // }
     START();

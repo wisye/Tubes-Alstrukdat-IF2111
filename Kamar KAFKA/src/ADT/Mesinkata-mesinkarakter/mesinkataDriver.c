@@ -1,4 +1,4 @@
-#include "../ADT_H/mesinkata.h"
+#include "mesinkata.h"
 #include <stdio.h>
 
 int main(){

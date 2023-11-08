@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../ADT_H/list.h"
+#include "list.h"
 
 int main(){
     List L = MakeList();

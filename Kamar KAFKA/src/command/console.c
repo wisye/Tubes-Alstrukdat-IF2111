@@ -212,6 +212,6 @@ void listSpotify(){
 // string = array of char
 // char di string itu bersebelahan
 // char c[]
-// c[i] = *(&c + i) 
+// c[i] = *(&c + i*sizeof(c)) 
 // c[0] = *(&c)
 // [h][e][l][l][o][ ][w][o][r][l][d][!]

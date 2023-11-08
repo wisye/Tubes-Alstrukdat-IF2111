@@ -1,4 +1,4 @@
-#include "../ADT_H/list.h"
+#include "list.h"
 // #include <stdio.h>
 
 List MakeList(){

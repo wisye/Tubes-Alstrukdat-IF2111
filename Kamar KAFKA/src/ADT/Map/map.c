@@ -1,4 +1,4 @@
-#include "../ADT_H/map.h"
+#include "map.h"
 /* Definisi Map M kosong : M.Count = Nil */
 /* M.Count = jumlah element Map */
 /* M.Elements = tempat penyimpanan element Map */

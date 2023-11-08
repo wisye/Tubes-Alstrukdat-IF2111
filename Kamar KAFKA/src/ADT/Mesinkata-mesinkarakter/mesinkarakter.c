@@ -1,19 +1,17 @@
-/* File: mesinkarakter.h */
-/* Definisi Mesin Karakter */
+#include "mesinkarakter.h"
+#include "../boolean.h"
+// #include <stdio.h>
 
-#ifndef __MESIN_KAR_H_
-#define __MESIN_KAR_H_
+char currentChar;
+boolean EOP;
 
-#include "boolean.h"
-#include <stdio.h>
+static FILE * pita;
+static int retval;
 
-#define MARK ';'
-#define MARK_newline '\n'
-/* State Mesin */
-extern char currentChar;
-extern boolean EOP;
-
-void START();
+void START(){ // CHANGE PITA TO FILE INPUT WHEN LOAD THEN BACK TO STDIN
+    pita = stdin;
+    ADV();
+}
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.
    Pita baca diambil dari stdin.
@@ -22,20 +20,30 @@ void START();
           Jika currentChar != MARK maka EOP akan padam (false)
           Jika currentChar = MARK maka EOP akan menyala (true) */
 
-void ADV();
+void ADV(){
+    retval = fscanf(pita, "%c", &currentChar);
+}
 /* Pita dimajukan satu karakter.
    I.S. : Karakter pada jendela = currentChar, currentChar != MARK
    F.S. : currentChar adalah karakter berikutnya dari currentChar yang lama,
           currentChar mungkin = MARK
           Jika  currentChar = MARK maka EOP akan menyala (true) */
 
-char GetCC();
+char GetCC(){
+    return currentChar;
+}
 /* Mengirimkan currentChar */
 
-boolean IsEOP();
+boolean IsEOP(){
+    return (currentChar == MARK);
+}
 /* Mengirimkan true jika currentChar = MARK */
-void closePita();
+void closePita(){
+    fclose(pita);
+}
 
-void readFileChar(FILE * f);
-
-#endif
+void readFileChar(FILE *f){
+    pita = f;
+    ADV();
+    // retval = fscanf(pita, "%c", &currentChar);
+}

@@ -1,4 +1,4 @@
-#include "../ADT_H/queue.h"
+#include "queue.h"
 #include <stdio.h>
 
 void CreateQueue(Queue *q){
