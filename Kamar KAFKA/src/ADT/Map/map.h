@@ -14,7 +14,7 @@ Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 #define mapUndefined -999
 
 // typedef int bool;
-typedef int mapkeytype;
+typedef char* mapkeytype;
 typedef int mapvaluetype;
 typedef int mapaddress;
 

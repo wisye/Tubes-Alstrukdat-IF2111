@@ -1,4 +1,4 @@
-#include "../Mesinkata-mesinkarakter/mesinkata.h"
+#include "../Mesinkata/mesinkata.h"
 
 
 

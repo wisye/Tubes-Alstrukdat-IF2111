@@ -5,7 +5,7 @@
 #define __MESINKATA_H__
 
 #include "../boolean.h"
-#include "mesinkarakter.h"
+#include "../Mesinkarakter/mesinkarakter.h"
 #include <stdio.h>
 
 #define wordNMax 50

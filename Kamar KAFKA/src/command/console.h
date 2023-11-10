@@ -8,8 +8,8 @@
 // #include <stdio.h>
 // #include <stdlib.h>
 // #include "../ADT_H/boolean.h"
-#include "../ADT/Mesinkata-mesinkarakter/mesinkarakter.h"
-#include "../ADT/Mesinkata-mesinkarakter/mesinkata.h"
+#include "../ADT/Mesinkarakter/mesinkarakter.h"
+#include "../ADT/Mesinkata/mesinkata.h"
 #include "../ADT/List/list.h"
 #include "../ADT/Queue/queue.h"
 #include "../ADT/Stack/stack.h"
