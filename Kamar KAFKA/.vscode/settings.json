@@ -9,6 +9,7 @@
         "moreadt.h": "c",
         "stdio.h": "c",
         "stack.h": "c",
-        "set.h": "c"
+        "set.h": "c",
+        "listdefault.h": "c"
     }
 }

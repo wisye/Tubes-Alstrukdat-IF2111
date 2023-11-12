@@ -2,26 +2,26 @@
 
 /* ************ Prototype ************ */
 /* *** Konstruktor/Kreator *** */
-void CreateEmpty(Stack *S){
-    S->TOP = Nil;
+void stackCreateEmpty(Stack *S){
+    S->TOP = stackNil;
 }
 /* I.S. sembarang; */
-/* F.S. Membuat sebuah stack S yang kosong berkapasitas MaxEl */
-/* jadi indeksnya antara 0..MaxEl-1 (inklusif) */
-/* Ciri stack kosong : TOP bernilai Nil */
+/* F.S. Membuat sebuah stack S yang kosong berkapasitas stackMaxEl */
+/* jadi indeksnya antara 0..stackMaxEl-1 (inklusif) */
+/* Ciri stack kosong : TOP bernilai stackNil */
 
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
-boolean IsEmpty(Stack S){
-    return S.TOP == Nil;
+boolean stackIsEmpty(Stack S){
+    return S.TOP == stackNil;
 }
 /* Mengirim true jika Stack kosong: lihat definisi di atas */
-boolean IsFull(Stack S){
-    return (S.TOP == (MaxEl - 1));
+boolean stackIsFull(Stack S){
+    return (S.TOP == (stackMaxEl - 1));
 }
 /* Mengirim true jika tabel penampung nilai elemen stack penuh */
 
 /* ************ Menambahkan sebuah elemen ke Stack ************ */
-void Push(Stack * S, infotype X){
+void Push(Stack * S, stackinfotype X){
     S->TOP ++;
     S->T[S->TOP] = X;
 }
@@ -30,7 +30,7 @@ void Push(Stack * S, infotype X){
 /* F.S. TOP bertambah 1, X menjadi TOP yang baru, */
 
 /* ************ Menghapus sebuah elemen Stack ************ */
-void Pop(Stack * S, infotype* X){
+void Pop(Stack * S, stackinfotype* X){
     (*X) = S->T[S->TOP];
     S->TOP --;
 }

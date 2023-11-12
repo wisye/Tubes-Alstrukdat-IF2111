@@ -15,7 +15,8 @@
 #include "../ADT/Stack/stack.h"
 #include "../ADT/Set/set.h"
 #include "../ADT/Map/map.h"
-#include "../ADT/Extra/moreADT.h"
+#include "../ADT/func/func.h"
+#include "../ADT/LinkedList/listlinier.h"
 #include <stdio.h>
 #include <stdlib.h>
 

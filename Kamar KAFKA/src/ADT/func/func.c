@@ -1,4 +1,4 @@
-#include "moreADT.h"
+#include "func.h"
 #include <stdio.h>
 // EXTRA
 boolean stringComp(char *x, char *y){
@@ -48,7 +48,6 @@ Word charToWord(char str[]){
 
 void showPenyanyi(ListDefault l){
     int len = l.NEFF;
-
     int i=0;
     for(i=0; i<len; i++){
         printf("\t%d. %s\n", i+1, l.list_penyanyi[i].nama_penyanyi.TabWord);
@@ -57,9 +56,7 @@ void showPenyanyi(ListDefault l){
 
 int showAlbum(Word w, ListDefault l){
     int len = l.NEFF;
-
     // cari indeks penyanyi di list
-
     int i;
     for(i=0; i<len; i++){
         // printf("ini cek --> %s %s\n", w.TabWord, l.list_penyanyi[i].nama_penyanyi.TabWord);
@@ -67,7 +64,6 @@ int showAlbum(Word w, ListDefault l){
             break;
         }
     }
-
     // printf("indeks penyanyi %d\n", i);
     // print semua album
     int j;
