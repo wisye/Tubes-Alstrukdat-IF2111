@@ -12,28 +12,30 @@ boolean stringComp(char *x, char *y){
     return true;
 }
 
+void startspotify(){
+    START();
+}
+
 void help(){
     printf("START : Memulai spotify\n");
 }
 
 int main(){
     char *command;
-
     printf(">> ");
     scanf("%s", command);
     
     if(stringComp(command, "START")){
         startspotify();
     }
-    else if(stringComp(command, "LOAD")){
-        loadspotify();
-    }
-
     else if(stringComp(command, "HELP")){
         help();
     }
-    else if(stringComp(command, "EXIT")){
-        exitspotify();
+    else if(stringComp(command, "LOAD")){
+        loadSpotify();
+    }
+    else if(stringComp(command, "QUIT")){
+        quitSpotify();
     }
     else{
         printf("invalid command");
