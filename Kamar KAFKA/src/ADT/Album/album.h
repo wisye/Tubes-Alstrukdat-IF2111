@@ -1,7 +1,18 @@
+#ifndef album_H
+#define album_H
 #include "../Mesinkata/mesinkata.h"
 
-typedef struct Album{
-    int NEFF;
+// implementasi album menggunakan SET
+
+#define setMaxEl 100
+
+typedef Word setinfotype;
+typedef int setaddress;
+
+typedef struct {
     Word nama_album;
-    Word list_lagu[100]; // banyak lagu dalam 1 album
-} Album; // banyak album
+    setinfotype NamaLagu[setMaxEl];
+    setaddress Count;
+} Album; // 1 album simpan banyak lagu
+
+#endif
