@@ -1,7 +1,8 @@
 #include "../Mesinkata/mesinkata.h"
-#include "../Penyanyi/penyanyi.h"
+
+// isinya hanya list nama penyanyi saja
 
 typedef struct ListDefault{
     int NEFF;
-    Penyanyi list_penyanyi[10];
+    Word list_penyanyi[10];
 } ListDefault;
