@@ -6,7 +6,7 @@
 
 
 int main(){
-    // loadSpotify();
+    loadSpotify();
 
         /* SETUP SECTION */
     // create list of lagu

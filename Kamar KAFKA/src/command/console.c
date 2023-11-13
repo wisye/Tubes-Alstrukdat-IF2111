@@ -135,6 +135,92 @@ int loadSpotify(){
     printf("Save file berhasil dibaca. WayangWave berhasil dijalankan.\n");
     return 0;
 }
+
+void createPlaylist()
+{
+    char s;
+    Word w = charToWord(&s);
+    List Playlist; //Sepertinya harusnya pakai tipe data array, tapi belum bisa 
+    InsertAt(&Playlist, w, Length(w));
+}
+
+void addPlaylist()
+{
+    //addSong:
+    int song;
+    //scanf("%d", song);
+    int id;
+    //scanf("%d", id);
+    ListDefault *ListDef;
+    InsVLast(&ListDef[id], song);
+    //addPlaylist
+    int Playlist;
+    //scanf("%d", song);
+    int idPlaylist;
+    //scanf("%d", id);
+    List *l;
+    InsVLast(&l[idPlaylist], Playlist);
+}
+
+void swapPlaylist()
+{
+    int id, x, y;
+    // scanf("%d", &id);
+    // scanf("%d", &x);
+    // scanf("%d", &y);
+    int tukarx, tukary;
+    address adrx, adry;
+    List *l;
+    address P = First(l[id]);
+    int idx = 0;
+    while (P!=Nil)
+    {
+        idx++;
+        if(idx=x)
+        {
+            tukarx = Info(P);
+            adrx = P;
+        }
+        if (idx = y)
+        {
+            tukary = Info(P);
+            adry = P;
+        }
+    }
+    // Info(adrx) = tukary;
+    // Info(adry) = tukarx;
+}
+
+void removePlaylist()
+{
+    int id, n;
+    //scanf("%d", &id);
+    //scanf("%d", &n);
+    int idx = 1;
+    List *l;
+    address Prec = Nil;
+    address Loc = First(l[id]);
+    while (Loc!=Nil)
+    {
+        if (idx == n)
+        {
+            break;
+        }
+        Prec = Loc;
+        Loc = Next(Loc);
+        idx++;
+    }
+    if (idx==1) DelFirst(&l[id], &Loc);
+    else DelAfter(&l[id], &Loc, Prec);
+}
+
+void deletePlaylist()
+{
+    int id;
+    //scanf("%d", id);
+    List Playlist; //harusnya ArrayDin, ktp eror
+    Delete(&Playlist, id);
+}
 /*Dibaca save file input yang berisi list game yang dapat dimainkan, histori, dan scoreboard game*/
 void quitSpotify(){
     printf("Apakah kamu ingin menyimpan data sesi sekarang?\n");

@@ -15,10 +15,6 @@ void IgnoreBlanks(){
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
 
-void IgnoreDots()
-{
-    
-}
 
 void STARTWORD(){
     int i;
