@@ -1,5 +1,6 @@
 #include "../Mesinkata/mesinkata.h"
 
+// ADT List Default
 // isinya hanya list nama penyanyi saja
 
 typedef struct ListDefault{

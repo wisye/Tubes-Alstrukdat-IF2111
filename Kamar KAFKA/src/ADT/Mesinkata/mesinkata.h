@@ -64,4 +64,17 @@ void readFileLine(FILE * file);
 void fileCopyLine();
 
 void STARTLINE();
+
+int stringLen(char *x);
+
+int wordToInt(Word w);
+
+void stringMakeEmpty(char *x);
+
+Word charToWord(char str[]);
+
+void stringCopy(char *x, char *y);
+
+boolean stringComp(char *x, char *y);
+
 #endif

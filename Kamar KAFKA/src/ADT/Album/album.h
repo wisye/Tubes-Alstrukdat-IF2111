@@ -2,17 +2,27 @@
 #define album_H
 #include "../Mesinkata/mesinkata.h"
 
-// implementasi album menggunakan SET
-
+// implementasi ADT album menggunakan ADT SET
+#define setNil 0
 #define setMaxEl 100
-
 typedef Word setinfotype;
 typedef int setaddress;
 
 typedef struct {
-    Word nama_album;
-    setinfotype NamaLagu[setMaxEl];
+    setinfotype Elements[setMaxEl];
     setaddress Count;
-} Album; // 1 album simpan banyak lagu
+} SetAlbum;
+
+void albumCreateEmpty(SetAlbum *S);
+
+boolean setIsEmpty(SetAlbum S);
+
+boolean setIsFull(SetAlbum S);
+
+void setInsert(SetAlbum *S, setinfotype Elmt);
+
+void setDelete(SetAlbum *S, setinfotype Elmt);
+
+boolean setIsMember(SetAlbum S, setinfotype Elmt);
 
 #endif

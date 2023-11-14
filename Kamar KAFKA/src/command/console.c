@@ -1,7 +1,21 @@
 #include "console.h"
+#include "../ADT/Penyanyi/Penyanyi.h"
+#include "../ADT/Album/album.h"
+
 // #include "func.h"
 
 ListDefault l;
+MapAlbum ma;
+MapPenyanyi mp;
+
+initiateGlobalVar(){
+    // init list default.
+    l.NEFF = 0;
+
+    // cre
+    mapCreateEmpty(&mp);
+    mapCreateEmptyAlbum(&ma);
+}
 
 /*Implementation of console.h goes here*/
 int loadSpotify(){
@@ -130,6 +144,7 @@ void quitSpotify(){
 }
  /*Keluar dari sesi aplikasi WayangWave (SPOTIFY)*/ 
 void listSpotify(){
+    initiateGlobalVar();
     // printf(">> ");
     ADVWORD();      // TURN THIS OFF IF YOU WANT TO USE THE DRIVER
     // STARTWORD(); // TURN THIS ON IF YOU WANT TO USE THE DRIVER

@@ -160,3 +160,89 @@ void STARTLINE(){
         fileCopyLine();
     }
 }
+
+int stringLen(char *x){
+    int i = 0;
+    while(x[i] != '\0'){
+        i++;
+    }
+    return i;
+}
+
+int wordToInt(Word w){
+    // Word numWord;
+    // numWord.Length = 0;
+
+    int i = 0;
+    // while((w.TabWord[i] != MARK) && (w.TabWord[i] != '\0') && (w.TabWord[i] != BLANK) && (i < wordNMax)){
+    //     numWord.TabWord[i] = w.TabWord[i];
+    //     ADV();
+    //     i ++;
+    // }
+    // printf("%s\n", numWord.TabWord);
+    // numWord.Length = i;
+    // printf("%d\n", numWord.Length);
+    int num=0;
+
+    int j=1;
+    for(i=currentWord.Length-1; i>=0; i--){
+        num += ((int) currentWord.TabWord[i] - '0') * j;
+        j *= 10;
+    }
+    // printf("%d\n", num);
+    return num;
+}
+
+void stringMakeEmpty(char *x){
+    int i = 0;
+    while(x[i] != '\0'){
+        x[i] = '\0';
+        i++;
+    }
+
+}
+
+Word charToWord(char str[]){
+    Word w;
+    
+    int len = 0;
+    while(str[len]){
+        len++;
+    }
+
+    w.Length = len;
+
+    int i;
+    for(i=0; i<len;i++){
+        w.TabWord[i] = str[i];
+        // printf("%c\n", w.TabWord[i]);
+    }
+
+    w.TabWord[i] = '\0';
+
+    // printf("%s\n", w.TabWord);
+    return w;
+}
+
+void stringCopy(char *x, char *y){
+    int i = 0;
+    while (y[i] != '\0' && y[i] != MARK){
+        // printf("%c", x[i]);
+        x[i] = y[i];
+        i++;
+    }
+}
+
+boolean stringComp(char *x, char *y){
+    int i = 0;
+    if (stringLen(x) != stringLen(y)){
+        return false;
+    }
+    while ((x[i] != '\0') && (y[i] != '\0')){
+        if (x[i] != y[i]){
+            return false;
+        }
+        i ++;
+    }
+    return true;
+}
