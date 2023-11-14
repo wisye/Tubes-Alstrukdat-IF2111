@@ -3,6 +3,13 @@
         "mesinkarakter.h": "c",
         "console.h": "c",
         "floatn.h": "c",
-        "boolean.h": "c"
+        "boolean.h": "c",
+        "mesinkata.h": "c",
+        "list.h": "c",
+        "moreadt.h": "c",
+        "stdio.h": "c",
+        "stack.h": "c",
+        "set.h": "c",
+        "listdefault.h": "c"
     }
 }
