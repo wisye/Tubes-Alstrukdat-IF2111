@@ -8,14 +8,15 @@
 // #include <stdio.h>
 // #include <stdlib.h>
 // #include "../ADT_H/boolean.h"
-#include "../ADT_H/mesinkarakter.h"
-#include "../ADT_H/mesinkata.h"
-#include "../ADT_H/list.h"
-#include "../ADT_H/queue.h"
-#include "../ADT_H/stack.h"
-#include "../ADT_H/set.h"
-#include "../ADT_H/map.h"
-#include "../ADT_H/moreADT.h"
+#include "../ADT/Mesinkarakter/mesinkarakter.h"
+#include "../ADT/Mesinkata/mesinkata.h"
+#include "../ADT/List/list.h"
+#include "../ADT/Queue/queue.h"
+#include "../ADT/Stack/stack.h"
+#include "../ADT/Set/set.h"
+#include "../ADT/Map/map.h"
+#include "../ADT/func/func.h"
+#include "../ADT/LinkedList/listlinier.h"
 #include <stdio.h>
 #include <stdlib.h>
 

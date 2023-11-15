@@ -1,0 +1,39 @@
+#include "stack.h"
+
+/* ************ Prototype ************ */
+/* *** Konstruktor/Kreator *** */
+void stackCreateEmpty(Stack *S){
+    S->TOP = stackNil;
+}
+/* I.S. sembarang; */
+/* F.S. Membuat sebuah stack S yang kosong berkapasitas stackMaxEl */
+/* jadi indeksnya antara 0..stackMaxEl-1 (inklusif) */
+/* Ciri stack kosong : TOP bernilai stackNil */
+
+/* ************ Predikat Untuk test keadaan KOLEKSI ************ */
+boolean stackIsEmpty(Stack S){
+    return S.TOP == stackNil;
+}
+/* Mengirim true jika Stack kosong: lihat definisi di atas */
+boolean stackIsFull(Stack S){
+    return (S.TOP == (stackMaxEl - 1));
+}
+/* Mengirim true jika tabel penampung nilai elemen stack penuh */
+
+/* ************ Menambahkan sebuah elemen ke Stack ************ */
+void Push(Stack * S, stackinfotype X){
+    S->TOP ++;
+    S->T[S->TOP] = X;
+}
+/* Menambahkan X sebagai elemen Stack S. */
+/* I.S. S mungkin kosong, tabel penampung elemen stack TIDAK penuh */
+/* F.S. TOP bertambah 1, X menjadi TOP yang baru, */
+
+/* ************ Menghapus sebuah elemen Stack ************ */
+void Pop(Stack * S, stackinfotype* X){
+    (*X) = S->T[S->TOP];
+    S->TOP --;
+}
+/* Menghapus X dari Stack S. */
+/* I.S. S  tidak mungkin kosong */
+/* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */

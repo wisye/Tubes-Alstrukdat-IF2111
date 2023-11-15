@@ -10,7 +10,14 @@
         "mesinkata.h": "c",
         "list.h": "c",
         "moreadt.h": "c",
+<<<<<<< HEAD
         "stdio.h": "c"
+>>>>>>> main
+=======
+        "stdio.h": "c",
+        "stack.h": "c",
+        "set.h": "c",
+        "listdefault.h": "c"
 >>>>>>> main
     }
 }

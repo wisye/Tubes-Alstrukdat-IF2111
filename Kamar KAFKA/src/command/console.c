@@ -1,7 +1,21 @@
 #include "console.h"
+#include "../ADT/Penyanyi/Penyanyi.h"
+#include "../ADT/Album/album.h"
+
 // #include "func.h"
 
 ListDefault l;
+MapAlbum ma;
+MapPenyanyi mp;
+
+initiateGlobalVar(){
+    // init list default.
+    l.NEFF = 0;
+
+    // cre
+    mapCreateEmpty(&mp);
+    mapCreateEmptyAlbum(&ma);
+}
 
 /*Implementation of console.h goes here*/
 int loadSpotify(){
@@ -130,6 +144,7 @@ void quitSpotify(){
 }
  /*Keluar dari sesi aplikasi WayangWave (SPOTIFY)*/ 
 void listSpotify(){
+    initiateGlobalVar();
     // printf(">> ");
     ADVWORD();      // TURN THIS OFF IF YOU WANT TO USE THE DRIVER
     // STARTWORD(); // TURN THIS ON IF YOU WANT TO USE THE DRIVER
@@ -266,12 +281,69 @@ int saveSpotify() {
     return 0;
 }
 
+void playSpotify(){
+    ADVWORD();
+
+    if (stringComp(currentWord.TabWord, "SONG")){
+        boolean cekvalid = false;
+        int i = 0;
+        printf("Daftar Penyanyi: \n");
+        showPenyanyi(l);
+
+        //menginput nama penyanyi
+        char singer[100];
+        printf("\nMasukkan Nama Penyanyi yang dipilih: ");
+        while (!cekvalid){
+            scanf("%s", &singer);
+            if (mapIsMember(mp, singer)){
+                cekvalid=true;
+            }else {
+                printf("Nama Penyanyi belum valid\n");
+            }
+        }
+        printf("Daftar Album oleh %s: \n" , singer);
+        showAlbum(charToWord(singer[100]), l);
+
+        char album[100];
+        printf("\nMasukkan Nama Album yang dipilih: ");
+        boolean cekans = false;
+        while (!cekans){
+            scanf("%s", &album);
+            if (mapIsMemberAlbum(ma, album)){
+                cekans = true;
+            }else {
+                printf("Nama Album tidak ditemukan");
+            }
+        }
+
+        int idx_penyanyi = showAlbum(charToWord(singer), l);
+        printf("\nMasukkan ID lagu yang dipilih: ");
+        showLagu(charToWord(singer), idx_penyanyi, l);
+
+        int ID;
+        boolean cekID = false;
+        while (!cekID){
+            scanf("%d", &ID);
+            if (mapIsMemberAlbum(ma, album)){
+                cekID = true;
+            }else {
+                printf("ID Lagu tidak ditemukan.\n");
+            }
+        }
+        CreateQueue(&songSpotify);
+    }
+    else if(stringComp(currentWord.TabWord, "PLAYLIST")){
+        
+    }
+}
+
+
 
 // char *c;
 // c = address
 // string = array of char
 // char di string itu bersebelahan
 // char c[]
-// c[i] = *(&c + i) 
+// c[i] = *(&c + i*sizeof(c)) 
 // c[0] = *(&c)
 // [h][e][l][l][o][ ][w][o][r][l][d][!]
