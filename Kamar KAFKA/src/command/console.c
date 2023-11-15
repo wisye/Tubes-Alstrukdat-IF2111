@@ -295,7 +295,7 @@ void playSpotify(){
         printf("\nMasukkan Nama Penyanyi yang dipilih: ");
         while (!cekvalid){
             scanf("%s", &singer);
-            if (mapIsMember(mp, singer)){
+            if (mapIsMember(mp, charToWord(singer))){
                 cekvalid=true;
             }else {
                 printf("Nama Penyanyi belum valid\n");
@@ -309,7 +309,7 @@ void playSpotify(){
         boolean cekans = false;
         while (!cekans){
             scanf("%s", &album);
-            if (mapIsMemberAlbum(ma, album)){
+            if (mapIsMemberAlbum(ma, charToWord(album))){
                 cekans = true;
             }else {
                 printf("Nama Album tidak ditemukan");
@@ -324,7 +324,7 @@ void playSpotify(){
         boolean cekID = false;
         while (!cekID){
             scanf("%d", &ID);
-            if (mapIsMemberAlbum(ma, album)){
+            if (setIsMember(sa, ID)){ //Ini masih bingung cara cek ID jadi belum final
                 cekID = true;
             }else {
                 printf("ID Lagu tidak ditemukan.\n");
