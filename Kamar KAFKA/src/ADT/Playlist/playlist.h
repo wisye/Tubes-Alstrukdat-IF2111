@@ -1,21 +1,16 @@
 #ifndef listlinier_H
 #define listlinier_H
-#define lladdress
 
 #include "../Mesinkata/mesinkata.h"
-#include "../Penyanyi/Penyanyi.h"
-#include "../Album/album.h"
+#include "../Penyanyi/penyanyi.h"
 #include "../boolean.h"
 
 #define llNil NULL
 
 typedef struct lltElmtlist * lladdress;
-
 typedef struct lltElmtlist { 
   int count;
-  Line Penyanyi.song.nama_penyanyi;
-  Line Penyanyi.song.album.song.nama_album
-  Line Penyanyi.song.album.song.daftar_lagu.Song
+  MapPenyanyi Penyanyi;
  lladdress next;
 } llElmtList;
 

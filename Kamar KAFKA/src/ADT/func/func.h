@@ -1,5 +1,6 @@
 #include "../Mesinkata/mesinkata.h"
 #include "../ListDefault/listdefault.h"
+#include "../Penyanyi/penyanyi.h"
 
 boolean stringComp(char* str1, char* str2);
 
