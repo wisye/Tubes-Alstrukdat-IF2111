@@ -13,6 +13,19 @@ typedef struct {
     setaddress Count;
 } SetAlbum;
 
+/*
+typedef struct {
+    Word nama_album;
+    SetAlbum daftar_lagu;
+} mapinfoalbum; // 1 album simpan banyak lagu
+
+typedef struct {
+    mapinfoalbum Elements[mapMaxEl];
+    mapaddress Count;
+} MapAlbum;
+*/
+
+
 void albumCreateEmpty(SetAlbum *S);
 
 boolean setIsEmpty(SetAlbum S);
