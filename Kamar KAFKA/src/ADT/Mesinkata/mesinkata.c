@@ -160,8 +160,6 @@ void STARTLINE(){
         fileCopyLine();
     }
 }
-<<<<<<< HEAD:Kamar KAFKA/src/ADT_C/mesinkata.c
-=======
 
 int stringLen(char *x){
     int i = 0;
@@ -248,4 +246,3 @@ boolean stringComp(char *x, char *y){
     }
     return true;
 }
->>>>>>> main:Kamar KAFKA/src/ADT/Mesinkata/mesinkata.c

@@ -5,9 +5,13 @@
 #include <string.h>
 
 int main(){
+<<<<<<< HEAD
     loadSpotify();
 <<<<<<< HEAD
 =======
+=======
+    // loadSpotify();
+>>>>>>> main
 
         /* SETUP SECTION */
     // create list of lagu

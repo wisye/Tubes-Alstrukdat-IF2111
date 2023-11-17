@@ -1,24 +1,29 @@
-#ifndef __ARRAY_DINAMIK__
-#define __ARRAY_DINAMIK__
+#ifndef listlinier_H
+#define listlinier_H
 
 #include "../Mesinkata/mesinkata.h"
-#include "../Penyanyi/Penyanyi.h"
-#include "../Album/album.h"
+#include "../Penyanyi/penyanyi.h"
+#include "../boolean.h"
 
-// Boolean
-#define boolean unsigned char
-#define true 1
-#define false 0 
+#define llNil NULL
 
-#define InitialSize 10
-
-typedef int IdxType;
-typedef int ElType;
+typedef struct lltElmtlist * lladdress;
+typedef struct lltElmtlist { 
+  int count;
+  MapPenyanyi Penyanyi;
+ lladdress next;
+} llElmtList;
 
 typedef struct {
-    Line nama_penyanyi;
-    Line nama_album;
-    Line daftar_lagu;
-} Playlist;
+lladdress linkedlistFirst;
+} lList;
+
+/* Definisi list : */
+/* lList kosong : llFirst(L) = llNil */
+/* Setiap elemen dengan lladdress P dapat diacu llInfo(P), llNext(P) */
+/* Elemen terakhir list : jika addressnya Last, maka llNext(Last)=llNil */
+#define llInfo(P) (P)->info
+#define llNext(P) (P)->next
+#define llFirst(L) ((L).linkedlistFirst)
 
 #endif

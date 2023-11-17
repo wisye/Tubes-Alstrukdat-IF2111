@@ -3,6 +3,7 @@
 
 // implementasi penyanyi menggunakan MAP
 #include "../Mesinkarakter/mesinkarakter.h"
+#include "../Mesinkata/mesinkata.h"
 #include "../Album/album.h"
 
 #define mapNil 0
@@ -12,7 +13,7 @@
 typedef int mapaddress;
 
 typedef struct {
-    Word nama_album;
+    Line nama_album;
     SetAlbum daftar_lagu;
 } mapinfoalbum; // 1 album simpan banyak lagu
 
@@ -21,7 +22,7 @@ typedef struct {
     mapaddress Count;
 } MapAlbum;
 
-typedef Word mapkeytype;
+typedef Line mapkeytype;
 typedef MapAlbum mapvaluetype;
 
 

@@ -5,7 +5,7 @@
 // implementasi ADT album menggunakan ADT SET
 #define setNil 0
 #define setMaxEl 100
-typedef Word setinfotype;
+typedef Line setinfotype;
 typedef int setaddress;
 
 typedef struct {
@@ -15,7 +15,7 @@ typedef struct {
 
 /*
 typedef struct {
-    Word nama_album;
+    Line nama_album;
     SetAlbum daftar_lagu;
 } mapinfoalbum; // 1 album simpan banyak lagu
 

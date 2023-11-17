@@ -13,10 +13,11 @@
 #include "../ADT/List/list.h"
 #include "../ADT/Queue/queue.h"
 #include "../ADT/Stack/stack.h"
-#include "../ADT/Set/set.h"
-#include "../ADT/Map/map.h"
 #include "../ADT/func/func.h"
 #include "../ADT/LinkedList/listlinier.h"
+#include "../ADT/Album/album.h"
+#include "../ADT/Penyanyi/penyanyi.h"
+#include "../ADT/ListDinamis/arraydin.h"
 #include <stdio.h>
 #include <stdlib.h>
 

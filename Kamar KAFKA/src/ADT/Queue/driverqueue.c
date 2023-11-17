@@ -29,7 +29,7 @@ int main (){
     printf("Apakah queue Q penuh? : %d\n", isFull(Q));
 
 
-    ElType x ;
+    queueElType x ;
     dequeue(&Q,&x) ;
     printf("Value yang didequeue : %d\n" , x) ;
     dequeue(&Q,&x) ;

@@ -1,9 +1,10 @@
 #include "../Mesinkata/mesinkata.h"
+#include "../Penyanyi/penyanyi.h"
 
 // ADT List Default
 // isinya hanya list nama penyanyi saja
 
 typedef struct ListDefault{
-    int NEFF;
-    Word list_penyanyi[10];
+    // int NEFF;
+    MapPenyanyi Penyanyi;
 } ListDefault;
