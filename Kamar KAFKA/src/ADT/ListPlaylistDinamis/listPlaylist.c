@@ -259,7 +259,7 @@ IdxType SearchArrayDin(ListPlaylist array, Line el) {
 	// KAMUS
 	IdxType j = 0; 
 	// ALGORITMA
-	while (((array).A[j].namaPlaylist != el) && (j <= (array).Neff)) {
+	while ((stringComp(array.A[j].namaPlaylist.TabWord, el.TabWord)) && (j <= (array).Neff)) {
 		j++;
 	}
 	if (j > (array).Neff) {

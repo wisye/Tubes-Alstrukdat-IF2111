@@ -19,7 +19,7 @@ void statusSpotify(){
     }
     else if (CurrentSong != Nil && queueisEmpty){
         printf ("Now Playing:");
-        printf(“%s - %s -%s”, nama_penyanyi, nama_album, CurrentSong); // Coldplay - Up&Up - A Head Full of Dreams
+        printf("%s - %s -%s", nama_penyanyi, nama_album, CurrentSong); // Coldplay - Up&Up - A Head Full of Dreams
 
         printf("Queue:");
         printf("Your queue is empty.");
@@ -36,7 +36,7 @@ void statusSpotify(){
     else if(!stackIsEmpty && !queueisEmpty && CurrentPlaylist != Nil){
         printf("Current Playlist: %s", CurrentPlaylist);
         printf ("Now Playing:");
-        printf(“%s - %s -%s”, nama_penyanyi, nama_album, CurrentSong);
+        printf("%s - %s -%s", nama_penyanyi, nama_album, CurrentSong);
     
 
         printf("Queue:");
