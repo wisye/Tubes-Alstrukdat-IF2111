@@ -73,6 +73,8 @@ void stringMakeEmpty(char *x);
 
 Word charToWord(char str[]);
 
+Line charToLine(char str[]);
+
 void stringCopy(char *x, char *y);
 
 boolean stringComp(char *x, char *y);

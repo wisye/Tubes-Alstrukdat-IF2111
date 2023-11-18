@@ -1,15 +1,13 @@
 #ifndef __ARRAY_DINAMIK__
 #define __ARRAY_DINAMIK__
 
-// Boolean
-#define boolean unsigned char
-#define true 1
-#define false 0
+#include "../boolean.h"
+#include "../Playlist/playlist.h"
 
 #define InitialSize 10
 
 typedef int IdxType;
-typedef int ElType;
+typedef lList ElType;
 typedef struct {
     ElType *A;
     int Capacity;
@@ -116,6 +114,6 @@ ArrayDin CopyArrayDin(ArrayDin array);
  * Jika tidak ditemukan, akan mengembalikan -1.
  * Prekondisi: array terdefinisi
  */
-IdxType SearchArrayDin(ArrayDin array, ElType el);
+IdxType SearchArrayDin(ArrayDin array, Line el);
 
 #endif

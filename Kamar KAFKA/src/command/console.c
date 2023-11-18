@@ -130,16 +130,17 @@ void quitSpotify(){
 }
  /*Keluar dari sesi aplikasi WayangWave (SPOTIFY)*/ 
 void listSpotify(){
+    init_penyanyi(&l);
     // printf(">> ");
-    ADVWORD();      // TURN THIS OFF IF YOU WANT TO USE THE DRIVER
-    // STARTWORD(); // TURN THIS ON IF YOU WANT TO USE THE DRIVER
+    // ADVWORD();      // TURN THIS OFF IF YOU WANT TO USE THE DRIVER
+    STARTWORD(); // TURN THIS ON IF YOU WANT TO USE THE DRIVER
     // ADVWORD();
     // printf("%s\n", currentWord.TabWord);
 
     if (stringComp(currentWord.TabWord, "DEFAULT")){
         // IF DEFAULT PROCESS GHOSTRULE.TXT
         // stringCopy(currentWord.TabWord, "ghostrule.txt");
-        loadSpotify();
+        // loadSpotify();
 
         printf("Daftar Penyanyi :\n");
         showPenyanyi(l);

@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "listdefault.h": "c",
+        "console.h": "c",
+        "func.h": "c"
     }
 }

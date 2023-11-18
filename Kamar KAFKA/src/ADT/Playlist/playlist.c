@@ -13,7 +13,7 @@ ArrayDin Playlist;
 
 void createPlaylist()
 {
-    int cnt;
+    int cnt = 0;
     do
     {
         printf("Masukkan nama playlist yang ingin dibuat :");
@@ -25,9 +25,12 @@ void createPlaylist()
         }
         if(cnt<3) printf("Minimal terdapat 3 karakter selain whitespace dalam nama playlist. Silakan coba lagi.");
     } while (cnt<3);
+
     lList ll;
+
     ll.linkedlistFirst=NULL;
-    ll.namaPlaylist=currentLine;
+
+    ll.namaPlaylist = currentLine;
     InsertLast(&Playlist, ll);
     printf("Playlist %s berhasil dibuat! Silakan masukkan lagu - lagu artis terkini kesayangan Anda!", currentLine.TabWord);
 }

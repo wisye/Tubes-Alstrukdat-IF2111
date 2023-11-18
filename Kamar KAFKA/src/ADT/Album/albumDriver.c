@@ -4,15 +4,18 @@
 #include "../Mesinkata/mesinkata.h"
 
 int main(){
+    // how to run?
+    // gcc albumDriver.c ../Mesinkata/mesinkata.c ../Mesinkarakter/mesinkarakter.c album.c
+    
     SetAlbum s;
     albumCreateEmpty(&s);
 
-    Word w;
-    w = charToWord("ini string pertama");
+    Line w;
+    w = charToLine("ini string pertama");
 
     setInsert(&s, w);
     
-    w = charToWord("ini string kedua");
+    w = charToLine("ini string kedua");
 
     setInsert(&s, w);
     
