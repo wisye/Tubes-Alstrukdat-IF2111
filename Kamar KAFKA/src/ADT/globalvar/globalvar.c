@@ -1,3 +1,5 @@
 #include "globalvar.h"
 
-STATUS = false;
+boolean STATUS = false;
+
+ListDefault listPenyanyiGlobal;

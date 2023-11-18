@@ -21,4 +21,6 @@ int stringLen(char *x);
 int wordToInt(Word w);
 
 void stringMakeEmpty(char *x);
+
+void init_penyanyi(ListDefault *l);
 // Word lineToWord(Line l);

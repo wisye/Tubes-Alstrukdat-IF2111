@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "arraydin.h"
+#include "listPlaylist.h"
 #include "../boolean.h"
 
 /*
@@ -203,7 +203,7 @@ void PrintArrayDin(ArrayDin array) {
 	// ALGORITMA
 	printf("[");
 	for (j = 0; j < (array).Neff; j++) {
-		printf("%d", (array).A[j]);
+		printf("%d", (array).A[j].namaPlaylist);
 		if (j != (array).Neff -1) {
 			printf(", ");
 		}
@@ -252,11 +252,11 @@ ArrayDin CopyArrayDin(ArrayDin array) {
  * Jika tidak ditemukan, akan mengembalikan -1.
  * Prekondisi: array terdefinisi
  */
-IdxType SearchArrayDin(ArrayDin array, ElType el) {
+IdxType SearchArrayDin(ArrayDin array, Line el) {
 	// KAMUS
 	IdxType j = 0; 
 	// ALGORITMA
-	while (((array).A[j] != el) && (j <= (array).Neff)) {
+	while (((array).A[j].namaPlaylist != el) && (j <= (array).Neff)) {
 		j++;
 	}
 	if (j > (array).Neff) {

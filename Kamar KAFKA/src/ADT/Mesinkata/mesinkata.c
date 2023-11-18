@@ -224,6 +224,28 @@ Word charToWord(char str[]){
     return w;
 }
 
+Line charToLine(char str[]){
+    Line w;
+    
+    int len = 0;
+    while(str[len]){
+        len++;
+    }
+
+    w.Length = len;
+
+    int i;
+    for(i=0; i<len;i++){
+        w.TabWord[i] = str[i];
+        // printf("%c\n", w.TabWord[i]);
+    }
+
+    w.TabWord[i] = '\0';
+
+    // printf("%s\n", w.TabWord);
+    return w;
+}
+
 void stringCopy(char *x, char *y){
     int i = 0;
     while (y[i] != '\0' && y[i] != MARK){
