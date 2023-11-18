@@ -274,55 +274,77 @@ void playSpotify(Stack *S, Queue *Q){
         int i = 0;
         printf("Daftar Penyanyi: \n");
         showPenyanyi(l);
+        char playlagu[100];
+
 
         //menginput nama penyanyi
         char singer[100];
+        char penyanyix[100];
         printf("\nMasukkan Nama Penyanyi yang dipilih: ");
-        //while (!cekvalid){
         scanf("%s", &singer); 
-            //if (mapIsMember(l.Penyanyi, charToWord(singer))){
-                //cekvalid=true;
-            //}else {
-                //printf("Nama Penyanyi belum valid\n");
-            //}
-        //}
-        printf("Daftar Album oleh %s: \n" , singer);
-        showAlbum(charToWord(singer[100]), l);
-
-        char album[100];
-        printf("\nMasukkan Nama Album yang dipilih: ");
-        boolean cekans = false;
-        //while (!cekans){
-        scanf("%s", &album);
-            //if (mapIsMemberAlbum(ma, charToWord(album))){
-                //cekans = true;
-            //}else {
-                //printf("Nama Album tidak ditemukan");
-            //}
-        //}
-
-        int idx_penyanyi = showAlbum(charToWord(singer), l);
-        printf("\nMasukkan ID lagu yang dipilih: ");
-        showLagu(charToWord(singer), idx_penyanyi, l);
-
-        int ID;
-        boolean cekID = false;
-        //while (!cekID){
-        scanf("%d", &ID);
-            //if (setIsMember(, ID)){ //Ini masih bingung cara cek ID jadi belum final
-                //cekID = true;
-            //}else {
-                //printf("ID Lagu tidak ditemukan.\n");
-            //}
-        //}
+        int singeridx = -1;
+        for(int i=0; i<l.Penyanyi.Count; i++){
+            if (stringComp(singer, l.Penyanyi.Elements[i].nama_penyanyi.TabWord)){
+                singeridx = i;
+                cekvalid = true;
+                stringCopy(penyanyix, singer);
+                break;
+            }
+        }
+        if (cekvalid){
+            printf("Daftar Album oleh %s: \n" , singer);
+            int idx_penyanyi = showAlbum(charToWord(singer[100]), l);
+            char album[100];
+            char albumx[100];
+            printf("\nMasukkan Nama Album yang dipilih: ");
+            boolean cekans = false;
+            scanf("%s", &album);
+            int albumidx = -1;
+            for(int j= 0 ; j < l.Penyanyi.Elements[singeridx].album.Count ; j ++){
+                if(stringComp(album, l.Penyanyi.Elements[singeridx].album.Elements[j].nama_album.TabWord)){
+                    albumidx = j;
+                    cekans = true;
+                    stringCopy(albumx, album);
+                    break;
+                }
+            }
+            if (cekans){
+                printf("\nMasukkan ID lagu yang dipilih: ");
+                showLagu(charToWord(singer), idx_penyanyi, l);
+                int ID;
+                boolean cekID = false;
+                int IDidx = -1;
+                scanf("%d", &ID);
+                for(int k=0; k < l.Penyanyi.Elements[singeridx].album.Elements[albumidx].daftar_lagu.Count; k++){
+                    if((ID-1) == k){
+                        cekID = true;
+                        IDidx = k;
+                        break;
+                    }
+                }
+                if(cekID){
+                    char lagux[100];
+                    stringCopy(lagux, l.Penyanyi.Elements[singeridx].album.Elements[albumidx].daftar_lagu.Elements[IDidx].TabWord);
+                    sprintf(playlagu, "%s - %s - %s" , penyanyix, albumx, lagux);
+                    printf("Memutar lagu \"%s\" oleh \"%s\".\n", lagux, penyanyix);
+                }else{
+                    printf("Nama Lagu belum valid.\n");
+                }
+            }else{
+                printf("Nama Album belum valid.\n");
+            }
+        }else{
+            printf("Nama Penyanyi belum valid.\n");
+        }
         if(!queueisEmpty(*Q)){
-            for(int i; i<queuelength(*Q) ; i++){
+            for(int i = 0; i<queuelength(*Q) ; i++){
                 dequeue(Q, Q->buffer[i]);
             }
         }
         while(!stackIsEmpty(*S)){
             Pop(S,S->T[S->TOP]);
         }
+        Push(S, playlagu);
     }
     else if(stringComp(currentWord.TabWord, "PLAYLIST")){
         int IDPlaylist;
