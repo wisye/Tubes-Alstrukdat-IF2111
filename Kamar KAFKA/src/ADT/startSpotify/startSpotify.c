@@ -1,11 +1,18 @@
 #include <stdio.h>
+#include "../Mesinkarakter/mesinkarakter.h"
+#include "../Mesinkarakter/mesinkarakter.c"
+#include "../Mesinkata/mesinkata.c"
+#include "../Mesinkata/mesinkata.h"
+#include "../ListDefault/listdefault.h"
+
+ListDefault l;
 
 void startSpotify()
 {
     int i = 0, j = 0, k = 0;
     FILE *file;
 
-    file = fopen("save/config.txt");
+    file = fopen("save/config.txt", "r");
 
     readFileWord(file); //READING THE FIRST LINE OF THE FILE
     // printf("%s\n", currentWord.TabWord);
