@@ -212,15 +212,15 @@ void PrintPlaylist(ListPlaylist array) {
 	// KAMUS
 	IdxType j;
 	// ALGORITMA
-    
-	printf("[");
-	for (j = 0; j < (array).Neff; j++) {
-		printf("%d", (array).A[j].namaPlaylist);
-		if (j != (array).Neff -1) {
-			printf(", ");
-		}
-	}
-	printf("]\n");
+    if(array.Neff == 0){
+        printf("playlist kosong cuy!\n");
+    } else {
+        for (j = 0; j < (array).Neff; j++) {
+            printf("%d. %s", j+1, (array).A[j].namaPlaylist.TabWord);
+        }
+    }
+	
+
 }
 
 // char *c;

@@ -38,8 +38,7 @@ void statusSpotify(){
     else if(!stackIsEmpty && !queueisEmpty && CurrentPlaylist != Nil){
         printf("Current Playlist: %s", CurrentPlaylist);
         printf ("Now Playing:");
-        printf("%s - %s -%s", queue.head.nama.penyanyi, queue.head.nama.nama_album, queue.head.nama.CurrentSong)
-    
+        printf("%s - %s -%s", queue.head.nama.penyanyi, queue.head.nama.nama_album, queue.head.nama.CurrentSong);
 
         printf("Queue:");
         for (int i = 0; i < queuelength ; i++){

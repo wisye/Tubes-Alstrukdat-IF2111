@@ -1,6 +1,6 @@
 #include "playlist.h"
-#include "../ListDinamis/arraydin.h"
-#include "../ListDinamis/arraydin.c"
+#include "../List Dinamis/arraydin.h"
+#include "../List Dinamis/arraydin.c"
 #include "../LinkedList/listlinier.h"
 #include "../LinkedList/listlinier.c"
 #include "../func/func.h"
