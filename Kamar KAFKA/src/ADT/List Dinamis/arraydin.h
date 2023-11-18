@@ -14,108 +14,108 @@ typedef struct {
     ElType *A;
     int Capacity;
     int Neff;
-} ArrayDin;
+} ListPlaylist;
 
 /*
  * Konstruktor
  * I.S. sembarang
- * F.S. Terbentuk ArrayDin kosong dengan ukuran InitialSize
+ * F.S. Terbentuk ListPlaylist kosong dengan ukuran InitialSize
  */
-ArrayDin MakeArrayDin();
+ListPlaylist MakeArrayDin();
 
 /*
  * Destruktor
- * I.S. ArrayDin terdefinisi
+ * I.S. ListPlaylist terdefinisi
  * F.S. array->A terdealokasi
  */
-void DeallocateArrayDin(ArrayDin *array);
+void DeallocateArrayDin(ListPlaylist *array);
 
 /*
  * Fungsi untuk mengetahui apakah suatu array kosong.
  * Prekondisi: array terdefinisi
  */
-boolean IsEmpty(ArrayDin array);
+boolean IsEmpty(ListPlaylist array);
 
 /*
  * Fungsi untuk mendapatkan banyaknya elemen efektif array, 0 jika tabel kosong.
  * Prekondisi: array terdefinisi
  */
-int Length(ArrayDin array);
+int Length(ListPlaylist array);
 
 /*
  * Mengembalikan elemen array L yang ke-I (indeks lojik).
  * Prekondisi: array tidak kosong, i di antara 0..Length(array).
  */
-ElType Get(ArrayDin array, IdxType i);
+ElType Get(ListPlaylist array, IdxType i);
 
 /*
  * Fungsi untuk mendapatkan kapasitas yang tersedia.
  * Prekondisi: array terdefinisi
  */
-int GetCapacity(ArrayDin array);
+int GetCapacity(ListPlaylist array);
 
 /*
  * Fungsi untuk menambahkan elemen baru di index ke-i
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void InsertAt(ArrayDin *array, ElType el, IdxType i);
+void InsertAt(ListPlaylist *array, ElType el, IdxType i);
 
 /*
  * Fungsi untuk menambahkan elemen baru di akhir array.
  * Prekondisi: array terdefinisi
  */
-void InsertLast(ArrayDin *array, ElType el);
+void InsertLast(ListPlaylist *array, ElType el);
 
 /*
  * Fungsi untuk menambahkan elemen baru di awal array.
  * Prekondisi: array terdefinisi
  */
-void InsertFirst(ArrayDin *array, ElType el);
+void InsertFirst(ListPlaylist *array, ElType el);
 
 /*
- * Fungsi untuk menghapus elemen di index ke-i ArrayDin
+ * Fungsi untuk menghapus elemen di index ke-i ListPlaylist
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void DeleteAt(ArrayDin *array, IdxType i);
+void DeleteAt(ListPlaylist *array, IdxType i);
 
 /*
- * Fungsi untuk menghapus elemen terakhir ArrayDin
+ * Fungsi untuk menghapus elemen terakhir ListPlaylist
  * Prekondisi: array tidak kosong
  */
-void DeleteLast(ArrayDin *array);
+void DeleteLast(ListPlaylist *array);
 
 /*
- * Fungsi untuk menghapus elemen pertama ArrayDin
+ * Fungsi untuk menghapus elemen pertama ListPlaylist
  * Prekondisi: array tidak kosong
  */
-void DeleteFirst(ArrayDin *array);
+void DeleteFirst(ListPlaylist *array);
 
 /*
- * Fungsi untuk melakukan print suatu ArrayDin.
+ * Fungsi untuk melakukan print suatu ListPlaylist.
  * Print dilakukan dengan format: [elemen-1, elemen-2, ..., elemen-n]
  * dan diakhiri newline.
  * Prekondisi: array terdefinisi
  */
-void PrintArrayDin(ArrayDin array);
+void PrintArrayDin(ListPlaylist array);
 
 /*
- * Fungsi untuk melakukan reverse suatu ArrayDin.
+ * Fungsi untuk melakukan reverse suatu ListPlaylist.
  * Prekondisi: array terdefinisi
  */
-void ReverseArrayDin(ArrayDin *array);
+void ReverseArrayDin(ListPlaylist *array);
 
 /*
- * Fungsi untuk melakukan copy suatu ArrayDin.
+ * Fungsi untuk melakukan copy suatu ListPlaylist.
  * Prekondisi: array terdefinisi
  */
-ArrayDin CopyArrayDin(ArrayDin array);
+ListPlaylist CopyArrayDin(ListPlaylist array);
 
 /*
- * Fungsi untuk melakukan search suatu ArrayDin.
+ * Fungsi untuk melakukan search suatu ListPlaylist.
  * Index pertama yang ditemukan akan dikembalikan.
  * Jika tidak ditemukan, akan mengembalikan -1.
  * Prekondisi: array terdefinisi
  */
-IdxType SearchArrayDin(ArrayDin array, ElType el);
+IdxType SearchArrayDin(ListPlaylist array, ElType el);
 
 #endif

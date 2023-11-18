@@ -2,6 +2,7 @@
 // #include "func.h"
 
 ListDefault l;
+ListPlaylist listPlaylist;
 
 /*Implementation of console.h goes here*/
 int loadSpotify(){
@@ -207,6 +208,20 @@ void listSpotify(){
     }
 }
 
+void PrintPlaylist(ListPlaylist array) {
+	// KAMUS
+	IdxType j;
+	// ALGORITMA
+    
+	printf("[");
+	for (j = 0; j < (array).Neff; j++) {
+		printf("%d", (array).A[j].namaPlaylist);
+		if (j != (array).Neff -1) {
+			printf(", ");
+		}
+	}
+	printf("]\n");
+}
 
 // char *c;
 // c = address
