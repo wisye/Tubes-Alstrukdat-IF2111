@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../ADT_H/arraydin.h"
+#include "arraydin.h"
+#include "../boolean.h"
 
 /*
  * Konstruktor

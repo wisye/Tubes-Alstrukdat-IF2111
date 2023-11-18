@@ -1,4 +1,4 @@
-#include "Penyanyi.h"
+#include "penyanyi.h"
 /* Definisi Map M kosong : M.Count = Nil */
 /* M.Count = jumlah element Map */
 /* M.Elements = tempat penyimpanan element Map */
@@ -111,3 +111,5 @@ boolean mapIsMemberAlbum(MapAlbum M, mapkeytype k){
     }
     return found;
 }
+
+MapPenyanyi Penyanyi;

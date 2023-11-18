@@ -4,51 +4,51 @@
 // EXTRA
 
 void showPenyanyi(ListDefault l){
-    int len = l.NEFF;
+    int len = l.Penyanyi.Count;
     int i=0;
     for(i=0; i<len; i++){
-        printf("\t%d. %s\n", i+1, l.list_penyanyi[i].TabWord);
+        printf("\t%d. %s\n", i+1, l.Penyanyi.Elements[i].nama_penyanyi.TabWord);
     }
 }
 
-int showAlbum(Word w, MapAlbum l){
-    int len = l.NEFF;
+int showAlbum(Word w, ListDefault l){
+    int len = l.Penyanyi.Count;
     // cari indeks penyanyi di list
     int i;
     for(i=0; i<len; i++){
         // printf("ini cek --> %s %s\n", w.TabWord, l.list_penyanyi[i].nama_penyanyi.TabWord);
-        if(stringComp(w.TabWord, l.list_penyanyi[i].nama_penyanyi.TabWord)){
+        if(stringComp(w.TabWord, l.Penyanyi.Elements[i].nama_penyanyi.TabWord)){
             break;
         }
     }
     // printf("indeks penyanyi %d\n", i);
     // print semua album
     int j;
-    for(j=0; j < l.list_penyanyi[i].NEFF; j++){
-        printf("\t%d. %s\n", j+1, l.list_penyanyi[i].list_album[j].nama_album.TabWord);
+    for(j=0; j < l.Penyanyi.Elements[i].album.Count; j++){
+        printf("\t%d. %s\n", j+1, l.Penyanyi.Elements[i].album.Elements[j].nama_album.TabWord);
     }
     return i;
 }
 
 void showLagu(Word w, int idx_penyanyi, ListDefault l){
-    int len = l.list_penyanyi[idx_penyanyi].NEFF; // cek dia ada berapa album
+    int len = l.Penyanyi.Elements->album.Count; // cek dia ada berapa album
 
     int i;
     for(i=0; i<len; i++){
         // printf("ini cek --> %s %s\n", w.TabWord, l.list_penyanyi[i].nama_penyanyi.TabWord);
-        if(stringComp(w.TabWord, l.list_penyanyi[idx_penyanyi].list_album[i].nama_album.TabWord)){
+        if(stringComp(w.TabWord, l.Penyanyi.Elements[idx_penyanyi].album.Elements[i].nama_album.TabWord)){
             break;
         }
     }
 
     int j;
-    for(j=0; j < l.list_penyanyi[idx_penyanyi].list_album[i].NEFF; j++){
-        printf("\t%d. %s\n", j+1, l.list_penyanyi[idx_penyanyi].list_album[i].list_lagu[j].TabWord);
+    for(j=0; j < l.Penyanyi.Elements[idx_penyanyi].album.Elements[i].daftar_lagu.Count; j++){
+        printf("\t%d. %s\n", j+1, l.Penyanyi.Elements[idx_penyanyi].album.Elements[i].daftar_lagu.Elements[j].TabWord);
     }
 }
 
 boolean ListDefaultIsEmpty(ListDefault l){
-    return (l.NEFF == 0);
+    return (l.Penyanyi.Count == 0);
 }
 
 
