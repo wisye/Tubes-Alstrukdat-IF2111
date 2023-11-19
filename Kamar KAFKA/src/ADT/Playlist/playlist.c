@@ -35,7 +35,7 @@ void createPlaylist()
 
 void addSongtoPlaylist()
 {
-    printf("Daftar Penyanyi :\n");
+    printf("Daftar Penyanyi :");
     showPenyanyi(l);
     printf("Masukkan Nama Penyanyi yang dipilih :");
     STARTLINE();
