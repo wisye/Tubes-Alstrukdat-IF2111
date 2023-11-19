@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "stdio.h": "c",
+        "listdefault.h": "c",
+        "console.h": "c",
+        "func.h": "c",
+        "listplaylist.h": "c",
+        "arraydin.h": "c"
+    }
+}

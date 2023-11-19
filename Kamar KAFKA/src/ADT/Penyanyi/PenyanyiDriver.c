@@ -2,28 +2,32 @@
 
 #include "Penyanyi.h"
 #include "../Album/album.h"
+#include "../Album/album.c"
 
 #define debug printf("--------\n")
 
 int main(){
+    // How to run ?
+    // gcc PenyanyiDriver.c Penyanyi.c  ../Mesinkarakter/mesinkarakter.c ../Mesinkata/mesinkata.c
+
     // initiate nama penyanyi 1
-    Word penyanyi;
-    penyanyi = charToWord("ed sheeran");
+    Line penyanyi;
+    penyanyi = charToLine("ed sheeran");
 
     // initiate nama album 1
-    Word album1;
-    album1 = charToWord("album1");
+    Line album1;
+    album1 = charToLine("album1");
 
     // initiate set album 1
     SetAlbum s;
     albumCreateEmpty(&s);
 
-    Word w;
-    w = charToWord("castle on the hill");
+    Line w;
+    w = charToLine("castle on the hill");
 
     setInsert(&s, w);
     
-    w = charToWord("lagu kedua");
+    w = charToLine("lagu kedua");
 
     setInsert(&s, w);
 

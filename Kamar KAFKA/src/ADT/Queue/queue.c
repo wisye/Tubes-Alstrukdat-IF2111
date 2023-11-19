@@ -33,7 +33,7 @@ void enqueue(Queue *q, queueElType val){
     } else {
         (*q).queueidxTail = ((*q).queueidxTail + 1) % queueCAPACITY;
     }
-    (*q).buffer[(*q).queueidxTail] = val;
+    (*q).buffer[(*q).queueidxTail] = val; 
 }
 
 void dequeue(Queue *q, queueElType *val){

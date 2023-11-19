@@ -2,6 +2,7 @@
 // #include "func.h"
 
 ListDefault l;
+ListPlaylist listPlaylist;
 
 /*Implementation of console.h goes here*/
 int loadSpotify(){
@@ -130,16 +131,17 @@ void quitSpotify(){
 }
  /*Keluar dari sesi aplikasi WayangWave (SPOTIFY)*/ 
 void listSpotify(){
+    init_penyanyi(&l);
     // printf(">> ");
-    ADVWORD();      // TURN THIS OFF IF YOU WANT TO USE THE DRIVER
-    // STARTWORD(); // TURN THIS ON IF YOU WANT TO USE THE DRIVER
+    // ADVWORD();      // TURN THIS OFF IF YOU WANT TO USE THE DRIVER
+    STARTWORD(); // TURN THIS ON IF YOU WANT TO USE THE DRIVER
     // ADVWORD();
     // printf("%s\n", currentWord.TabWord);
 
     if (stringComp(currentWord.TabWord, "DEFAULT")){
         // IF DEFAULT PROCESS GHOSTRULE.TXT
         // stringCopy(currentWord.TabWord, "ghostrule.txt");
-        loadSpotify();
+        // loadSpotify();
 
         printf("Daftar Penyanyi :\n");
         showPenyanyi(l);
@@ -376,6 +378,20 @@ void playSpotify(Stack *S, Queue *Q){ //Masih bingung cara testing, jadi ini bel
 }
 
 
+void PrintPlaylist(ListPlaylist array) {
+	// KAMUS
+	IdxType j;
+	// ALGORITMA
+    if(array.Neff == 0){
+        printf("playlist kosong cuy!\n");
+    } else {
+        for (j = 0; j < (array).Neff; j++) {
+            printf("%d. %s", j+1, (array).A[j].namaPlaylist.TabWord);
+        }
+    }
+	
+
+}
 
 // char *c;
 // c = address

@@ -1,16 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "arraydin.h"
+#include "listPlaylist.h"
 #include "../boolean.h"
 
 /*
  * Konstruktor
  * I.S. sembarang
- * F.S. Terbentuk ArrayDin kosong dengan ukuran InitialSize
+ * F.S. Terbentuk ListPlaylist kosong dengan ukuran InitialSize
  */
-ArrayDin MakeArrayDin(){
+ListPlaylist MakeArrayDin(){
 	// KAMUS
-	ArrayDin array;
+	ListPlaylist array;
 	// ALGORITMA
 	array.A = (ElType*) malloc (InitialSize*sizeof(ElType));
 	array.Neff = 0; array.Capacity = InitialSize;
@@ -19,10 +19,10 @@ ArrayDin MakeArrayDin(){
 
 /*
  * Destruktor
- * I.S. ArrayDin terdefinisi
+ * I.S. ListPlaylist terdefinisi
  * F.S. array->A terdealokasi
  */
-void DeallocateArrayDin(ArrayDin *array) {
+void DeallocateArrayDin(ListPlaylist *array) {
 	// KAMUS
 	// ALGORITMA
 	free((*array).A); (*array).Neff = 0;
@@ -32,7 +32,7 @@ void DeallocateArrayDin(ArrayDin *array) {
  * Fungsi untuk mengetahui apakah suatu array kosong.
  * Prekondisi: array terdefinisi
  */
-boolean IsEmpty(ArrayDin array) {
+boolean IsEmpty(ListPlaylist array) {
 	// KAMUS
 	// ALGORITMA
 	return array.Neff == 0;
@@ -42,7 +42,7 @@ boolean IsEmpty(ArrayDin array) {
  * Fungsi untuk mendapatkan banyaknya elemen efektif array, 0 jika tabel kosong.
  * Prekondisi: array terdefinisi
  */
-int Length(ArrayDin array) {
+int Length(ListPlaylist array) {
 	// KAMUS
 	// ALGORITMA
 	return array.Neff;
@@ -52,7 +52,7 @@ int Length(ArrayDin array) {
  * Mengembalikan elemen array L yang ke-I (indeks lojik).
  * Prekondisi: array tidak kosong, i di antara 0..Length(array).
  */
-ElType Get(ArrayDin array, IdxType i) {
+ElType Get(ListPlaylist array, IdxType i) {
 	// KAMUS
 	// ALGORITMA
 	return array.A[i];
@@ -62,7 +62,7 @@ ElType Get(ArrayDin array, IdxType i) {
  * Fungsi untuk mendapatkan kapasitas yang tersedia.
  * Prekondisi: array terdefinisi
  */
-int GetCapacity(ArrayDin array) {
+int GetCapacity(ListPlaylist array) {
 	// KAMUS
 	// ALGORITMA
 	return array.Capacity;
@@ -72,7 +72,7 @@ int GetCapacity(ArrayDin array) {
  * Fungsi untuk menambahkan elemen baru di index ke-i
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void InsertAt(ArrayDin *array, ElType el, IdxType i) {
+void InsertAt(ListPlaylist *array, ElType el, IdxType i) {
 	// KAMUS
 	// ALGORITMA
 	    int j;
@@ -113,7 +113,7 @@ void InsertAt(ArrayDin *array, ElType el, IdxType i) {
  * Fungsi untuk menambahkan elemen baru di akhir array.
  * Prekondisi: array terdefinisi
  */
-void InsertLast(ArrayDin *array, ElType el) {
+void InsertLast(ListPlaylist *array, ElType el) {
 	// KAMUS
 	// ALGORITMA
 	InsertAt(array, el,(*array).Neff);
@@ -123,17 +123,17 @@ void InsertLast(ArrayDin *array, ElType el) {
  * Fungsi untuk menambahkan elemen baru di awal array.
  * Prekondisi: array terdefinisi
  */
-void InsertFirst(ArrayDin *array, ElType el) {
+void InsertFirst(ListPlaylist *array, ElType el) {
 	// KAMUS
 	// ALGORITMA
 	InsertAt(array, el, 0);
 }
 
 /*
- * Fungsi untuk menghapus elemen di index ke-i ArrayDin
+ * Fungsi untuk menghapus elemen di index ke-i ListPlaylist
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void DeleteAt(ArrayDin *array, IdxType i) {
+void DeleteAt(ListPlaylist *array, IdxType i) {
 	// KAMUS
 	// ALGORITMA
     int j;
@@ -145,7 +145,7 @@ void DeleteAt(ArrayDin *array, IdxType i) {
         {
             (*array).A[j] = (*array).A[j + 1];
         }
-    }
+    } 
     else
     {
         int Bcapacity = InitialSize;
@@ -172,38 +172,38 @@ void DeleteAt(ArrayDin *array, IdxType i) {
 }
 
 /*
- * Fungsi untuk menghapus elemen terakhir ArrayDin
+ * Fungsi untuk menghapus elemen terakhir ListPlaylist
  * Prekondisi: array tidak kosong
  */
-void DeleteLast(ArrayDin *array) {
+void DeleteLast(ListPlaylist *array) {
 	// KAMUS
 	// ALGORITMA
 	DeleteAt(array, (*array).Neff-1);
 }
 
 /*
- * Fungsi untuk menghapus elemen pertama ArrayDin
+ * Fungsi untuk menghapus elemen pertama ListPlaylist
  * Prekondisi: array tidak kosong
  */
-void DeleteFirst(ArrayDin *array) {
+void DeleteFirst(ListPlaylist *array) {
 	// KAMUS
 	// ALGORITMA
 	DeleteAt(array, 0);
 }
 
 /*
- * Fungsi untuk melakukan print suatu ArrayDin.
+ * Fungsi untuk melakukan print suatu ListPlaylist.
  * Print dilakukan dengan format: [elemen-1, elemen-2, ..., elemen-n]
  * dan diakhiri newline.
  * Prekondisi: array terdefinisi
  */
-void PrintArrayDin(ArrayDin array) {
+void PrintArrayDin(ListPlaylist array) {
 	// KAMUS
 	IdxType j;
 	// ALGORITMA
 	printf("[");
 	for (j = 0; j < (array).Neff; j++) {
-		printf("%d", (array).A[j]);
+		printf("%d", (array).A[j].namaPlaylist);
 		if (j != (array).Neff -1) {
 			printf(", ");
 		}
@@ -212,10 +212,10 @@ void PrintArrayDin(ArrayDin array) {
 }
 	
 /*
- * Fungsi untuk melakukan reverse suatu ArrayDin.
+ * Fungsi untuk melakukan reverse suatu ListPlaylist.
  * Prekondisi: array terdefinisi
  */
-void ReverseArrayDin(ArrayDin *array) {
+void ReverseArrayDin(ListPlaylist *array) {
 	// KAMUS
 	IdxType j;
 	ElType *temp = (ElType*) malloc ((*array).Capacity * sizeof(ElType));
@@ -230,12 +230,12 @@ void ReverseArrayDin(ArrayDin *array) {
 }
 	
 /*
- * Fungsi untuk melakukan copy suatu ArrayDin.
+ * Fungsi untuk melakukan copy suatu ListPlaylist.
  * Prekondisi: array terdefinisi
  */
-ArrayDin CopyArrayDin(ArrayDin array) {
+ListPlaylist CopyArrayDin(ListPlaylist array) {
 	// KAMUS
-	ArrayDin newArray;
+	ListPlaylist newArray;
 	IdxType j;
 	// ALGORITMA
 	newArray.A = (ElType*) malloc (array.Capacity * sizeof(ElType));
@@ -247,16 +247,19 @@ ArrayDin CopyArrayDin(ArrayDin array) {
 }
 
 /*
- * Fungsi untuk melakukan search suatu ArrayDin.
+ * Fungsi untuk melakukan search suatu ListPlaylist.
  * Index pertama yang ditemukan akan dikembalikan.
  * Jika tidak ditemukan, akan mengembalikan -1.
  * Prekondisi: array terdefinisi
  */
-IdxType SearchArrayDin(ArrayDin array, ElType el) {
+
+// SearchArrayDin GATAU BUTUH APA ENGGA, COBA CEK DONG WISYE CUZ MASI MERAH -ELEN
+
+IdxType SearchArrayDin(ListPlaylist array, Line el) {
 	// KAMUS
 	IdxType j = 0; 
 	// ALGORITMA
-	while (((array).A[j] != el) && (j <= (array).Neff)) {
+	while ((stringComp(array.A[j].namaPlaylist.TabWord, el.TabWord)) && (j <= (array).Neff)) {
 		j++;
 	}
 	if (j > (array).Neff) {

@@ -1,30 +1,38 @@
 #include "stack.h"
 #include "../Queue/queuedefault.c"
 
+typedef struct current{
+    char penyanyi[100];
+    char album[100];
+    char lagu[100];
+}current;
 
-void SongNext(Queue *q, Stack *history){
-    int lagu; //menyimpan ID lagu 
+void SongNext(Queue *q, Stack *history, current Lagu){ //asumsi variabel currentsong menyimpan idx penyanyi, album, dan lagu
+    int lagu; //menyimpan ID lagu
+    char lagu[100];
+    char penyanyi[100]; 
     if(queueisEmpty(*q)){
-        printf("Queue kosong, memutar kembali lagu\n");
-        printf("\"%s\" oleh \"%s\"\n", [namalagu di TOP], [namapenyanyi di TOP]);
+            printf("Queue kosong, memutar kembali lagu\n");
+            printf("\"%s\" oleh \"%s\"\n", Lagu.lagu, Lagu.penyanyi); //memutar kembali lagu yang ada di currentsong
     }
     else{
         dequeue(q, &lagu);
         Push(&history, lagu);
-        printf("Memutar lagu selanjutya\n");
-        printf("\"%s\" oleh \"%s\"\n", [namalagu di TOP], [namapenyanyi di TOP]);
+        Lagu = history->T[history->TOP];
+        printf("Memutar lagu selanjutnya\n");
+        printf("\"%s\" oleh \"%s\"\n", Lagu.lagu, Lagu.penyanyi);
     }
 }
 /*Memutar lagu yang berada di dalam queue*/
 /*I.S. Queue bisa kosong*/
 
-void SongPrevious(Queue *q, Stack *history){
+void SongPrevious(Queue *q, Stack *history, current Lagu){
     int prev, temp;
     Queue tempq;
     CreateQueue(&temp);
     if(history->TOP == 1){ //stack yang berisi 1 elemen dihitung riwayat kosong
-        printf("Riwayat lagu kosong, memutar kembali lagu\n"); //memutar lagu yang berada di TOP
-        printf("\"%s\" oleh \"%s\"\n", [namalagu di TOP], [namapenyanyi di TOP]);
+        printf("Riwayat lagu kosong, memutar kembali lagu\n"); //memutar lagu yang berada di currentsong
+        printf("\"%s\" oleh \"%s\"\n", Lagu.lagu, Lagu.penyanyi);
     }
 
     else{
@@ -38,7 +46,8 @@ void SongPrevious(Queue *q, Stack *history){
             dequeue(&tempq, &temp);
             enqueue(q, temp);
         }
+        Lagu = history->T[history->TOP];
         printf("Memutar lagu sebelumnya\n");
-        printf("\"%s\" oleh \"%s\"\n", [namalagu di TOP], [namapenyanyi di TOP]);
+        printf("\"%s\" oleh \"%s\"\n", Lagu.lagu, Lagu.penyanyi);
     }
 }

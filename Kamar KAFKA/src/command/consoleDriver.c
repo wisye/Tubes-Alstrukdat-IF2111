@@ -1,10 +1,14 @@
-#include "console.h"
+
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include "console.h"
+// #include <string.h>
+// #include "../ADT/func/func.h"
+// #include "../ADT/func/funcDriver.c"
 
 int main(){
+<<<<<<< HEAD
 <<<<<<< HEAD
     loadSpotify();
 <<<<<<< HEAD
@@ -100,5 +104,10 @@ int main(){
     // debug;
     listSpotify(l);
 >>>>>>> main
+=======
+    // how to run?
+    // gcc consoleDriver.c console.c ../ADT/Mesinkata/mesinkata.c ../ADT/Mesinkarakter/mesinkarakter.c ../ADT/func/func.c ../ADT/Penyanyi/penyanyi.c ../ADT/Album/album.c
+    listSpotify();
+>>>>>>> origin/main
     return 0;
 }
