@@ -325,6 +325,15 @@ void playSpotify(Stack *S, Queue *Q){ //Masih bingung cara testing, jadi ini bel
                     stringCopy(lagux, l.Penyanyi.Elements[singeridx].album.Elements[albumidx].daftar_lagu.Elements[IDidx].TabWord);
                     sprintf(playlagu, "%s - %s - %s" , penyanyix, albumx, lagux); //menyimpan nama penyanyi, album, dan lagu yang diputar
                     printf("Memutar lagu \"%s\" oleh \"%s\".\n", lagux, penyanyix);
+                    if(!queueisEmpty(*Q)){ //Mengosongkan queue
+                        for(int i = 0; i<queuelength(*Q) ; i++){
+                            dequeue(Q, Q->buffer[i]);
+                        }
+                    }
+                    while(!stackIsEmpty(*S)){ //Mengosongkan stack
+                        Pop(S,S->T[S->TOP]);
+                    }
+                    Push(S, playlagu); //Memasukkan lagu yang di play ke dalam stack
                 }else{
                     printf("Nama Lagu belum valid.\n");
                 }
@@ -334,15 +343,6 @@ void playSpotify(Stack *S, Queue *Q){ //Masih bingung cara testing, jadi ini bel
         }else{
             printf("Nama Penyanyi belum valid.\n");
         }
-        if(!queueisEmpty(*Q)){ //Mengosongkan queue
-            for(int i = 0; i<queuelength(*Q) ; i++){
-                dequeue(Q, Q->buffer[i]);
-            }
-        }
-        while(!stackIsEmpty(*S)){ //Mengosongkan stack
-            Pop(S,S->T[S->TOP]);
-        }
-        Push(S, playlagu); //Memasukkan lagu yang di play ke dalam stack
     }
     else if(stringComp(currentWord.TabWord, "PLAYLIST")){//Apabila input berupa play playlist
         int IDPlaylist;
