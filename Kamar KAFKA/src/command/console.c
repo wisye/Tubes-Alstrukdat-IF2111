@@ -266,16 +266,14 @@ int saveSpotify() {
     return 0;
 }
 
-void playSpotify(Stack *S, Queue *Q){
+void playSpotify(Stack *S, Queue *Q){ //Masih bingung cara testing, jadi ini belum di test. Kayaknya globalvar juga belum diinclude
     ADVWORD();
 
-    if (stringComp(currentWord.TabWord, "SONG")){
+    if (stringComp(currentWord.TabWord, "SONG")){//Apabila input berupa play song
         boolean cekvalid = false;
-        int i = 0;
         printf("Daftar Penyanyi: \n");
-        showPenyanyi(l);
+        showPenyanyi(l); //Menunjukkan nama penyanyi
         char playlagu[100];
-
 
         //menginput nama penyanyi
         char singer[100];
@@ -283,7 +281,7 @@ void playSpotify(Stack *S, Queue *Q){
         printf("\nMasukkan Nama Penyanyi yang dipilih: ");
         scanf("%s", &singer); 
         int singeridx = -1;
-        for(int i=0; i<l.Penyanyi.Count; i++){
+        for(int i=0; i<l.Penyanyi.Count; i++){ //Melakukan pengecekkan input penyanyi
             if (stringComp(singer, l.Penyanyi.Elements[i].nama_penyanyi.TabWord)){
                 singeridx = i;
                 cekvalid = true;
@@ -293,14 +291,14 @@ void playSpotify(Stack *S, Queue *Q){
         }
         if (cekvalid){
             printf("Daftar Album oleh %s: \n" , singer);
-            int idx_penyanyi = showAlbum(charToWord(singer[100]), l);
+            int idx_penyanyi = showAlbum(charToWord(singer[100]), l);//menunjukkan daftar album
             char album[100];
             char albumx[100];
             printf("\nMasukkan Nama Album yang dipilih: ");
             boolean cekans = false;
-            scanf("%s", &album);
+            scanf("%s", &album);//input nama album
             int albumidx = -1;
-            for(int j= 0 ; j < l.Penyanyi.Elements[singeridx].album.Count ; j ++){
+            for(int j= 0 ; j < l.Penyanyi.Elements[singeridx].album.Count ; j ++){//melakukan pengecekkan input album
                 if(stringComp(album, l.Penyanyi.Elements[singeridx].album.Elements[j].nama_album.TabWord)){
                     albumidx = j;
                     cekans = true;
@@ -314,8 +312,8 @@ void playSpotify(Stack *S, Queue *Q){
                 int ID;
                 boolean cekID = false;
                 int IDidx = -1;
-                scanf("%d", &ID);
-                for(int k=0; k < l.Penyanyi.Elements[singeridx].album.Elements[albumidx].daftar_lagu.Count; k++){
+                scanf("%d", &ID);//input ID Lagu
+                for(int k=0; k < l.Penyanyi.Elements[singeridx].album.Elements[albumidx].daftar_lagu.Count; k++){//mengecek ID lagu
                     if((ID-1) == k){
                         cekID = true;
                         IDidx = k;
@@ -325,7 +323,7 @@ void playSpotify(Stack *S, Queue *Q){
                 if(cekID){
                     char lagux[100];
                     stringCopy(lagux, l.Penyanyi.Elements[singeridx].album.Elements[albumidx].daftar_lagu.Elements[IDidx].TabWord);
-                    sprintf(playlagu, "%s - %s - %s" , penyanyix, albumx, lagux);
+                    sprintf(playlagu, "%s - %s - %s" , penyanyix, albumx, lagux); //menyimpan nama penyanyi, album, dan lagu yang diputar
                     printf("Memutar lagu \"%s\" oleh \"%s\".\n", lagux, penyanyix);
                 }else{
                     printf("Nama Lagu belum valid.\n");
@@ -336,20 +334,44 @@ void playSpotify(Stack *S, Queue *Q){
         }else{
             printf("Nama Penyanyi belum valid.\n");
         }
-        if(!queueisEmpty(*Q)){
+        if(!queueisEmpty(*Q)){ //Mengosongkan queue
             for(int i = 0; i<queuelength(*Q) ; i++){
                 dequeue(Q, Q->buffer[i]);
             }
         }
-        while(!stackIsEmpty(*S)){
+        while(!stackIsEmpty(*S)){ //Mengosongkan stack
             Pop(S,S->T[S->TOP]);
         }
-        Push(S, playlagu);
+        Push(S, playlagu); //Memasukkan lagu yang di play ke dalam stack
     }
-    else if(stringComp(currentWord.TabWord, "PLAYLIST")){
+    else if(stringComp(currentWord.TabWord, "PLAYLIST")){//Apabila input berupa play playlist
         int IDPlaylist;
         printf("\nMasukkan ID Playlist: ");
-        scanf("%d" , &IDPlaylist);
+        scanf("%d" , &IDPlaylist); //Input ID Playlist
+        if(IDPlaylist <= Length(listPlaylist)){ //Melakukan cek terhadap ID yang diinput
+            printf("Memutar playlist \"%s\".\n", listPlaylist.A[IDPlaylist-1].namaPlaylist.TabWord);
+            stringCopy(CurrentPlaylist, listPlaylist.A[IDPlaylist-1].namaPlaylist.TabWord);
+            if(!queueisEmpty(*Q)){//Apabila sesuai akan mengosongkan queue
+                for(int i = 0; i<queuelength(*Q) ; i++){
+                    dequeue(Q, Q->buffer[i]);
+                }
+            }
+            while(!stackIsEmpty(*S)){//Stack juga dikosongkan
+                Pop(S,S->T[S->TOP]);
+            }
+            lladdress P = llFirst(listPlaylist.A[IDPlaylist-1]); //Masih ga yakin disini
+            Push(S, llInfo(P));//Memasukkan lagu pertama dari playlist yang dipilih ke stack
+            stringCopy(CurrentSong, llInfo(P));
+            P = llNext(P);
+            while (P != llNil)
+            {
+                enqueue(Q, llinfo(P));//Memasukkan sisa lagu yang di playlist yang dipilih ke dalam queue
+                P = llNext(P);
+            }
+            
+        }else{
+            printf("ID Playlist belum valid.\n");
+        }
     }
 }
 
