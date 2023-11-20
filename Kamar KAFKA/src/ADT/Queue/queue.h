@@ -5,12 +5,18 @@
 #define QUEUE_H
 
 #include "../boolean.h"
+#include "../Mesinkata/mesinkata.h"
 
 #define queueIDX_UNDEF -1
 #define queueCAPACITY 100
 
+typedef struct {
+        char nama_penyanyi[1000];
+        char nama_album[100];
+        int idx_lagu;
+} queueElType;
 /* Definisi elemen dan address */
-typedef int queueElType;
+// typedef int queueElType;
 typedef struct {
 	queueElType buffer[queueCAPACITY]; 
 	int queueidxHead;
@@ -20,10 +26,10 @@ typedef struct {
 
 /* ********* AKSES (Selektor) ********* */
 /* Jika q adalah Queue, maka akses elemen : */
-#define queueIDX_HEAD(q) (q).idxHead
-#define queueIDX_TAIL(q) (q).idxTail
-#define     queueHEAD(q) (q).buffer[(q).idxHead]
-#define     queueTAIL(q) (q).buffer[(q).idxTail]
+#define queueIDX_HEAD(q) (q).queueidxHead
+#define queueIDX_TAIL(q) (q).queueidxTail
+#define     queueHEAD(q) (q).buffer[(q).queueidxHead]
+#define     queueTAIL(q) (q).buffer[(q).queueidxTail]
 
 /* *** Kreator *** */
 void CreateQueue(Queue *q);

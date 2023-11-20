@@ -4,7 +4,9 @@
 // ADT List Default
 // isinya hanya list nama penyanyi saja
 
-typedef struct {
+typedef struct ListDefault{
     // int NEFF;
     MapPenyanyi Penyanyi;
 } ListDefault;
+
+ListDefault ldMakeList();

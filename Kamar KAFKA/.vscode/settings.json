@@ -10,6 +10,12 @@
         "stdio.h": "c",
         "stack.h": "c",
         "set.h": "c",
-        "listdefault.h": "c"
+        "listdefault.h": "c",
+        "queue.h": "c",
+        "album.h": "c",
+        "listlinier.h": "c",
+        "penyanyi.h": "c",
+        "arraydin.h": "c",
+        "globalvar.h": "c"
     }
 }

@@ -1,5 +1,4 @@
 #include "func.h"
-
 #include <stdio.h>
 
 // EXTRA
@@ -12,7 +11,7 @@ void showPenyanyi(ListDefault l){
     }
 }
 
-int showAlbum(Word w, ListDefault l){
+int showAlbum(Line w, ListDefault l){
     int len = l.Penyanyi.Count;
     // cari indeks penyanyi di list
     int i;
@@ -50,54 +49,6 @@ void showLagu(Word w, int idx_penyanyi, ListDefault l){
 
 boolean ListDefaultIsEmpty(ListDefault l){
     return (l.Penyanyi.Count == 0);
-}
-
-void init_penyanyi(ListDefault *l){
-    // initiate nama penyanyi 1
-    Line penyanyi;
-    penyanyi = charToLine("ed sheeran");
-
-    // initiate nama album 1
-    Line album1;
-    album1 = charToLine("album1");
-
-    // initiate set album 1
-    SetAlbum s;
-    albumCreateEmpty(&s);
-
-    Line w;
-    w = charToLine("castle on the hill");
-
-    setInsert(&s, w);
-    
-    w = charToLine("lagu kedua");
-
-    setInsert(&s, w);
-
-    // initiate map album 1
-    
-
-    MapAlbum ma;
-    mapCreateEmptyAlbum(&ma);
-
-    mapInsertAlbum(&ma, album1, s);
-
-    // initiate map penyanyi
-
-    MapPenyanyi mp;
-    mapCreateEmpty(&mp);
-
-    // printf("%s\n", ma.Elements[0].nama_album.TabWord);
-    mapInsert(&mp, penyanyi, ma);
-
-    // debug;
-
-    // printf("%s\n", mp.Elements[0].nama_penyanyi.TabWord);
-    // printf("%d\n", mp.Elements[0].album.Count);
-    // printf("%s\n", mp.Elements[0].album.Elements[0].nama_album.TabWord);
-    // printf("%s\n", mp.Elements[0].album.Elements[0].daftar_lagu.Elements[0].TabWord);
-
-    (*l).Penyanyi = mp;
 }
 
 

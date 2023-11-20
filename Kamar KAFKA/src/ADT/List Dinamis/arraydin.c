@@ -5,11 +5,11 @@
 /*
  * Konstruktor
  * I.S. sembarang
- * F.S. Terbentuk ListPlaylist kosong dengan ukuran InitialSize
+ * F.S. Terbentuk ArrayDin kosong dengan ukuran InitialSize
  */
-ListPlaylist MakeArrayDin(){
+ArrayDin MakeArrayDin(){
 	// KAMUS
-	ListPlaylist array;
+	ArrayDin array;
 	// ALGORITMA
 	array.A = (ElType*) malloc (InitialSize*sizeof(ElType));
 	array.Neff = 0; array.Capacity = InitialSize;
@@ -18,10 +18,10 @@ ListPlaylist MakeArrayDin(){
 
 /*
  * Destruktor
- * I.S. ListPlaylist terdefinisi
+ * I.S. ArrayDin terdefinisi
  * F.S. array->A terdealokasi
  */
-void DeallocateArrayDin(ListPlaylist *array) {
+void DeallocateArrayDin(ArrayDin *array) {
 	// KAMUS
 	// ALGORITMA
 	free((*array).A); (*array).Neff = 0;
@@ -31,7 +31,7 @@ void DeallocateArrayDin(ListPlaylist *array) {
  * Fungsi untuk mengetahui apakah suatu array kosong.
  * Prekondisi: array terdefinisi
  */
-boolean IsEmpty(ListPlaylist array) {
+boolean IsEmpty(ArrayDin array) {
 	// KAMUS
 	// ALGORITMA
 	return array.Neff == 0;
@@ -41,7 +41,7 @@ boolean IsEmpty(ListPlaylist array) {
  * Fungsi untuk mendapatkan banyaknya elemen efektif array, 0 jika tabel kosong.
  * Prekondisi: array terdefinisi
  */
-int Length(ListPlaylist array) {
+int Length(ArrayDin array) {
 	// KAMUS
 	// ALGORITMA
 	return array.Neff;
@@ -51,7 +51,7 @@ int Length(ListPlaylist array) {
  * Mengembalikan elemen array L yang ke-I (indeks lojik).
  * Prekondisi: array tidak kosong, i di antara 0..Length(array).
  */
-ElType Get(ListPlaylist array, IdxType i) {
+ElType Get(ArrayDin array, IdxType i) {
 	// KAMUS
 	// ALGORITMA
 	return array.A[i];
@@ -61,7 +61,7 @@ ElType Get(ListPlaylist array, IdxType i) {
  * Fungsi untuk mendapatkan kapasitas yang tersedia.
  * Prekondisi: array terdefinisi
  */
-int GetCapacity(ListPlaylist array) {
+int GetCapacity(ArrayDin array) {
 	// KAMUS
 	// ALGORITMA
 	return array.Capacity;
@@ -71,7 +71,7 @@ int GetCapacity(ListPlaylist array) {
  * Fungsi untuk menambahkan elemen baru di index ke-i
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void InsertAt(ListPlaylist *array, ElType el, IdxType i) {
+void InsertAt(ArrayDin *array, ElType el, IdxType i) {
 	// KAMUS
 	// ALGORITMA
 	    int j;
@@ -112,7 +112,7 @@ void InsertAt(ListPlaylist *array, ElType el, IdxType i) {
  * Fungsi untuk menambahkan elemen baru di akhir array.
  * Prekondisi: array terdefinisi
  */
-void InsertLast(ListPlaylist *array, ElType el) {
+void InsertLast(ArrayDin *array, ElType el) {
 	// KAMUS
 	// ALGORITMA
 	InsertAt(array, el,(*array).Neff);
@@ -122,17 +122,17 @@ void InsertLast(ListPlaylist *array, ElType el) {
  * Fungsi untuk menambahkan elemen baru di awal array.
  * Prekondisi: array terdefinisi
  */
-void InsertFirst(ListPlaylist *array, ElType el) {
+void InsertFirst(ArrayDin *array, ElType el) {
 	// KAMUS
 	// ALGORITMA
 	InsertAt(array, el, 0);
 }
 
 /*
- * Fungsi untuk menghapus elemen di index ke-i ListPlaylist
+ * Fungsi untuk menghapus elemen di index ke-i ArrayDin
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void DeleteAt(ListPlaylist *array, IdxType i) {
+void DeleteAt(ArrayDin *array, IdxType i) {
 	// KAMUS
 	// ALGORITMA
     int j;
@@ -171,32 +171,32 @@ void DeleteAt(ListPlaylist *array, IdxType i) {
 }
 
 /*
- * Fungsi untuk menghapus elemen terakhir ListPlaylist
+ * Fungsi untuk menghapus elemen terakhir ArrayDin
  * Prekondisi: array tidak kosong
  */
-void DeleteLast(ListPlaylist *array) {
+void DeleteLast(ArrayDin *array) {
 	// KAMUS
 	// ALGORITMA
 	DeleteAt(array, (*array).Neff-1);
 }
 
 /*
- * Fungsi untuk menghapus elemen pertama ListPlaylist
+ * Fungsi untuk menghapus elemen pertama ArrayDin
  * Prekondisi: array tidak kosong
  */
-void DeleteFirst(ListPlaylist *array) {
+void DeleteFirst(ArrayDin *array) {
 	// KAMUS
 	// ALGORITMA
 	DeleteAt(array, 0);
 }
 
 /*
- * Fungsi untuk melakukan print suatu ListPlaylist.
+ * Fungsi untuk melakukan print suatu ArrayDin.
  * Print dilakukan dengan format: [elemen-1, elemen-2, ..., elemen-n]
  * dan diakhiri newline.
  * Prekondisi: array terdefinisi
  */
-void PrintArrayDin(ListPlaylist array) {
+void PrintArrayDin(ArrayDin array) {
 	// KAMUS
 	IdxType j;
 	// ALGORITMA
@@ -211,10 +211,10 @@ void PrintArrayDin(ListPlaylist array) {
 }
 	
 /*
- * Fungsi untuk melakukan reverse suatu ListPlaylist.
+ * Fungsi untuk melakukan reverse suatu ArrayDin.
  * Prekondisi: array terdefinisi
  */
-void ReverseArrayDin(ListPlaylist *array) {
+void ReverseArrayDin(ArrayDin *array) {
 	// KAMUS
 	IdxType j;
 	ElType *temp = (ElType*) malloc ((*array).Capacity * sizeof(ElType));
@@ -229,12 +229,12 @@ void ReverseArrayDin(ListPlaylist *array) {
 }
 	
 /*
- * Fungsi untuk melakukan copy suatu ListPlaylist.
+ * Fungsi untuk melakukan copy suatu ArrayDin.
  * Prekondisi: array terdefinisi
  */
-ListPlaylist CopyArrayDin(ListPlaylist array) {
+ArrayDin CopyArrayDin(ArrayDin array) {
 	// KAMUS
-	ListPlaylist newArray;
+	ArrayDin newArray;
 	IdxType j;
 	// ALGORITMA
 	newArray.A = (ElType*) malloc (array.Capacity * sizeof(ElType));
@@ -246,12 +246,12 @@ ListPlaylist CopyArrayDin(ListPlaylist array) {
 }
 
 /*
- * Fungsi untuk melakukan search suatu ListPlaylist.
+ * Fungsi untuk melakukan search suatu ArrayDin.
  * Index pertama yang ditemukan akan dikembalikan.
  * Jika tidak ditemukan, akan mengembalikan -1.
  * Prekondisi: array terdefinisi
  */
-IdxType SearchArrayDin(ListPlaylist array, ElType el) {
+IdxType SearchArrayDin(ArrayDin array, ElType el) {
 	// KAMUS
 	IdxType j = 0; 
 	// ALGORITMA
