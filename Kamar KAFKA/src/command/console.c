@@ -355,6 +355,8 @@ void queueSpotify(Queue *q){
         CreateQueue(q);
     }
 }
+
+
 // char *c;
 // c = address
 // string = array of char
