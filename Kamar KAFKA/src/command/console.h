@@ -20,6 +20,7 @@
 #include "../ADT/ListDinamis/arraydin.h"
 #include "../ADT/ListPlaylistDinamis/listPlaylist.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 #ifndef CONSOLE_H
 #define CONSOLE_H

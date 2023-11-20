@@ -6,12 +6,13 @@
 #define stackt_H
 
 #include "../boolean.h"
+#include "../Queue/queue.h"
 
 #define stackNil -1
 #define stackMaxEl 100
 /* stackNil adalah stack dengan elemen kosong . */
 
-typedef int stackinfotype;
+typedef queueElType stackinfotype;
 typedef int stackaddress;   /* indeks tabel */
 
 /* Contoh deklarasi variabel bertype stack dengan ciri TOP : */

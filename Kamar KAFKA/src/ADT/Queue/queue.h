@@ -13,6 +13,9 @@
 typedef struct {
         char nama_penyanyi[1000];
         char nama_album[100];
+        char nama_lagu[100];
+        int idx_penyanyi;
+        int idx_album;
         int idx_lagu;
 } queueElType;
 /* Definisi elemen dan address */

@@ -586,7 +586,7 @@ void statusSpotify(Queue *q, Stack *s){
             printf("%s\n", CurrentSong);
         }
         printf("Queue:\n");
-        for (i = 0; i < queuelength(*q) ; i++){
+        for (i = 0; i < (queuelength(*q)) ; i++){
             // dequeue(q, &val); // dequeue nama_penyanyi, nama_album, CurrentSong
             // enqueue(&q2, val); // enqueue nama_penyanyi, nama_album, CurrentSong
             printf("%d. %s - %s - %s\n", i+1, q->buffer[i].nama_penyanyi, q->buffer[i].nama_album, q->buffer[i].nama_lagu);

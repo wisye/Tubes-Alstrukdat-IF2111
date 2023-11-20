@@ -27,6 +27,8 @@ int main(){
     // l.Penyanyi.Elements = NULL;
     Queue q;
     CreateQueue(&q);
+    Stack s;
+    stackCreateEmpty(&s);
     
     for(;;){
         printf(">> ");
@@ -44,11 +46,23 @@ int main(){
         else if(stringComp(currentWord.TabWord, "LIST")){
             listSpotify();
         }
+        else if(stringComp(currentWord.TabWord, "PLAY")){
+            playSpotify();
+        }
         else if(stringComp(currentWord.TabWord, "QUEUE")){
             queueSpotify(&q);
         }
+        else if(stringComp(currentWord.TabWord, "SONG")){
+            songSpotify();
+        }
+        else if(stringComp(currentWord.TabWord, "STATUS")){
+            statusSpotify();
+        }
         else if(stringComp(currentWord.TabWord, "QUIT")){
             quitSpotify();
+        }
+        else if(stringComp(currentWord.TabWord, "disq")){
+            displayQueue(q);
         }
         else{
             printf("invalid command\n");
