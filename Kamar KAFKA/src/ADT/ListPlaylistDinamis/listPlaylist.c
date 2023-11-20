@@ -4,27 +4,46 @@
 #include "../boolean.h"
 
 /*
- * Konstruktor
- * I.S. sembarang
- * F.S. Terbentuk ListPlaylist kosong dengan ukuran InitialSize
+ * Fungsi untuk melakukan print suatu ListPlaylist.
+ * Print dilakukan dengan format: [elemen-1, elemen-2, ..., elemen-n]
+ * dan diakhiri newline.
+ * Prekondisi: array terdefinisi
  */
-
 void PrintArrayDin(ListPlaylist array) {
 	// KAMUS
 	IdxType j;
 	// ALGORITMA
+	printf("[");
+	for (j = 0; j < (array).Neff; j++) {
+		printf("%d", (array).A[j].namaPlaylist);
+		if (j != (array).Neff -1) {
+			printf(", ");
+		}
+	}
+	printf("]\n");
+}
+
+void PrintPlaylist(ListPlaylist array) {
+	// KAMUS
+	IdxType j;
+	// ALGORITMA
     if(array.Neff == 0){
-        printf("Daftar playlist yang kamu miliki:");
+		printf("Daftar playlist yang kamu miliki:");
         printf("Kamu tidak memiliki playlist.\n");
     } else {
-        printf("Daftar playlist yang kamu miliki:");
+		printf("Daftar playlist yang kamu miliki:");
         for (j = 0; j < (array).Neff; j++) {
             printf("%d. %s", j+1, (array).A[j].namaPlaylist.TabWord);
         }
     }
-}
+	
 
+}
 /*
+ * Konstruktor
+ * I.S. sembarang
+ * F.S. Terbentuk ListPlaylist kosong dengan ukuran InitialSize
+ */
 ListPlaylist MakeArrayDin(){
 	// KAMUS
 	ListPlaylist array;
@@ -38,8 +57,7 @@ ListPlaylist MakeArrayDin(){
  * Destruktor
  * I.S. ListPlaylist terdefinisi
  * F.S. array->A terdealokasi
- /* 
-
+ */
 void DeallocateArrayDin(ListPlaylist *array) {
 	// KAMUS
 	// ALGORITMA
@@ -50,54 +68,46 @@ void DeallocateArrayDin(ListPlaylist *array) {
  * Fungsi untuk mengetahui apakah suatu array kosong.
  * Prekondisi: array terdefinisi
  */
-
-/*
 boolean IsEmpty(ListPlaylist array) {
 	// KAMUS
 	// ALGORITMA
 	return array.Neff == 0;
 }
-*/
+
 /*
  * Fungsi untuk mendapatkan banyaknya elemen efektif array, 0 jika tabel kosong.
  * Prekondisi: array terdefinisi
  */
-/*
 int Length(ListPlaylist array) {
 	// KAMUS
 	// ALGORITMA
 	return array.Neff;
 }
-*/
+
 /*
  * Mengembalikan elemen array L yang ke-I (indeks lojik).
  * Prekondisi: array tidak kosong, i di antara 0..Length(array).
  */
-/*
 ElType Get(ListPlaylist array, IdxType i) {
 	// KAMUS
 	// ALGORITMA
 	return array.A[i];
 }
-*/
+
 /*
  * Fungsi untuk mendapatkan kapasitas yang tersedia.
  * Prekondisi: array terdefinisi
  */
-/*
 int GetCapacity(ListPlaylist array) {
 	// KAMUS
 	// ALGORITMA
 	return array.Capacity;
 }
-*/
 
 /*
  * Fungsi untuk menambahkan elemen baru di index ke-i
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-
-/*
 void InsertAt(ListPlaylist *array, ElType el, IdxType i) {
 	// KAMUS
 	// ALGORITMA
@@ -134,29 +144,27 @@ void InsertAt(ListPlaylist *array, ElType el, IdxType i) {
         (*array).Neff += 1;
     }
 }
-*/
+
 /*
  * Fungsi untuk menambahkan elemen baru di akhir array.
  * Prekondisi: array terdefinisi
  */
-/*
 void InsertLast(ListPlaylist *array, ElType el) {
 	// KAMUS
 	// ALGORITMA
 	InsertAt(array, el,(*array).Neff);
 }
-*/
+
 /*
  * Fungsi untuk menambahkan elemen baru di awal array.
  * Prekondisi: array terdefinisi
  */
-/*
 void InsertFirst(ListPlaylist *array, ElType el) {
 	// KAMUS
 	// ALGORITMA
 	InsertAt(array, el, 0);
 }
-*/
+
 /*
  * Fungsi untuk menghapus elemen di index ke-i ListPlaylist
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
@@ -198,42 +206,33 @@ void DeleteAt(ListPlaylist *array, IdxType i) {
         free(temp);
     }
 }
-*/
+
 /*
  * Fungsi untuk menghapus elemen terakhir ListPlaylist
  * Prekondisi: array tidak kosong
  */
-/*
 void DeleteLast(ListPlaylist *array) {
 	// KAMUS
 	// ALGORITMA
 	DeleteAt(array, (*array).Neff-1);
 }
-*/
+
 /*
  * Fungsi untuk menghapus elemen pertama ListPlaylist
  * Prekondisi: array tidak kosong
  */
-/*
 void DeleteFirst(ListPlaylist *array) {
 	// KAMUS
 	// ALGORITMA
 	DeleteAt(array, 0);
 }
-*/
-/*
- * Fungsi untuk melakukan print suatu ListPlaylist.
- * Print dilakukan dengan format: [elemen-1, elemen-2, ..., elemen-n]
- * dan diakhiri newline.
- * Prekondisi: array terdefinisi
- */
+
 
 	
 /*
  * Fungsi untuk melakukan reverse suatu ListPlaylist.
  * Prekondisi: array terdefinisi
  */
-/*
 void ReverseArrayDin(ListPlaylist *array) {
 	// KAMUS
 	IdxType j;
@@ -252,7 +251,6 @@ void ReverseArrayDin(ListPlaylist *array) {
  * Fungsi untuk melakukan copy suatu ListPlaylist.
  * Prekondisi: array terdefinisi
  */
-/*
 ListPlaylist CopyArrayDin(ListPlaylist array) {
 	// KAMUS
 	ListPlaylist newArray;
@@ -265,7 +263,7 @@ ListPlaylist CopyArrayDin(ListPlaylist array) {
 	}
 	return newArray;
 }
-*/
+
 /*
  * Fungsi untuk melakukan search suatu ListPlaylist.
  * Index pertama yang ditemukan akan dikembalikan.
@@ -274,7 +272,7 @@ ListPlaylist CopyArrayDin(ListPlaylist array) {
  */
 
 // SearchArrayDin GATAU BUTUH APA ENGGA, COBA CEK DONG WISYE CUZ MASI MERAH -ELEN
-/*
+
 IdxType SearchArrayDin(ListPlaylist array, Line el) {
 	// KAMUS
 	IdxType j = 0; 
@@ -287,5 +285,3 @@ IdxType SearchArrayDin(ListPlaylist array, Line el) {
 	}
 	return j;
 }
-
-*/

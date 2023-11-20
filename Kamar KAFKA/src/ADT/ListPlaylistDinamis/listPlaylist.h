@@ -116,4 +116,8 @@ ListPlaylist CopyArrayDin(ListPlaylist array);
  */
 IdxType SearchArrayDin(ListPlaylist array, Line el);
 
+void PrintPlaylist(ListPlaylist array);
+
+
+
 #endif
