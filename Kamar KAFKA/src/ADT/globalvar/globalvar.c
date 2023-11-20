@@ -1,5 +1,7 @@
 #include "globalvar.h"
 
-boolean STATUS = false;
+STATUS = false;
 
-ListDefault listPenyanyiGlobal;
+// ListDefault l;
+
+// Queue q;

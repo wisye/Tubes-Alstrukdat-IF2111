@@ -8,9 +8,9 @@
 #include "../Mesinkarakter/mesinkarakter.h"
 #include <stdio.h>
 
-#define wordNMax 50
+#define wordNMax 500
 #define BLANK ' '
-#define lineNMax 200
+#define lineNMax 500
 
 typedef struct
 {
@@ -78,5 +78,7 @@ Line charToLine(char str[]);
 void stringCopy(char *x, char *y);
 
 boolean stringComp(char *x, char *y);
+
+void lineCopyFromString(Line *x, char *y);
 
 #endif

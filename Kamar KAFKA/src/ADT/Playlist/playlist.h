@@ -11,12 +11,11 @@ typedef struct lltElmtlist * lladdress;
 typedef struct lltElmtlist { 
   int count;
   MapPenyanyi Penyanyi;
-  lladdress next;
+ lladdress next;
 } llElmtList;
 
 typedef struct {
-  Line namaPlaylist;
-  lladdress linkedlistFirst;
+lladdress linkedlistFirst;
 } lList;
 
 /* Definisi list : */

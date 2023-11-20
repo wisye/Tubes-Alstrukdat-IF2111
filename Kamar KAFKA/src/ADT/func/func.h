@@ -8,9 +8,11 @@ void stringCopy(char* str1, char* str2);
 
 Word charToWord(char str[]);
 
+Line charToLine(char str[]);
+
 void showPenyanyi(ListDefault l);
 
-int showAlbum(Word w, ListDefault l);
+int showAlbum(Line w, ListDefault l);
 
 void showLagu(Word w, int idx_penyanyi, ListDefault l);
 
@@ -21,6 +23,4 @@ int stringLen(char *x);
 int wordToInt(Word w);
 
 void stringMakeEmpty(char *x);
-
-void init_penyanyi(ListDefault *l);
 // Word lineToWord(Line l);

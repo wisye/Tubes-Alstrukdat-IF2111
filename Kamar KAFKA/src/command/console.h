@@ -17,8 +17,7 @@
 #include "../ADT/LinkedList/listlinier.h"
 #include "../ADT/Album/album.h"
 #include "../ADT/Penyanyi/penyanyi.h"
-#include "../ADT/ListPlaylistDinamis/listPlaylist.h"
-
+#include "../ADT/ListDinamis/arraydin.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -40,7 +39,7 @@ void playSpotify();
 /*Memainkan lagu yang dipilih jika PLAY SONG
   Memainkan lagu berdasar id playlist jika PLAY PLAYLIST*/
 
-void queueSpotify();
+void queueSpotify(Queue *q);
 /*Menambahkan lagu kedalam queue jika QUEUE SONG
   Menambahkan playlist dalam queue jika QUEUE PLAYLIST
   Menukar lagu pada urutan <x> <y> jika QUEUE SWAP <x> <y>

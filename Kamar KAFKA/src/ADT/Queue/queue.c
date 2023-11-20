@@ -33,7 +33,7 @@ void enqueue(Queue *q, queueElType val){
     } else {
         (*q).queueidxTail = ((*q).queueidxTail + 1) % queueCAPACITY;
     }
-    (*q).buffer[(*q).queueidxTail] = val; 
+    (*q).buffer[(*q).queueidxTail] = val;
 }
 
 void dequeue(Queue *q, queueElType *val){
@@ -56,20 +56,30 @@ void displayQueue(Queue q){
         if (q.queueidxHead <= q.queueidxTail) {
             for (i = q.queueidxHead; i <= q.queueidxTail; i++) {
                 if (i == q.queueidxTail) {
-                    printf("%d", q.buffer[i]);
+                    printf("%d,", q.buffer[i].idx_lagu);
+                    printf("%s,", q.buffer[i].nama_album);
+                    printf("%s", q.buffer[i].nama_penyanyi);
                 } else {
-                    printf("%d,", q.buffer[i]);
+                    printf("%d,", q.buffer[i].idx_lagu);
+                    printf("%s,", q.buffer[i].nama_album);
+                    printf("%s,", q.buffer[i].nama_penyanyi);
                 }
             }
         } else {
             for (i = q.queueidxHead; i < queueCAPACITY; i++) {
-                printf("%d,", q.buffer[i]);
+                    printf("%d,", q.buffer[i].idx_lagu);
+                    printf("%s,", q.buffer[i].nama_album);
+                    printf("%s", q.buffer[i].nama_penyanyi);
             }
             for (i = 0; i <= q.queueidxTail; i++) {
                 if (i == q.queueidxTail) {
-                    printf("%d", q.buffer[i]);
+                    printf("%d,", q.buffer[i].idx_lagu);
+                    printf("%s,", q.buffer[i].nama_album);
+                    printf("%s", q.buffer[i].nama_penyanyi);
                 } else {
-                    printf("%d,", q.buffer[i]);
+                    printf("%d,", q.buffer[i].idx_lagu);
+                    printf("%s,", q.buffer[i].nama_album);
+                    printf("%s,", q.buffer[i].nama_penyanyi);
                 }
             }
         }

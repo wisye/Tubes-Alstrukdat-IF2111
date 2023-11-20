@@ -2,13 +2,18 @@
 // #include "func.h"
 
 ListDefault l;
-ListPlaylist listPlaylist;
-
+// Queue q;
+void startSpotify(){
+    ADVWORD();
+    stringCopy(currentWord.TabWord, "DEFAULT");
+    loadSpotify();
+}
 /*Implementation of console.h goes here*/
 int loadSpotify(){
     // printf("LOADED\n");
     int i = 0, j = 0, k = 0;
     FILE *file;
+    // (*l).Penyanyi.Count = 0;
     // Word fileName;
     char buffer[100];
     // char *temp;
@@ -76,6 +81,7 @@ int loadSpotify(){
         // printf("%d\n", IjumlahAlbum);
         readFileLine(file);
         stringCopy(l.Penyanyi.Elements[i].nama_penyanyi.TabWord, currentLine.TabWord);
+        // printf("%c\n", currentChar);
         // printf("%s\n", l.list_penyanyi[i].nama_penyanyi.TabWord);
         for(j=0; j<IjumlahAlbum; j++){
             readFileWord(file);
@@ -131,17 +137,16 @@ void quitSpotify(){
 }
  /*Keluar dari sesi aplikasi WayangWave (SPOTIFY)*/ 
 void listSpotify(){
-    init_penyanyi(&l);
     // printf(">> ");
-    // ADVWORD();      // TURN THIS OFF IF YOU WANT TO USE THE DRIVER
-    STARTWORD(); // TURN THIS ON IF YOU WANT TO USE THE DRIVER
+    ADVWORD();      // TURN THIS OFF IF YOU WANT TO USE THE DRIVER
+    // STARTWORD(); // TURN THIS ON IF YOU WANT TO USE THE DRIVER
     // ADVWORD();
     // printf("%s\n", currentWord.TabWord);
 
     if (stringComp(currentWord.TabWord, "DEFAULT")){
         // IF DEFAULT PROCESS GHOSTRULE.TXT
         // stringCopy(currentWord.TabWord, "ghostrule.txt");
-        // loadSpotify();
+        // loadSpotify(l);
 
         printf("Daftar Penyanyi :\n");
         showPenyanyi(l);
@@ -158,7 +163,9 @@ void listSpotify(){
                 break;
             }
             printf("Input salah. Masukkan Y atau N: ");
+            // START();
             STARTWORD();
+            // printf("%s\n", currentWord.TabWord);
             // ADVWORD();
         }
         pilihan = currentWord.TabWord[0];
@@ -172,27 +179,32 @@ void listSpotify(){
 
         // pilih album
         printf("Pilih penyanyi untuk melihat album mereka: ");
-        char penyanyi[100];
+        char penyanyi[100] = "";
         stringMakeEmpty(penyanyi);
+        // START();
         STARTLINE();
+        // printf("%s\n", currentLine.TabWord);
         // ADVWORD();
         stringCopy(penyanyi, currentLine.TabWord);
         // scanf("%s", penyanyi);
 
         // printf("%s\n", penyanyi);
         printf("Daftar Album oleh %s:\n", penyanyi);
-        int idx_penyanyi = showAlbum(charToWord(penyanyi), l);
+        int idx_penyanyi = showAlbum(charToLine(penyanyi), l);
 
 
         // pilih lagu
         printf("Masukkan nama Album yang dipilih : ");
-        char album[100];
+        char album[100] = "";
         stringMakeEmpty(album);
         // ADVWORD();
+        // START();
         STARTLINE();
         // ADVWORD();
-        // printf("%s\n", currentLine.TabWord);
+
+
         stringCopy(album, currentLine.TabWord);
+        // scanf("%s", album);
 
         printf("Daftar Lagu Album %s oleh %s\n", album, penyanyi);
         showLagu(charToWord(album), idx_penyanyi, l);
@@ -208,21 +220,141 @@ void listSpotify(){
     }
 }
 
-void PrintPlaylist(ListPlaylist array) {
-	// KAMUS
-	IdxType j;
-	// ALGORITMA
-    if(array.Neff == 0){
-        printf("playlist kosong cuy!\n");
-    } else {
-        for (j = 0; j < (array).Neff; j++) {
-            printf("%d. %s", j+1, (array).A[j].namaPlaylist.TabWord);
+void queueSpotify(Queue *q){
+    STARTWORD();
+    // ADVWORD();
+    // printf("%s\n", currentWord.TabWord);
+    if(stringComp(currentWord.TabWord, "SONG")){
+
+            // show list default aja kali ya?
+        //showListDefault(l);
+
+        // list sudah terdefinisi
+        
+        printf("Daftar Penyanyi :\n");
+        showPenyanyi(l);
+
+        /*printf("Ingin melihat album yang ada?(Y/N): ");
+        char pilihan[10];
+
+        scanf("%s", pilihan);
+        Word word_pilihan = charToWord(pilihan);
+        
+        printf("%s\n", word_pilihan.TabWord);
+
+        // comparing string
+        if(stringComp(word_pilihan.TabWord, "N")){
+            return;
+        }
+        */
+
+        // pilih album
+        printf("Pilih penyanyi untuk melihat album mereka: ");
+        STARTLINE();
+        char penyanyi[100] = "";
+        // scanf("%s", penyanyi);
+        // printf("%s\n", penyanyi);
+        stringCopy(penyanyi, currentLine.TabWord);
+
+        // printf("%s\n", penyanyi);
+        printf("Daftar Album oleh %s:\n", penyanyi);
+        int idx_penyanyi = showAlbum(charToLine(penyanyi), l);
+
+
+        // pilih lagu
+        printf("Masukkan nama Album yang dipilih : ");
+        char album[100] = "";
+        // scanf("%s", album);
+        STARTLINE();
+        // printf("%s\n", album);
+        // printf("%s\n", currentLine.TabWord);
+        stringCopy(album, currentLine.TabWord);
+        // printf("%s\n", album);
+        int nama_album;
+        printf("Daftar Lagu Album %s oleh %s\n", album, penyanyi);
+        showLagu(charToWord(album), idx_penyanyi, l);
+
+        printf("Masukkan ID lagu yang dipilih : ");
+        queueElType ID;
+        // scanf("%d", &ID);
+        STARTWORD();
+        ID.idx_lagu = wordToInt(currentWord);
+        // printf("%s\n", penyanyi);
+        // printf("%s\n", ID.nama_penyanyi.TabWord);
+        stringCopy(ID.nama_album, album);
+        stringCopy(ID.nama_penyanyi, penyanyi);
+        // printf("%s\n", ID.nama_penyanyi.TabWord);
+        // printf("%d\n", ID);
+        enqueue(q, ID);
+        printf("Berhasil menambahkan lagu ke-%d dari album %s oleh %s ke queue\n", ID.idx_lagu, ID.nama_album, ID.nama_penyanyi); //queue masih nyimpan ID saja
+        displayQueue(*q);
+    }
+
+    else if(stringComp(currentWord.TabWord, "SWAP")){
+        int x, y;
+        STARTWORD();
+        x = wordToInt(currentWord);
+        STARTWORD();
+        y = wordToInt(currentWord);
+        if(x > queueIDX_TAIL(*q)){
+        printf("Lagu dengan urutan ke %d tidak terdapat dalam queue!", x);
+        }
+        else{
+            if(y > queueIDX_TAIL(*q)){
+                printf("Lagu dengan urutan ke %d tidak terdapat dalam queue!", y);
+            }
+            else{
+                int lagux =  queueIDX_HEAD(*q)+x;
+                int laguy = queueIDX_HEAD(*q)+y;
+
+                queueElType temp = q->buffer[laguy];  //isi ID lagu yang disimpan
+                q->buffer[laguy] = q->buffer[lagux];
+                q->buffer[lagux] = temp;
+            }
         }
     }
-	
 
+    else if(stringComp(currentWord.TabWord, "REMOVE")){
+        int id;
+        queueElType val;
+        Queue temp; //nyimpan queue sementara
+        Queue before;
+        CreateQueue(&temp);
+        CreateQueue(&before);
+        STARTWORD();
+        id = wordToInt(currentWord);
+        if(id > queueIDX_TAIL(*q)){
+            printf("Lagu urutan ke %d tidak ada\n", id);
+        }
+        else{
+            for(int i = queueIDX_HEAD(*q); i < id; i++){ //dequeue index awal sebelum id yang di delete, simpan di temp
+                dequeue(q, &val);
+                enqueue(&temp, val);
+            }
+            for(int i = queueIDX_HEAD(*q); i < queueIDX_TAIL(*q); i++){ //dequeue index setelah id yang di delete, simpan di before
+                dequeue(q, &val);
+                enqueue(&before, val);
+            }
+            for(int i = 0; i < queueIDX_TAIL(temp)-queueIDX_HEAD(temp); i++){ //masukin val sebelum id yang di delete
+                dequeue(&temp, &val);
+                enqueue(q, val);
+            }
+            for(int i = 0; i<queueIDX_TAIL(before)-queueIDX_HEAD(before);i++){ //masukin val setelah id yang di delete
+                dequeue(&temp, &val);
+                enqueue(q, val);
+            }
+        }
+    }
+
+    else if(stringComp(currentWord.TabWord, "CLEAR")){
+        // int temp, length; // ini dump nilai queue aja
+        // length = queuelength(*q);
+        // for(int i = 0; i < length; i++){
+        //     dequeue(q, &temp);
+        // }
+        CreateQueue(q);
+    }
 }
-
 // char *c;
 // c = address
 // string = array of char
