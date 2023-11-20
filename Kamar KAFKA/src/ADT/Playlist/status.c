@@ -3,6 +3,7 @@
 #include "../globalvar/globalvar.h"
 #include "../Penyanyi/Penyanyi.h"
 #include "../Stack/stack.h"
+#include "../globalvar/globalvar.h"
 #include "../Album/album.h"
 #include "../Queue/queue.h"
 
@@ -10,14 +11,14 @@
 // help bgt benerin:(
 
 void statusSpotify(){
-    if (CurrentSong == Nil){
+    if (CurrentSong == NULL){
         printf ("Now Playing:");
         printf("No songs have been played yet. Please search for a song to begin playback.");
 
         printf("Queue:");
         printf("Your queue is empty.");
     }
-    else if (CurrentSong != Nil && queueisEmpty){
+    else if (CurrentSong != NULL && queueisEmpty){
         printf ("Now Playing:");
         printf("%s - %s -%s", queue.head.nama.penyanyi, queue.head.nama.nama_album, queue.head.nama.CurrentSong); // Coldplay - Up&Up - A Head Full of Dreams
 

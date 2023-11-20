@@ -9,4 +9,7 @@ extern boolean STATUS; // setiap kali PLAY, tolong ubah STATUS jadi "true".
 
 extern ListDefault listPenyanyiGlobal;
 
+extern char CurrentSong [100];
+extern char CurrentPlaylist [100];
+
 #endif

@@ -16,6 +16,7 @@
 #include "../ADT/func/func.h"
 #include "../ADT/LinkedList/listlinier.h"
 #include "../ADT/Album/album.h"
+#include "../ADT/globalvar/globalvar.h"
 #include "../ADT/Penyanyi/penyanyi.h"
 #include "../ADT/ListPlaylistDinamis/listPlaylist.h"
 #include <stdio.h>
