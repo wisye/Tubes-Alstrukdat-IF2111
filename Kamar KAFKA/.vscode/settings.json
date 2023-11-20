@@ -16,6 +16,7 @@
         "listlinier.h": "c",
         "penyanyi.h": "c",
         "arraydin.h": "c",
-        "globalvar.h": "c"
+        "globalvar.h": "c",
+        "listplaylist.h": "c"
     }
 }

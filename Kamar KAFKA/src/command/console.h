@@ -8,7 +8,6 @@
 // #include <stdio.h>
 // #include <stdlib.h>
 // #include "../ADT_H/boolean.h"
-#include "../ADT/Mesinkarakter/mesinkarakter.h"
 #include "../ADT/Mesinkata/mesinkata.h"
 #include "../ADT/List/list.h"
 #include "../ADT/Queue/queue.h"
@@ -21,8 +20,6 @@
 #include "../ADT/ListDinamis/arraydin.h"
 #include "../ADT/ListPlaylistDinamis/listPlaylist.h"
 #include <stdio.h>
-#include <stdlib.h>
-
 
 #ifndef CONSOLE_H
 #define CONSOLE_H
@@ -64,7 +61,7 @@ void playlistSpotify();
 void statusSpotify();
 /*Menampilkan lagu yang sedang dimainkan beserta queue song yang ada dan dari playlist mana lagu itu diputar*/
 
-void saveSpotify();
+int saveSpotify();
 /*Menyimpan state aplikasi terbaru kedalam suatu file jika SAVE <filename>*/
 
 void quitSpotify();

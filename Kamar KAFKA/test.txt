@@ -1,0 +1,12 @@
+LOAD DEFAULT;
+QUEUE SONG;
+Hatsune Miku;
+GHOST;
+5;
+QUEUE SONG;
+TUYU;
+I'll put you in misery;
+7;
+QUEUE SWAP 0 1;
+QUEUE REMOVE 1;
+QUEUE SONG;
