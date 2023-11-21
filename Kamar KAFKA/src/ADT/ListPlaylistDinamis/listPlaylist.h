@@ -26,19 +26,19 @@ ListPlaylist MakeArrayDin();
  * I.S. ListPlaylist terdefinisi
  * F.S. array->A terdealokasi
  */
-void DeallocateArrayDin(ListPlaylist *array);
+void lpDeallocateArrayDin(ListPlaylist *array);
 
 /*
  * Fungsi untuk mengetahui apakah suatu array kosong.
  * Prekondisi: array terdefinisi
  */
-boolean IsEmpty(ListPlaylist array);
+boolean lpIsEmpty(ListPlaylist array);
 
 /*
  * Fungsi untuk mendapatkan banyaknya elemen efektif array, 0 jika tabel kosong.
  * Prekondisi: array terdefinisi
  */
-int Length(ListPlaylist array);
+int lpLength(ListPlaylist array);
 
 /*
  * Mengembalikan elemen array L yang ke-I (indeks lojik).

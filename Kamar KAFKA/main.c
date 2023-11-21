@@ -29,6 +29,11 @@ int main(){
     CreateQueue(&q);
     Stack s;
     stackCreateEmpty(&s);
+    lList ll;
+    llCreateEmpty(&ll);
+    ListPlaylist LPlaylist;
+    printf("SELAMAT DATANG DI APLIKASI WAYANG WAVE\n");
+
     
     for(;;){
         printf(">> ");
@@ -53,10 +58,13 @@ int main(){
             queueSpotify(&q);
         }
         else if(stringComp(currentWord.TabWord, "SONG")){
-            songSpotify();
+            songSpotify(&q, &s);
+        }
+        else if(stringComp(currentWord.TabWord, "PLAYLIST")){
+            playlistSpotify(&ll);
         }
         else if(stringComp(currentWord.TabWord, "STATUS")){
-            statusSpotify();
+            statusSpotify(&q, &s);
         }
         else if(stringComp(currentWord.TabWord, "QUIT")){
             quitSpotify();
@@ -64,6 +72,9 @@ int main(){
         else if(stringComp(currentWord.TabWord, "disq")){
             displayQueue(q);
         }
+        // else if(stringComp(currentWord.TabWord, "disp")){
+        //     PrintArrayDin();
+        // }
         else{
             printf("invalid command\n");
         }

@@ -3,19 +3,19 @@
 
 #include "../Mesinkata/mesinkata.h"
 #include "../Penyanyi/penyanyi.h"
+#include "../Queue/queue.h"
 #include "../boolean.h"
 
 #define llNil NULL
 
 typedef struct lltElmtlist * lladdress;
 typedef struct lltElmtlist { 
-  int count;
-  MapPenyanyi Penyanyi;
- lladdress next;
+  queueElType ID;
 } llElmtList;
 
 typedef struct {
 lladdress linkedlistFirst;
+Line namaPlaylist;
 } lList;
 
 /* Definisi list : */

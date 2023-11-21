@@ -19,6 +19,7 @@
         "globalvar.h": "c",
         "listplaylist.h": "c",
         "stdlib.h": "c",
-        "func.h": "c"
+        "func.h": "c",
+        "playlist.h": "c"
     }
 }

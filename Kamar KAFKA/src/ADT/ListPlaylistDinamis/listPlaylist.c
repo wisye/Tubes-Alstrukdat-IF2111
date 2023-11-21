@@ -58,7 +58,7 @@ ListPlaylist MakeArrayDin(){
  * I.S. ListPlaylist terdefinisi
  * F.S. array->A terdealokasi
  */
-void DeallocateArrayDin(ListPlaylist *array) {
+void lpDeallocateArrayDin(ListPlaylist *array) {
 	// KAMUS
 	// ALGORITMA
 	free((*array).A); (*array).Neff = 0;
@@ -68,7 +68,7 @@ void DeallocateArrayDin(ListPlaylist *array) {
  * Fungsi untuk mengetahui apakah suatu array kosong.
  * Prekondisi: array terdefinisi
  */
-boolean IsEmpty(ListPlaylist array) {
+boolean lpIsEmpty(ListPlaylist array) {
 	// KAMUS
 	// ALGORITMA
 	return array.Neff == 0;
@@ -78,7 +78,7 @@ boolean IsEmpty(ListPlaylist array) {
  * Fungsi untuk mendapatkan banyaknya elemen efektif array, 0 jika tabel kosong.
  * Prekondisi: array terdefinisi
  */
-int Length(ListPlaylist array) {
+int lpLength(ListPlaylist array) {
 	// KAMUS
 	// ALGORITMA
 	return array.Neff;

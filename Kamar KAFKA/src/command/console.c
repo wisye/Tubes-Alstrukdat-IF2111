@@ -327,6 +327,8 @@ void playSpotify(Stack *S, Queue *Q){ //Masih bingung cara testing, jadi ini bel
         STARTWORD();
         int idx_lagu = wordToInt(currentWord);
         stringCopy(CurrentSong, l.Penyanyi.Elements[idx_penyanyi].album.Elements[idx_album].daftar_lagu.Elements[idx_lagu-1].TabWord);
+        stringCopy(CurrentAlbum, album);
+        stringCopy(CurrentSinger, penyanyi);
         printf("Memutar lagu \"%s\" oleh \"%s\"\n", l.Penyanyi.Elements[idx_penyanyi].album.Elements[idx_album].daftar_lagu.Elements[idx_lagu-1].TabWord, penyanyi);
         printf("Current Song: %s\n", CurrentSong);
     }
@@ -515,32 +517,41 @@ void songSpotify(Queue *q, Stack *history){
     STARTWORD();
     if(stringComp(currentWord.TabWord, "NEXT")){
         stackinfotype ID; //menyimpan ID lagu 
-        int id_lagu = history->T[history->TOP].idx_lagu;
-        char *nama = history->T[history->TOP].nama_penyanyi;
+        // int id_lagu = history->T[history->TOP].idx_lagu;
+        // char *nama = history->T[history->TOP].nama_penyanyi;
         if(queueisEmpty(*q)){
-            printf("Queue kosong, memutar kembali lagu\n");
-            printf("\"%d\" oleh \"%s\"\n", id_lagu, nama);
+            printf("Queue kosong, memutar kembali lagu ");
+            printf("\"%s\"\n", CurrentSong);
         }
         else{
+            stringCopy(ID.nama_penyanyi, CurrentSinger);
+            stringCopy(ID.nama_album, CurrentAlbum);
+            stringCopy(ID.nama_lagu, CurrentSong);
+            Push(history, ID); //push ID lagu yang sedang diputar ke stack
             dequeue(q, &ID);
-            Push(history, ID);
+            stringCopy(CurrentSinger, ID.nama_penyanyi);
+            stringCopy(CurrentAlbum, ID.nama_album);
+            stringCopy(CurrentSong, ID.nama_lagu);
             printf("Memutar lagu selanjutya\n");
-            printf("\"%d\" oleh \"%s\"\n", id_lagu, nama);
+            printf("\"%s\" oleh \"%s\"\n", ID.nama_lagu, ID.nama_penyanyi);
         }
     }
     if(stringComp(currentWord.TabWord, "PREVIOUS")){
         stackinfotype prev, temp;
         Queue tempq;
         CreateQueue(&tempq);
-        int id_lagu = history->T[history->TOP].idx_lagu;
-        char *nama = history->T[history->TOP].nama_penyanyi;
-        if(history->TOP == 1){ //stack yang berisi 1 elemen dihitung riwayat kosong
-            printf("Riwayat lagu kosong, memutar kembali lagu\n"); //memutar lagu yang berada di TOP
-            printf("\"%d\" oleh \"%s\"\n", id_lagu, nama);
+        // int id_lagu = history->T[history->TOP].idx_lagu;
+        // char *nama = history->T[history->TOP].nama_penyanyi;
+        if(stackIsEmpty(*history)){ //stack yang berisi 1 elemen dihitung riwayat kosong
+            printf("Riwayat lagu kosong, memutar kembali lagu "); //memutar lagu yang berada di TOP
+            printf("\"%s\"\n", CurrentSong);
         }
 
         else{
-            Pop(history, &prev);
+            // Pop(history, &prev);
+            stringCopy(prev.nama_penyanyi, CurrentSinger);
+            stringCopy(prev.nama_album, CurrentAlbum);
+            stringCopy(prev.nama_lagu, CurrentSong);
             for(int i = 0; i < queuelength(*q); i++){ //kosongkan queue yang *q
                 dequeue(q, &temp);
                 enqueue(&tempq, temp);
@@ -550,20 +561,43 @@ void songSpotify(Queue *q, Stack *history){
                 dequeue(&tempq, &temp);
                 enqueue(q, temp);
             }
+            Pop(history, &prev); //pop ID lagu yang berada di stack
+            stringCopy(CurrentSinger, prev.nama_penyanyi);
+            stringCopy(CurrentAlbum, prev.nama_album);
+            stringCopy(CurrentSong, prev.nama_lagu);
             printf("Memutar lagu sebelumnya\n");
-            printf("\"%d\" oleh \"%s\"\n", id_lagu, nama);
+            printf("\"%s\" oleh \"%s\"\n", CurrentSong, CurrentSinger);
         }
     }
 }
 
-void playlistSpotify(){
-    
+void playlistSpotify(lList *ll){
+    STARTWORD();
+//     if(stringComp(currentWord.TabWord, "CREATE")){
+//         int cnt;
+//         do
+//         {
+//             printf("Masukkan nama playlist yang ingin dibuat :");
+//             STARTLINE();
+//             cnt=0;
+//             for (int i=0; i<currentLine.Length; i++)
+//             {
+//                 if(currentLine.TabWord[i]==' ') cnt++;
+//             }
+//             if(cnt<3) printf("Minimal terdapat 3 karakter selain whitespace dalam nama playlist. Silakan coba lagi.");
+//         } while (cnt<3);
+        
+//         ll->linkedlistFirst=NULL;
+//         ll->namaPlaylist=currentLine;
+//         InsertLast(&Playlist, *ll);
+//         printf("Playlist %s berhasil dibuat! Silakan masukkan lagu - lagu artis terkini kesayangan Anda!", currentLine.TabWord);
+//     }
 }
 
 void statusSpotify(Queue *q, Stack *s){
     // queueElType val;
     // Queue q2;
-    int i;
+    int i, counter = 1;
     if (queueisEmpty(*q)){
         if(stringComp(CurrentSong, "")){
             printf ("Now Playing: ");
@@ -586,7 +620,7 @@ void statusSpotify(Queue *q, Stack *s){
             printf("%s\n", CurrentSong);
         }
         printf("Queue:\n");
-        for (i = 0; i < (queuelength(*q)) ; i++){
+        for (i = queueIDX_HEAD(*q); i <= (queueIDX_TAIL(*q)) ; i++){
             // dequeue(q, &val); // dequeue nama_penyanyi, nama_album, CurrentSong
             // enqueue(&q2, val); // enqueue nama_penyanyi, nama_album, CurrentSong
             printf("%d. %s - %s - %s\n", i+1, q->buffer[i].nama_penyanyi, q->buffer[i].nama_album, q->buffer[i].nama_lagu);
@@ -597,10 +631,11 @@ void statusSpotify(Queue *q, Stack *s){
         printf("%s\n", CurrentSong);
 
         printf("Queue:\n");
-        for (i = 0; i < (queuelength(*q)) ; i++){
+        for (i = queueIDX_HEAD(*q); i <= (queueIDX_TAIL(*q)) ; i++){
             // dequeue(q, &val); // dequeue nama_penyanyi, nama_album, CurrentSong
             // enqueue(&q2, val); // enqueue nama_penyanyi, nama_album, CurrentSong
-            printf("%d. %s - %s - %s\n", i+1, q->buffer[i].nama_penyanyi, q->buffer[i].nama_album, q->buffer[i].nama_lagu);
+            printf("%d. %s - %s - %s\n", counter, q->buffer[i].nama_penyanyi, q->buffer[i].nama_album, q->buffer[i].nama_lagu);
+            counter++;
         }
     }
     else if(!stackIsEmpty(*s) && !queueisEmpty(*q) && CurrentPlaylist != NULL){
@@ -614,7 +649,8 @@ void statusSpotify(Queue *q, Stack *s){
         for (int i = 0; i < queuelength(*q) ; i++){
             // dequeue(q, &val); // dequeue nama_penyanyi, nama_album, CurrentSong
             // enqueue(&q2, val); // enqueue nama_penyanyi, nama_album, CurrentSong
-            printf("%d. %s - %s - %s\n", i, q->buffer[i].nama_penyanyi, q->buffer[i].nama_album, q->buffer[i].nama_lagu);
+            printf("%d. %s - %s - %s\n", counter, q->buffer[i].nama_penyanyi, q->buffer[i].nama_album, q->buffer[i].nama_lagu);
+            counter++;
         }
     }
 }
@@ -697,7 +733,6 @@ void quitSpotify(){
     exit(0);
 }
  /*Keluar dari sesi aplikasi WayangWave (SPOTIFY)*/ 
-
 void helpSpotify(){
     printf("ajshdkashdjkahdjs\n");
 }

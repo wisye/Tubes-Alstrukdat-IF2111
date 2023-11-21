@@ -17,7 +17,6 @@
 #include "../ADT/Album/album.h"
 #include "../ADT/globalvar/globalvar.h"
 #include "../ADT/Penyanyi/penyanyi.h"
-#include "../ADT/ListDinamis/arraydin.h"
 #include "../ADT/ListPlaylistDinamis/listPlaylist.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -46,20 +45,20 @@ void queueSpotify(Queue *q);
   Menghapus lagu dari queue jika QUEUE REMOVE id
   Mengosongkan queue jika QUEUE CLEAR*/
 
-void songSpotify();
+void songSpotify(Queue *q, Stack *history);
 /*Memutar lagu yang berada di dalam queue SONG NEXT, lagu yang sedang diputar kemudian ditambah kedalam
     daftar riwayat putar lagu, jika queue kosong yang diputar adalah lagu yang sedang diputar
   Memutar lagu yang terakhir kali diputa jika SONG PREVIOUS, lagu yang sedang diputar ditambahkan ke queue
     , jika riwayat lagu kosong yang diputar adalah lagu yang sedang diputar*/
 
-void playlistSpotify();
+void playlistSpotify(lList *ll);
 /*Membuat playlist baru dan ditambahkan pada daftar list pengguna jika PLAYLIST CREATE
   Menambahkan lagu pada playlist yang sudah ada jika PLAYLIST ADD
   Menukar lagu pada urutan ke x y di playlist dengan urutan ke id jika PLAYLIST SWAP <id> <x> <y>
   Menghapus lagu dengan urutan n pada playlist dengan indeks id jika PLAYLIST REMOVE <id> <n>
   Menghapus suatu existing playlist jika PLAYLIST DELETE , tampilkan error jika id tidak valid*/
 
-void statusSpotify();
+void statusSpotify(Queue *q, Stack *s);
 /*Menampilkan lagu yang sedang dimainkan beserta queue song yang ada dan dari playlist mana lagu itu diputar*/
 
 int saveSpotify();
