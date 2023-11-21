@@ -28,7 +28,7 @@ void PrintPlaylist(ListPlaylist array) {
 	IdxType j;
 	// ALGORITMA
     if(array.Neff == 0){
-		printf("Daftar playlist yang kamu miliki:");
+		printf("Daftar playlist yang kamu miliki: ");
         printf("Kamu tidak memiliki playlist.\n");
     } else {
 		printf("Daftar playlist yang kamu miliki:\n");
