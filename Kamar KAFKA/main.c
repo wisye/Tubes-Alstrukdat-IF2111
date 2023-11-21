@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "src/command/console.h"
+#include "welcome.h"
 // #include "src/command/func.h"
 
 void help(){
@@ -33,6 +34,7 @@ int main(){
     llCreateEmpty(&ll);
     ListPlaylist LPlaylist;
     printf("SELAMAT DATANG DI APLIKASI WAYANG WAVE\n");
+    welcome();
 
     
     for(;;){
