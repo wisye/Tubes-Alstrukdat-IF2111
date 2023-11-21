@@ -44,49 +44,49 @@ int lpLength(ListPlaylist array);
  * Mengembalikan elemen array L yang ke-I (indeks lojik).
  * Prekondisi: array tidak kosong, i di antara 0..Length(array).
  */
-ElType Get(ListPlaylist array, IdxType i);
+ElType lpGet(ListPlaylist array, IdxType i);
 
 /*
  * Fungsi untuk mendapatkan kapasitas yang tersedia.
  * Prekondisi: array terdefinisi
  */
-int GetCapacity(ListPlaylist array);
+int lpGetCapacity(ListPlaylist array);
 
 /*
  * Fungsi untuk menambahkan elemen baru di index ke-i
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void InsertAt(ListPlaylist *array, ElType el, IdxType i);
+void lpInsertAt(ListPlaylist *array, ElType el, IdxType i);
 
 /*
  * Fungsi untuk menambahkan elemen baru di akhir array.
  * Prekondisi: array terdefinisi
  */
-void InsertLast(ListPlaylist *array, ElType el);
+void lpInsertLast(ListPlaylist *array, ElType el);
 
 /*
  * Fungsi untuk menambahkan elemen baru di awal array.
  * Prekondisi: array terdefinisi
  */
-void InsertFirst(ListPlaylist *array, ElType el);
+void lpInsertFirst(ListPlaylist *array, ElType el);
 
 /*
  * Fungsi untuk menghapus elemen di index ke-i ListPlaylist
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void DeleteAt(ListPlaylist *array, IdxType i);
+void lpDeleteAt(ListPlaylist *array, IdxType i);
 
 /*
  * Fungsi untuk menghapus elemen terakhir ListPlaylist
  * Prekondisi: array tidak kosong
  */
-void DeleteLast(ListPlaylist *array);
+void lpDeleteLast(ListPlaylist *array);
 
 /*
  * Fungsi untuk menghapus elemen pertama ListPlaylist
  * Prekondisi: array tidak kosong
  */
-void DeleteFirst(ListPlaylist *array);
+void lpDeleteFirst(ListPlaylist *array);
 
 /*
  * Fungsi untuk melakukan print suatu ListPlaylist.
@@ -94,19 +94,19 @@ void DeleteFirst(ListPlaylist *array);
  * dan diakhiri newline.
  * Prekondisi: array terdefinisi
  */
-void PrintArrayDin(ListPlaylist array);
+void lpPrintArrayDin(ListPlaylist array);
 
 /*
  * Fungsi untuk melakukan reverse suatu ListPlaylist.
  * Prekondisi: array terdefinisi
  */
-void ReverseArrayDin(ListPlaylist *array);
+void lpReverseArrayDin(ListPlaylist *array);
 
 /*
  * Fungsi untuk melakukan copy suatu ListPlaylist.
  * Prekondisi: array terdefinisi
  */
-ListPlaylist CopyArrayDin(ListPlaylist array);
+ListPlaylist lpCopyArrayDin(ListPlaylist array);
 
 /*
  * Fungsi untuk melakukan search suatu ListPlaylist.
@@ -114,7 +114,7 @@ ListPlaylist CopyArrayDin(ListPlaylist array);
  * Jika tidak ditemukan, akan mengembalikan -1.
  * Prekondisi: array terdefinisi
  */
-IdxType SearchArrayDin(ListPlaylist array, Line el);
+IdxType lpSearchArrayDin(ListPlaylist array, Line el);
 
 void PrintPlaylist(ListPlaylist array);
 

@@ -3,10 +3,6 @@
 #include "welcome.h"
 // #include "src/command/func.h"
 
-void help(){
-    printf("START : Memulai spotify\n");
-}
-
 int main(){
     // int i,j,k;
     // SetAlbum lagu;
@@ -30,9 +26,7 @@ int main(){
     CreateQueue(&q);
     Stack s;
     stackCreateEmpty(&s);
-    lList ll;
-    llCreateEmpty(&ll);
-    ListPlaylist LPlaylist;
+    ListPlaylist LPlaylist = MakeArrayDin();
     printf("SELAMAT DATANG DI APLIKASI WAYANG WAVE\n");
     welcome();
 
@@ -45,7 +39,7 @@ int main(){
             startSpotify();
         }
         else if(stringComp(currentWord.TabWord, "HELP")){
-            help();
+            helpSpotify();
         }
         else if(stringComp(currentWord.TabWord, "LOAD")){
             loadSpotify();
@@ -54,7 +48,7 @@ int main(){
             listSpotify();
         }
         else if(stringComp(currentWord.TabWord, "PLAY")){
-            playSpotify();
+            playSpotify(&s, &q);
         }
         else if(stringComp(currentWord.TabWord, "QUEUE")){
             queueSpotify(&q);
@@ -63,7 +57,7 @@ int main(){
             songSpotify(&q, &s);
         }
         else if(stringComp(currentWord.TabWord, "PLAYLIST")){
-            playlistSpotify(&ll);
+            playlistSpotify(&LPlaylist);
         }
         else if(stringComp(currentWord.TabWord, "STATUS")){
             statusSpotify(&q, &s);
@@ -74,9 +68,9 @@ int main(){
         else if(stringComp(currentWord.TabWord, "disq")){
             displayQueue(q);
         }
-        // else if(stringComp(currentWord.TabWord, "disp")){
-        //     PrintArrayDin();
-        // }
+        else if(stringComp(currentWord.TabWord, "dislp")){
+            PrintPlaylist(LPlaylist);
+        }
         else{
             printf("invalid command\n");
         }
