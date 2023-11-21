@@ -330,7 +330,9 @@ void playSpotify(Stack *S, Queue *Q){ //Masih bingung cara testing, jadi ini bel
         stringCopy(CurrentAlbum, album);
         stringCopy(CurrentSinger, penyanyi);
         printf("Memutar lagu \"%s\" oleh \"%s\"\n", l.Penyanyi.Elements[idx_penyanyi].album.Elements[idx_album].daftar_lagu.Elements[idx_lagu-1].TabWord, penyanyi);
-        printf("Current Song: %s\n", CurrentSong);
+        // printf("Current Song: %s\n", CurrentSong);
+        CreateQueue(Q);
+        stackCreateEmpty(S);   
     }
     // else if(stringComp(currentWord.TabWord, "PLAYLIST")){//Apabila input berupa play playlist
     //     int IDPlaylist;
@@ -450,15 +452,15 @@ void queueSpotify(Queue *q){
     else if(stringComp(currentWord.TabWord, "SWAP")){
         int x, y;
         STARTWORD();
-        x = wordToInt(currentWord);
+        x = wordToInt(currentWord) - 1;
         STARTWORD();
-        y = wordToInt(currentWord);
+        y = wordToInt(currentWord) - 1;
         if(x > queueIDX_TAIL(*q)){
-        printf("Lagu dengan urutan ke %d tidak terdapat dalam queue!", x);
+        printf("Lagu dengan urutan ke %d tidak terdapat dalam queue!\n", x);
         }
         else{
             if(y > queueIDX_TAIL(*q)){
-                printf("Lagu dengan urutan ke %d tidak terdapat dalam queue!", y);
+                printf("Lagu dengan urutan ke %d tidak terdapat dalam queue!\n", y);
             }
             else{
                 int lagux =  queueIDX_HEAD(*q)+x;
@@ -479,7 +481,7 @@ void queueSpotify(Queue *q){
         CreateQueue(&temp);
         CreateQueue(&before);
         STARTWORD();
-        id = wordToInt(currentWord);
+        id = wordToInt(currentWord) - 1;
         if(id > queueIDX_TAIL(*q)){
             printf("Lagu urutan ke %d tidak ada\n", id);
         }
@@ -552,12 +554,15 @@ void songSpotify(Queue *q, Stack *history){
             stringCopy(prev.nama_penyanyi, CurrentSinger);
             stringCopy(prev.nama_album, CurrentAlbum);
             stringCopy(prev.nama_lagu, CurrentSong);
-            for(int i = 0; i < queuelength(*q); i++){ //kosongkan queue yang *q
+            for(int i = queueIDX_HEAD(*q); i <= queueIDX_TAIL(*q); i++){ //kosongkan queue yang *q kecuali yang dienqueue sebelumnya
                 dequeue(q, &temp);
                 enqueue(&tempq, temp);
             }
-            enqueue(q, prev); //masukkan ID yang sudah di pop dari stack ke *q
-            for(int i = 0; i < queuelength(tempq); i++){ //enqeue kembali ID lagu yang berada di *q sebelumnya
+ //masukkan ID yang sudah di pop dari stack ke *q
+            
+            enqueue(q, prev);
+            //enqueue(q, prev); //masukkan ID yang sudah di pop dari stack ke *q //masukkan ID yang sudah di pop dari stack ke *q
+            for(int i = queueIDX_HEAD(tempq); i <= queueIDX_TAIL(tempq); i++){ //enqeue kembali ID lagu yang berada di *q sebelumnya
                 dequeue(&tempq, &temp);
                 enqueue(q, temp);
             }
@@ -571,27 +576,135 @@ void songSpotify(Queue *q, Stack *history){
     }
 }
 
-void playlistSpotify(lList *ll){
+void playlistSpotify(ListPlaylist *Playlist){
     STARTWORD();
-//     if(stringComp(currentWord.TabWord, "CREATE")){
-//         int cnt;
-//         do
-//         {
-//             printf("Masukkan nama playlist yang ingin dibuat :");
-//             STARTLINE();
-//             cnt=0;
-//             for (int i=0; i<currentLine.Length; i++)
-//             {
-//                 if(currentLine.TabWord[i]==' ') cnt++;
-//             }
-//             if(cnt<3) printf("Minimal terdapat 3 karakter selain whitespace dalam nama playlist. Silakan coba lagi.");
-//         } while (cnt<3);
+    if(stringComp(currentWord.TabWord, "CREATE")){
+        int cnt;
+        lList ll;
+        llCreateEmpty(&ll);
+        do
+        {
+            printf("Masukkan nama playlist yang ingin dibuat : ");
+            STARTLINE();
+            cnt=0;
+            for (int i=0; i<currentLine.Length; i++)
+            {
+                if(currentLine.TabWord[i] != ' ') cnt++;
+            }
+            if(cnt<3) printf("Minimal terdapat 3 karakter selain whitespace dalam nama playlist. Silakan coba lagi.\n");
+        } while (cnt<3);
         
-//         ll->linkedlistFirst=NULL;
-//         ll->namaPlaylist=currentLine;
-//         InsertLast(&Playlist, *ll);
-//         printf("Playlist %s berhasil dibuat! Silakan masukkan lagu - lagu artis terkini kesayangan Anda!", currentLine.TabWord);
-//     }
+
+
+        ll.linkedlistFirst=NULL;
+        ll.namaPlaylist=currentLine;
+        lpInsertLast(Playlist, ll);
+        printf("Playlist %s berhasil dibuat! Silakan masukkan lagu - lagu artis terkini kesayangan Anda!\n", currentLine.TabWord);
+    }
+
+    else if(stringComp(currentWord.TabWord, "ADD")){
+        // printf("Daftar Penyanyi :");
+        // showPenyanyi(l);
+        // printf("Masukkan Nama Penyanyi yang dipilih :");
+        // STARTLINE();
+        // Line x=currentLine;
+        // printf("Daftar Album oleh %s :", x.TabWord);
+        // showAlbum(x, l);
+        // printf("Masukkan Judul Album yang dipilih");
+        // char t[100];
+        // gets(t);
+        // Word y;
+        // y.Length=strlen(t);
+        // for (int i=0; i<strlen(t); i++) y.TabWord[i]=t[i];
+        // int idx;
+        // printf("Daftar Lagu Album %s oleh %s :",t,x);
+        // boolean diff=false;
+        // for (int i=0; i<l.Penyanyi.Count; i++)
+        // {
+        //     if(strlen(x)!=l.Penyanyi.Elements[i].nama_penyanyi.Length) continue;
+        //     for(int j=0; j<l.Penyanyi.Elements[i].nama_penyanyi.Length; j++)
+        //     {
+        //         if(l.Penyanyi.Elements[i].nama_penyanyi.TabWord[j]!=x[j]) diff=true;
+        //     }
+        //     if (diff=false)
+        //     {
+        //         idx=i;
+        //         break;
+        //     }
+        // }
+        // printf("Daftar Lagu Album %s oleh %s :",t,x);
+        // showLagu(y, idx, l);
+        // printf("Masukkan ID Lagu yang dipilih : ");
+        // int id;
+        // scanf("%d",&id);
+        printf("Daftar Penyanyi :\n");
+        showPenyanyi(l);
+
+        // pilih album
+        printf("Pilih penyanyi untuk melihat album mereka: ");
+        char penyanyi[100] = "";
+        stringMakeEmpty(penyanyi);
+        // START();
+        STARTLINE();
+        // printf("%s\n", currentLine.TabWord);
+        // ADVWORD();
+        stringCopy(penyanyi, currentLine.TabWord);
+        // scanf("%s", penyanyi);
+
+        // printf("%s\n", penyanyi);
+        printf("Daftar Album oleh %s:\n", penyanyi);
+        int idx_penyanyi = showAlbum(charToLine(penyanyi), l);
+
+
+        // pilih lagu
+        printf("Masukkan nama Album yang dipilih : ");
+        char album[100] = "";
+        stringMakeEmpty(album);
+        // ADVWORD();
+        // START();
+        STARTLINE();
+        // ADVWORD();
+        int idx_album;
+
+        stringCopy(album, currentLine.TabWord);
+        for(int i = 0; i < l.Penyanyi.Elements[idx_penyanyi].album.Count; i++){
+            if(stringComp(l.Penyanyi.Elements[idx_penyanyi].album.Elements[i].nama_album.TabWord, album)){
+                idx_album = i;
+                break;
+            }
+        }
+        // scanf("%s", album);
+        printf("Daftar Lagu Album %s oleh %s\n", album, penyanyi);
+        showLagu(charToWord(album), idx_penyanyi, l);
+        printf("Masukkan ID lagu yang dipilih : ");
+        STARTWORD();
+        int idx_lagu = wordToInt(currentWord);
+        llinfotype newSong;
+        // lList newSong;
+        // llCreateEmpty((*newSong).linkedlistFirst);
+        stringCopy(newSong.nama_penyanyi, penyanyi);
+        stringCopy(newSong.nama_album, album);
+        stringCopy(newSong.nama_lagu, l.Penyanyi.Elements[idx_penyanyi].album.Elements[idx_album].daftar_lagu.Elements[idx_lagu-1].TabWord);
+
+        printf("Daftar Playlist Pengguna :\n");
+        for (int i = 0; i < Playlist->Neff; i++) {
+            printf("%d. %s\n", i + 1, Playlist->A[i].namaPlaylist.TabWord);
+        }
+        printf("Masukkan ID Playlist yang dipilih : ");
+        int playlistID;
+        // scanf("%d", &playlistID);
+        STARTWORD();
+        playlistID = wordToInt(currentWord);
+        int idx2 = playlistID - 1;
+        
+        llInsVLast(&(Playlist->A[idx2]), newSong);
+        // lpInsertLast(Playlist, *ll);
+        
+
+        // lList *chosenPlaylist = &((*Playlist).A[idx2]);
+        // llInsertLast(&((*chosenPlaylist).linkedlistFirst), newSong);
+        printf("Lagu dengan judul %s pada album %s oleh penyanyi %s berhasil ditambahkan ke dalam playlist %s.\n", newSong.nama_lagu, newSong.nama_album, newSong.nama_penyanyi, Playlist->A[idx2].namaPlaylist.TabWord);
+    }
 }
 
 void statusSpotify(Queue *q, Stack *s){
@@ -623,7 +736,8 @@ void statusSpotify(Queue *q, Stack *s){
         for (i = queueIDX_HEAD(*q); i <= (queueIDX_TAIL(*q)) ; i++){
             // dequeue(q, &val); // dequeue nama_penyanyi, nama_album, CurrentSong
             // enqueue(&q2, val); // enqueue nama_penyanyi, nama_album, CurrentSong
-            printf("%d. %s - %s - %s\n", i+1, q->buffer[i].nama_penyanyi, q->buffer[i].nama_album, q->buffer[i].nama_lagu);
+            printf("%d. %s - %s - %s\n", counter, q->buffer[i].nama_penyanyi, q->buffer[i].nama_album, q->buffer[i].nama_lagu);
+            counter++;
         }
     }
     else if (!stringComp(CurrentSong, "") && !queueisEmpty(*q)) {

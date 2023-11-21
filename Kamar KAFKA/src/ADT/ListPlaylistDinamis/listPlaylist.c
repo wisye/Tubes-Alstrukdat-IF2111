@@ -9,13 +9,13 @@
  * dan diakhiri newline.
  * Prekondisi: array terdefinisi
  */
-void PrintArrayDin(ListPlaylist array) {
+void lpPrintArrayDin(ListPlaylist array) {
 	// KAMUS
 	IdxType j;
 	// ALGORITMA
 	printf("[");
 	for (j = 0; j < (array).Neff; j++) {
-		printf("%d", (array).A[j].namaPlaylist);
+		printf("%s", (array).A[j].namaPlaylist.TabWord);
 		if (j != (array).Neff -1) {
 			printf(", ");
 		}
@@ -31,9 +31,10 @@ void PrintPlaylist(ListPlaylist array) {
 		printf("Daftar playlist yang kamu miliki:");
         printf("Kamu tidak memiliki playlist.\n");
     } else {
-		printf("Daftar playlist yang kamu miliki:");
+		printf("Daftar playlist yang kamu miliki:\n");
         for (j = 0; j < (array).Neff; j++) {
-            printf("%d. %s", j+1, (array).A[j].namaPlaylist.TabWord);
+            printf("%d. %s\n", j+1, (array).A[j].namaPlaylist.TabWord);
+			llPrintInfo(array.A[j]);
         }
     }
 	
@@ -88,7 +89,7 @@ int lpLength(ListPlaylist array) {
  * Mengembalikan elemen array L yang ke-I (indeks lojik).
  * Prekondisi: array tidak kosong, i di antara 0..Length(array).
  */
-ElType Get(ListPlaylist array, IdxType i) {
+ElType lpGet(ListPlaylist array, IdxType i) {
 	// KAMUS
 	// ALGORITMA
 	return array.A[i];
@@ -98,7 +99,7 @@ ElType Get(ListPlaylist array, IdxType i) {
  * Fungsi untuk mendapatkan kapasitas yang tersedia.
  * Prekondisi: array terdefinisi
  */
-int GetCapacity(ListPlaylist array) {
+int lpGetCapacity(ListPlaylist array) {
 	// KAMUS
 	// ALGORITMA
 	return array.Capacity;
@@ -108,7 +109,7 @@ int GetCapacity(ListPlaylist array) {
  * Fungsi untuk menambahkan elemen baru di index ke-i
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void InsertAt(ListPlaylist *array, ElType el, IdxType i) {
+void lpInsertAt(ListPlaylist *array, ElType el, IdxType i) {
 	// KAMUS
 	// ALGORITMA
 	    int j;
@@ -149,31 +150,31 @@ void InsertAt(ListPlaylist *array, ElType el, IdxType i) {
  * Fungsi untuk menambahkan elemen baru di akhir array.
  * Prekondisi: array terdefinisi
  */
-void InsertLast(ListPlaylist *array, ElType el) {
+void lpInsertLast(ListPlaylist *array, ElType el) {
 	// KAMUS
 	// ALGORITMA
-	InsertAt(array, el,(*array).Neff);
+	lpInsertAt(array, el,(*array).Neff);
 }
 
 /*
  * Fungsi untuk menambahkan elemen baru di awal array.
  * Prekondisi: array terdefinisi
  */
-void InsertFirst(ListPlaylist *array, ElType el) {
+void lpInsertFirst(ListPlaylist *array, ElType el) {
 	// KAMUS
 	// ALGORITMA
-	InsertAt(array, el, 0);
+	lpInsertAt(array, el, 0);
 }
 
 /*
  * Fungsi untuk menghapus elemen di index ke-i ListPlaylist
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void DeleteAt(ListPlaylist *array, IdxType i) {
+void lpDeleteAt(ListPlaylist *array, IdxType i) {
 	// KAMUS
 	// ALGORITMA
     int j;
-    ElType e = Get(*array, i);
+    ElType e = lpGet(*array, i);
     if ((*array).Neff > ((*array).Capacity / 4))
     {
         (*array).Neff -= 1;
@@ -211,20 +212,20 @@ void DeleteAt(ListPlaylist *array, IdxType i) {
  * Fungsi untuk menghapus elemen terakhir ListPlaylist
  * Prekondisi: array tidak kosong
  */
-void DeleteLast(ListPlaylist *array) {
+void lpDeleteLast(ListPlaylist *array) {
 	// KAMUS
 	// ALGORITMA
-	DeleteAt(array, (*array).Neff-1);
+	lpDeleteAt(array, (*array).Neff-1);
 }
 
 /*
  * Fungsi untuk menghapus elemen pertama ListPlaylist
  * Prekondisi: array tidak kosong
  */
-void DeleteFirst(ListPlaylist *array) {
+void lpDeleteFirst(ListPlaylist *array) {
 	// KAMUS
 	// ALGORITMA
-	DeleteAt(array, 0);
+	lpDeleteAt(array, 0);
 }
 
 
@@ -233,7 +234,7 @@ void DeleteFirst(ListPlaylist *array) {
  * Fungsi untuk melakukan reverse suatu ListPlaylist.
  * Prekondisi: array terdefinisi
  */
-void ReverseArrayDin(ListPlaylist *array) {
+void lpReverseArrayDin(ListPlaylist *array) {
 	// KAMUS
 	IdxType j;
 	ElType *temp = (ElType*) malloc ((*array).Capacity * sizeof(ElType));
@@ -246,12 +247,15 @@ void ReverseArrayDin(ListPlaylist *array) {
 	}
 	free(temp);
 }
-	
+
+// void lpPrintIsiPlaylist(ListPlaylist array){
+
+// }	
 /*
  * Fungsi untuk melakukan copy suatu ListPlaylist.
  * Prekondisi: array terdefinisi
  */
-ListPlaylist CopyArrayDin(ListPlaylist array) {
+ListPlaylist lpCopyArrayDin(ListPlaylist array) {
 	// KAMUS
 	ListPlaylist newArray;
 	IdxType j;
@@ -273,7 +277,7 @@ ListPlaylist CopyArrayDin(ListPlaylist array) {
 
 // SearchArrayDin GATAU BUTUH APA ENGGA, COBA CEK DONG WISYE CUZ MASI MERAH -ELEN
 
-IdxType SearchArrayDin(ListPlaylist array, Line el) {
+IdxType lpSearchArrayDin(ListPlaylist array, Line el) {
 	// KAMUS
 	IdxType j = 0; 
 	// ALGORITMA

@@ -13,10 +13,10 @@
 #include "../ADT/Queue/queue.h"
 #include "../ADT/Stack/stack.h"
 #include "../ADT/func/func.h"
-#include "../ADT/LinkedList/listlinier.h"
 #include "../ADT/Album/album.h"
 #include "../ADT/globalvar/globalvar.h"
 #include "../ADT/Penyanyi/penyanyi.h"
+#include "../ADT/Playlist/playlist.h"
 #include "../ADT/ListPlaylistDinamis/listPlaylist.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -34,7 +34,7 @@ void listSpotify();
 /*Menampilkan list penyanyi yang ada jika LIST DEFAULT
   Menampilkan list playlist yang ada pada pengguna jika LIST PLAYLIST*/
 
-void playSpotify();
+void playSpotify(Stack *S, Queue *Q);
 /*Memainkan lagu yang dipilih jika PLAY SONG
   Memainkan lagu berdasar id playlist jika PLAY PLAYLIST*/
 
@@ -51,7 +51,7 @@ void songSpotify(Queue *q, Stack *history);
   Memutar lagu yang terakhir kali diputa jika SONG PREVIOUS, lagu yang sedang diputar ditambahkan ke queue
     , jika riwayat lagu kosong yang diputar adalah lagu yang sedang diputar*/
 
-void playlistSpotify(lList *ll);
+void playlistSpotify(ListPlaylist *Playlist);
 /*Membuat playlist baru dan ditambahkan pada daftar list pengguna jika PLAYLIST CREATE
   Menambahkan lagu pada playlist yang sudah ada jika PLAYLIST ADD
   Menukar lagu pada urutan ke x y di playlist dengan urutan ke id jika PLAYLIST SWAP <id> <x> <y>
