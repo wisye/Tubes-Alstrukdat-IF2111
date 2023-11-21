@@ -539,8 +539,8 @@ void songSpotify(Queue *q, Stack *history){
         }
     }
     if(stringComp(currentWord.TabWord, "PREVIOUS")){
-        stackinfotype prev, temp; //temp untuk nyimpan elemen queue sementara
-        Queue tempq; //queue baru
+        stackinfotype prev, temp;
+        Queue tempq;
         CreateQueue(&tempq);
         // int id_lagu = history->T[history->TOP].idx_lagu;
         // char *nama = history->T[history->TOP].nama_penyanyi;
@@ -554,7 +554,6 @@ void songSpotify(Queue *q, Stack *history){
             stringCopy(prev.nama_penyanyi, CurrentSinger);
             stringCopy(prev.nama_album, CurrentAlbum);
             stringCopy(prev.nama_lagu, CurrentSong);
-<<<<<<< HEAD
             for(int i = queueIDX_HEAD(*q); i <= queueIDX_TAIL(*q); i++){ //kosongkan queue yang *q kecuali yang dienqueue sebelumnya
                 dequeue(q, &temp);
                 enqueue(&tempq, temp);
@@ -564,15 +563,6 @@ void songSpotify(Queue *q, Stack *history){
             enqueue(q, prev);
             //enqueue(q, prev); //masukkan ID yang sudah di pop dari stack ke *q //masukkan ID yang sudah di pop dari stack ke *q
             for(int i = queueIDX_HEAD(tempq); i <= queueIDX_TAIL(tempq); i++){ //enqeue kembali ID lagu yang berada di *q sebelumnya
-=======
-            enqueue(q, prev); //hasil copy dari currentsong
-            for(int i = 0; i < queuelength(*q)-1; i++){ //kosongkan queue yang *q kecuali yang dienqueue sebelumnya
-                dequeue(q, &temp);
-                enqueue(&tempq, temp);
-            }
-            //enqueue(q, prev); //masukkan ID yang sudah di pop dari stack ke *q
-            for(int i = 0; i < queuelength(tempq); i++){ //enqeue kembali ID lagu yang berada di *q sebelumnya
->>>>>>> 00dd83ceb9b3b2be51c25c043202be37435e1c4d
                 dequeue(&tempq, &temp);
                 enqueue(q, temp);
             }
