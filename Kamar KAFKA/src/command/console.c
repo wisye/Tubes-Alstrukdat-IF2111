@@ -3,13 +3,13 @@
 
 ListDefault l;
 // Queue q;
-void startSpotify(){
+void startSpotify(Queue *q, Stack *history, ListPlaylist *Playlist){
     ADVWORD();
     stringCopy(currentWord.TabWord, "DEFAULT");
-    loadSpotify();
+    loadSpotify(q, history, Playlist);
 }
 /*Implementation of console.h goes here*/
-int loadSpotify(){
+int loadSpotify(Queue *q, Stack *history, ListPlaylist *Playlist){
     // printf("LOADED\n");
     int i = 0, j = 0, k = 0;
     FILE *file;
@@ -101,7 +101,6 @@ int loadSpotify(){
         // printf("%s\n", l.list_penyanyi->nama_penyanyi.TabWord);
         // break;
     }
-
     // printf("%s", l.list_penyanyi[2].list_album[1].nama_album.TabWord);
     // for(int k=0; k<40; k++) {
     //     readFileLine(file);
@@ -109,16 +108,81 @@ int loadSpotify(){
     // }
 
     // printf("%s", buffer);
-
+    queueElType ID;
+    llinfotype LD;
     // printf("\n");
+    if(!IsEOF()){ // READ FOR CURRENT SONG
+        // printf("AAAAA");
+        readFileLineIgnoreMark(file);
+        stringCopy(CurrentSinger, currentLine.TabWord);
+        readFileLineIgnoreMark(file);
+        stringCopy(CurrentAlbum, currentLine.TabWord);
+        readFileLineIgnoreMark(file);
+        stringCopy(CurrentSong, currentLine.TabWord);
+        // if(feof(file)){
+        //     fclose(file);
+        //     printf("Save file berhasil dibaca. WayangWave berhasil dijalankan.\n");
+        //     return 0;
+        // }
+    }
+    if(!IsEOF()){ // READ FOR QUEUE
+        readFileWord(file);
+        int idx = wordToInt(currentWord);
+        // printf("%d\n", idx);
+        for(i=0; i<idx; i++){
+            readFileLineIgnoreMark(file);
+            stringCopy(ID.nama_penyanyi, currentLine.TabWord);
+            readFileLineIgnoreMark(file);
+            stringCopy(ID.nama_album, currentLine.TabWord);
+            readFileLineIgnoreMark(file);
+            stringCopy(ID.nama_lagu, currentLine.TabWord);
+            enqueue(q, ID);
+        }
+    }
+    if(!IsEOF()){ // READ FOR HISTORY
+        readFileWord(file);
+        int idx = wordToInt(currentWord);
+        for(i=0; i<idx; i++){
+            readFileLineIgnoreMark(file);
+            stringCopy(ID.nama_penyanyi, currentLine.TabWord);
+            readFileLineIgnoreMark(file);
+            stringCopy(ID.nama_album, currentLine.TabWord);
+            readFileLineIgnoreMark(file);
+            stringCopy(ID.nama_lagu, currentLine.TabWord);
+            Push(history, ID);
+        }
+    }
+    if(!IsEOF()){ // READ FOR PLAYLIST
+        readFileWord(file);
+        int idx_playlist = wordToInt(currentWord);
+        for(i=0; i<idx_playlist; i++){
+            readFileWord(file);
+            int idxsong = wordToInt(currentWord);
+            // printf("%d\n", idxsong);
+            readFileLineIgnoreMark(file);
+            stringCopy(Playlist->A[i].namaPlaylist.TabWord, currentLine.TabWord);
+            for(j=0; j<idxsong; j++){
+                readFileLineIgnoreMark(file);
+                stringCopy(LD.nama_penyanyi, currentLine.TabWord);
+                // printf("%s\n", currentLine.TabWord);
+                readFileLineIgnoreMark(file);
+                stringCopy(LD.nama_album, currentLine.TabWord);
+                // printf("%s\n", currentLine.TabWord);
+                readFileLineIgnoreMark(file);
+                stringCopy(LD.nama_lagu, currentLine.TabWord);
+                // printf("%s\n", currentLine.TabWord);
+                llInsVLast(&(Playlist->A[i]), LD);
+            }
+            
+        }
+        Playlist->Neff = idx_playlist;
+    }
     fclose(file);
-
-
     printf("Save file berhasil dibaca. WayangWave berhasil dijalankan.\n");
     return 0;
 }
 /*Dibaca save file input yang berisi list game yang dapat dimainkan, histori, dan scoreboard game*/
-void listSpotify(){
+void listSpotify(ListPlaylist *Playlist){
     // printf(">> ");
     ADVWORD();      // TURN THIS OFF IF YOU WANT TO USE THE DRIVER
     // STARTWORD(); // TURN THIS ON IF YOU WANT TO USE THE DRIVER
@@ -193,16 +257,20 @@ void listSpotify(){
         return;
     }
     else if (stringComp(currentWord.TabWord, "PLAYLIST")){
-        printf("PLAYLIST\n");
+        printf("Daftar Playlist yang kamu miliki:\n");
+        if(Playlist->Neff == 0){
+            printf("Kamu tidak memiliki playlist.\n");
+            return;
+        }
+        for(int i=0; i<Playlist->Neff; i++){
+            printf("\t%d. %s\n", i+1, Playlist->A[i].namaPlaylist.TabWord);
+        }
         return;
     }
-    else{
-        printf("invalid command\n");
-        return;
-    }
+
 }
 
-void playSpotify(Stack *S, Queue *Q){ //Masih bingung cara testing, jadi ini belum di test. Kayaknya globalvar juga belum diinclude
+void playSpotify(Stack *S, Queue *Q, ListPlaylist *Playlist){ //Masih bingung cara testing, jadi ini belum di test. Kayaknya globalvar juga belum diinclude
     STARTWORD();
     // printf("%s\n", currentWord.TabWord);
     if (stringComp(currentWord.TabWord, "SONG")){//Apabila input berupa play song
@@ -332,40 +400,59 @@ void playSpotify(Stack *S, Queue *Q){ //Masih bingung cara testing, jadi ini bel
         printf("Memutar lagu \"%s\" oleh \"%s\"\n", l.Penyanyi.Elements[idx_penyanyi].album.Elements[idx_album].daftar_lagu.Elements[idx_lagu-1].TabWord, penyanyi);
         // printf("Current Song: %s\n", CurrentSong);
         CreateQueue(Q);
-        stackCreateEmpty(S);   
+        stackCreateEmpty(S); 
+        stringCopy(CurrentPlaylist, "");  
     }
-    // else if(stringComp(currentWord.TabWord, "PLAYLIST")){//Apabila input berupa play playlist
-    //     int IDPlaylist;
-    //     printf("\nMasukkan ID Playlist: ");
+    else if(stringComp(currentWord.TabWord, "PLAYLIST")){//Apabila input berupa play playlist
+        int IDPlaylist;
+        printf("Masukkan ID Playlist: ");
+        STARTWORD();
+        IDPlaylist = wordToInt(currentWord);
     //     scanf("%d" , &IDPlaylist); //Input ID Playlist
-    //     if(IDPlaylist <= Length(listPlaylist)){ //Melakukan cek terhadap ID yang diinput
-    //         printf("Memutar playlist \"%s\".\n", listPlaylist.A[IDPlaylist-1].namaPlaylist.TabWord);
-    //         stringCopy(CurrentPlaylist, listPlaylist.A[IDPlaylist-1].namaPlaylist.TabWord);
-    //         if(!queueisEmpty(*Q)){//Apabila sesuai akan mengosongkan queue
-    //             for(int i = 0; i<queuelength(*Q) ; i++){
-    //                 dequeue(Q, Q->buffer[i]);
-    //             }
-    //         }
-    //         while(!stackIsEmpty(*S)){//Stack juga dikosongkan
-    //             Pop(S,S->T[S->TOP]);
-    //         }
-    //         lladdress P = llFirst(listPlaylist.A[IDPlaylist-1]); //Masih ga yakin disini
-    //         Push(S, llInfo(P));//Memasukkan lagu pertama dari playlist yang dipilih ke stack
-    //         stringCopy(CurrentSong, llInfo(P));
-    //         P = llNext(P);
-    //         while (P != llNil)
-    //         {
-    //             enqueue(Q, llinfo(P));//Memasukkan sisa lagu yang di playlist yang dipilih ke dalam queue
-    //             P = llNext(P);
-    //         }
-            
-    //     }else{
-    //         printf("ID Playlist belum valid.\n");
-    //     }
-    // }
+        if(IDPlaylist <= Playlist->Neff){ //Melakukan cek terhadap ID yang diinput
+            printf("Memutar playlist \"%s\".\n", Playlist->A[IDPlaylist-1].namaPlaylist.TabWord);
+            stringCopy(CurrentPlaylist, Playlist->A[IDPlaylist-1].namaPlaylist.TabWord);
+            // if(!queueisEmpty(*Q)){//Apabila sesuai akan mengosongkan queue
+            //     for(int i = 0; i<queuelength(*Q) ; i++){
+            //         dequeue(Q, Q->buffer);
+            //     }
+            // }
+            CreateQueue(Q);
+            stackCreateEmpty(S);
+            // while(!stackIsEmpty(*S)){//Stack juga dikosongkan
+            //     Pop(S,S->T[S->TOP]);
+            // }
+            lladdress P = llFirst(Playlist->A[IDPlaylist-1]); //Masih ga yakin disini
+            llinfotype LD;
+            Stack temp;
+            stackCreateEmpty(&temp);
+            // Push(S, P->info);//Memasukkan lagu pertama dari playlist yang dipilih ke stack
+            stringCopy(CurrentSinger, P->info.nama_penyanyi);
+            stringCopy(CurrentAlbum, P->info.nama_album);
+            stringCopy(CurrentSong, P->info.nama_lagu);
+            P = llNext(P);
+            while (P != llNil)
+            {
+                stringCopy(LD.nama_penyanyi, (P)->info.nama_penyanyi);
+                stringCopy(LD.nama_album, (P)->info.nama_album);
+                stringCopy(LD.nama_lagu, (P)->info.nama_lagu);
+                enqueue(Q, LD);//Memasukkan sisa lagu yang di playlist yang dipilih ke dalam queue
+                Push(&temp, LD);
+                P = llNext(P);
+            }
+            while(!stackIsEmpty(temp)){
+                Pop(&temp, &LD);
+                Push(S, LD);
+            }
+            stringCopy(CurrentPlaylist, Playlist->A[IDPlaylist-1].namaPlaylist.TabWord);
+            // printf("%s", CurrentPlaylist);
+        }else{
+            printf("ID Playlist belum valid.\n");
+        }
+    }
 }
 
-void queueSpotify(Queue *q){
+void queueSpotify(Queue *q, ListPlaylist *Playlist){
     STARTWORD();
     // ADVWORD();
     // printf("%s\n", currentWord.TabWord);
@@ -447,6 +534,19 @@ void queueSpotify(Queue *q){
         enqueue(q, ID);
         printf("Berhasil menambahkan lagu %s dari album %s oleh %s ke queue\n", ID.nama_lagu, ID.nama_album, ID.nama_penyanyi); //queue masih nyimpan ID saja
         // displayQueue(*q);
+    }
+
+    else if(stringComp(currentWord.TabWord, "PLAYLIST")){
+        lList P;
+        
+        printf("Masukkan ID playlist: ");
+        STARTWORD();
+        int IDPlaylist = wordToInt(currentWord);
+        P = Playlist->A[IDPlaylist-1];
+        while(P.linkedlistFirst != NULL){
+            enqueue(q, P.linkedlistFirst->info);
+            P.linkedlistFirst = P.linkedlistFirst->next;
+        }
     }
 
     else if(stringComp(currentWord.TabWord, "SWAP")){
@@ -835,19 +935,19 @@ void statusSpotify(Queue *q, Stack *s){
         }
         else{
             printf ("Now Playing: ");
-            printf("%s\n", CurrentSong);
+            printf("%s - %s - %s\n", CurrentSong, CurrentAlbum, CurrentSinger);
         }
         printf("Queue: ");
         printf("Your queue is empty.\n");
     }
-    else if (!queueisEmpty(*q)){
+    else if (!queueisEmpty(*q) && stringComp(CurrentPlaylist, "")){
         if(stringComp(CurrentSong, "")){
             printf ("Now Playing: ");
             printf("No songs have been played yet. Please search for a song to begin playback.\n");
         }
         else{
             printf ("Now Playing: ");
-            printf("%s\n", CurrentSong);
+            printf("%s - %s - %s\n", CurrentSong, CurrentAlbum, CurrentSinger);
         }
         printf("Queue:\n");
         for (i = queueIDX_HEAD(*q); i <= (queueIDX_TAIL(*q)) ; i++){
@@ -857,27 +957,13 @@ void statusSpotify(Queue *q, Stack *s){
             counter++;
         }
     }
-    else if (!stringComp(CurrentSong, "") && !queueisEmpty(*q)) {
-        printf ("Now Playing: ");
-        printf("%s\n", CurrentSong);
-
-        printf("Queue:\n");
-        for (i = queueIDX_HEAD(*q); i <= (queueIDX_TAIL(*q)) ; i++){
-            // dequeue(q, &val); // dequeue nama_penyanyi, nama_album, CurrentSong
-            // enqueue(&q2, val); // enqueue nama_penyanyi, nama_album, CurrentSong
-            printf("%d. %s - %s - %s\n", counter, q->buffer[i].nama_penyanyi, q->buffer[i].nama_album, q->buffer[i].nama_lagu);
-            counter++;
-        }
-    }
-    else if(!stackIsEmpty(*s) && !queueisEmpty(*q) && CurrentPlaylist != NULL){
+    else if (!stringComp(CurrentSong, "") && !queueisEmpty(*q) && !stringComp(CurrentPlaylist, "")) {
         printf("Current Playlist: %s\n", CurrentPlaylist);
         printf ("Now Playing: ");
-        printf("%s\n", CurrentSong);
-
-    
+        printf("%s - %s - %s\n", CurrentSong, CurrentAlbum, CurrentSinger);
 
         printf("Queue:\n");
-        for (int i = 0; i < queuelength(*q) ; i++){
+        for (i = queueIDX_HEAD(*q); i <= (queueIDX_TAIL(*q)) ; i++){
             // dequeue(q, &val); // dequeue nama_penyanyi, nama_album, CurrentSong
             // enqueue(&q2, val); // enqueue nama_penyanyi, nama_album, CurrentSong
             printf("%d. %s - %s - %s\n", counter, q->buffer[i].nama_penyanyi, q->buffer[i].nama_album, q->buffer[i].nama_lagu);
@@ -886,7 +972,7 @@ void statusSpotify(Queue *q, Stack *s){
     }
 }
 
-int saveSpotify() {
+int saveSpotify(Queue *q, Stack *history, ListPlaylist *Playlist) {
     FILE *file;
     Word fileName;
     char buffer[100];
@@ -940,13 +1026,103 @@ int saveSpotify() {
             }
         }
     }
+    queueElType ID;
+    llinfotype LD;
+    // printf("\n");
+    if(!stringComp(CurrentSong, "")){ // READ FOR CURRENT SONG
+        // printf("AAAAA");
+        // readFileLineIgnoreMark(file);
+        // stringCopy(CurrentSinger, currentLine.TabWord);
+        // readFileLineIgnoreMark(file);
+        // stringCopy(CurrentAlbum, currentLine.TabWord);
+        // readFileLineIgnoreMark(file);
+        // stringCopy(CurrentSong, currentLine.TabWord);
+        fprintf(file, "%s;", CurrentSinger);
+        fprintf(file, "%s;", CurrentAlbum);
+        fprintf(file, "%s\n", CurrentSong);
+        // if(feof(file)){
+        //     fclose(file);
+        //     printf("Save file berhasil dibaca. WayangWave berhasil dijalankan.\n");
+        //     return 0;
+        // }
+    }
+    if(!queueisEmpty(*q)){ // READ FOR QUEUE
+        // readFileWord(file);
+        // int idx = wordToInt(currentWord);
+        // printf("%d\n", idx);
+        int idx = queuelength(*q);
+        fprintf(file, "%d\n", idx);
+        for(i=(*q).queueidxHead; i<=(*q).queueidxTail; i++){
+            // readFileLineIgnoreMark(file);
+            // stringCopy(ID.nama_penyanyi, currentLine.TabWord);
+            // readFileLineIgnoreMark(file);
+            // stringCopy(ID.nama_album, currentLine.TabWord);
+            // readFileLineIgnoreMark(file);
+            // stringCopy(ID.nama_lagu, currentLine.TabWord);
+            // enqueue(q, ID);
+            fprintf(file, "%s;", q->buffer[i].nama_penyanyi);
+            fprintf(file, "%s;", q->buffer[i].nama_album);
+            fprintf(file, "%s\n", q->buffer[i].nama_lagu);
+        }
+    }
+    if(!stackIsEmpty(*history)){ // READ FOR HISTORY
+        // readFileWord(file);
+        // int idx = wordToInt(currentWord);
+        int idx = stackTop(*history)+1;
+        fprintf(file, "%d\n", idx);
+        for(i=0; i<idx; i++){
+            // readFileLineIgnoreMark(file);
+            // stringCopy(ID.nama_penyanyi, currentLine.TabWord);
+            // readFileLineIgnoreMark(file);
+            // stringCopy(ID.nama_album, currentLine.TabWord);
+            // readFileLineIgnoreMark(file);
+            // stringCopy(ID.nama_lagu, currentLine.TabWord);
+            // Push(history, ID);
+            fprintf(file, "%s;", history->T[i].nama_penyanyi);
+            fprintf(file, "%s;", history->T[i].nama_album);
+            fprintf(file, "%s\n", history->T[i].nama_lagu);
+        }
+    }
+    if(!lpIsEmpty(*Playlist)){ // READ FOR PLAYLIST
+        // readFileWord(file);
+        // int idx_playlist = wordToInt(currentWord);
+        int idx_playlist = Playlist->Neff; 
+        fprintf(file, "%d\n", idx_playlist);
+        for(i=0; i<idx_playlist; i++){
+            // readFileWord(file);
+            // int idxsong = wordToInt(currentWord);;
+            // printf("%d\n", idxsong);
+            // readFileLineIgnoreMark(file);
+            int countll = llNbElmt(Playlist->A[i]);
+            fprintf(file, "%d ", countll);
+            fprintf(file, "%s\n", Playlist->A[i].namaPlaylist.TabWord);
 
+            // stringCopy(Playlist->A[i].namaPlaylist.TabWord, currentLine.TabWord);
+            for(j=0; j<countll; j++){
+                // readFileLineIgnoreMark(file);
+                // stringCopy(LD.nama_penyanyi, currentLine.TabWord);
+                // // printf("%s\n", currentLine.TabWord);
+                // readFileLineIgnoreMark(file);
+                // stringCopy(LD.nama_album, currentLine.TabWord);
+                // // printf("%s\n", currentLine.TabWord);
+                // readFileLineIgnoreMark(file);
+                // stringCopy(LD.nama_lagu, currentLine.TabWord);
+                // // printf("%s\n", currentLine.TabWord);
+                // llInsVLast(&(Playlist->A[i]), LD);
+                fprintf(file, "%s;", Playlist->A[i].linkedlistFirst->info.nama_penyanyi);
+                fprintf(file, "%s;", Playlist->A[i].linkedlistFirst->info.nama_album);
+                fprintf(file, "%s\n", Playlist->A[i].linkedlistFirst->info.nama_lagu);
+            }
+            
+        }
+        // Playlist->Neff = idx_playlist;
+    }
     fclose(file);
     printf("Save file berhasil disimpan.\n");
     return 0;
 }
 
-void quitSpotify(){
+void quitSpotify(Queue *q, Stack *history, ListPlaylist *Playlist){
     printf("Apakah kamu ingin menyimpan data sesi sekarang?\n");
     printf(">> ");
     // ADVWORD();
@@ -956,7 +1132,7 @@ void quitSpotify(){
     
     if (currentWord.TabWord[0] == 'y' || currentWord.TabWord[0] == 'Y'){
         printf("Menyimpan...\n");
-        saveSpotify();
+        saveSpotify(q, history, Playlist);
     }
     printf("Kamu keluar dari WayangWave.\n");
     printf("Dadah ^_^/\n");

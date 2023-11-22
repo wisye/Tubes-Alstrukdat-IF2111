@@ -3,19 +3,21 @@
 
 #include "../Mesinkata/mesinkata.h"
 #include "../Penyanyi/penyanyi.h"
+#include "../Stack/stack.h"
 #include "../boolean.h"
 #include <stdlib.h>
 
 #define llNil NULL
 
-typedef struct {
-        char nama_penyanyi[1000];
-        char nama_album[100];
-        char nama_lagu[100];
-        int idx_penyanyi;
-        int idx_album;
-        int idx_lagu;
-} llinfotype;
+// typedef struct {
+//         char nama_penyanyi[1000];
+//         char nama_album[100];
+//         char nama_lagu[100];
+//         int idx_penyanyi;
+//         int idx_album;
+//         int idx_lagu;
+// } llinfotype;
+typedef stackinfotype llinfotype;
 typedef struct lltElmtlist * lladdress;
 typedef struct lltElmtlist { 
   llinfotype info;

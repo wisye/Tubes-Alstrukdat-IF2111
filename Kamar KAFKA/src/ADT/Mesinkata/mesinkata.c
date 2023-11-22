@@ -12,6 +12,14 @@ void IgnoreBlanks(){
         ADV();
     }
 }
+
+void IgnoreMark(){
+    while ((currentChar == MARK || currentChar == '\n') && currentChar != EOF){
+        ADV();
+    }
+}
+
+
 /* Mengabaikan satu atau beberapa BLANK
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
@@ -96,20 +104,17 @@ void readFileWord(FILE * file){
         EndWord = false;
         fileCopyWord();
     }
-    if (currentChar == EOF) {
-        EndWord = true;
-    }
 }
 
 void fileCopyWord(){
     int i = 0;
 
-    while ((currentChar != MARK)  && (currentChar != BLANK) && (currentChar != MARK_newline) && (i < wordNMax)){
+    while (!IsEOF() && (currentChar != MARK)  && (currentChar != BLANK) && (currentChar != MARK_newline) && (i < wordNMax)){
         currentWord.TabWord[i] = currentChar;
         ADV();
         i ++;
     }
-
+    
     currentWord.Length = i;
 }
 
@@ -133,15 +138,37 @@ void readFileLine(FILE * file){
     }
 }
 
+void readFileLineIgnoreMark(FILE * file){
+    int i;
+    currentLine.Length = 0;
+    for (i=0; i<lineNMax; i++) {
+        currentLine.TabWord[i] = '\0';
+    }
+    // for(i=0; i<wordNMax; i++){
+    //     currentWord.TabWord[i] = " ";
+    // }
+    readFileChar(file);
+    IgnoreBlanks();
+    IgnoreMark();
+    if (currentChar == MARK){
+        EndWord = true;
+    }
+    else{
+    EndWord = false;
+    fileCopyLine();
+    }
+}
+
 void fileCopyLine(){
     int i = 0;
 
-    while ((currentChar != MARK) && (currentChar != MARK_newline) && (i < lineNMax)){
+    while (!IsEOF() && (currentChar != MARK) && (currentChar != MARK_newline) && (i < lineNMax)){
         currentLine.TabWord[i] = currentChar;
         ADV();
         i ++;
     }
-
+    // ADV();
+    currentLine.TabWord[i] = '\0';
     currentLine.Length = i;
 }
 
