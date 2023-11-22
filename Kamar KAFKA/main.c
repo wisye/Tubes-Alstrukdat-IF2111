@@ -34,22 +34,22 @@ int main(){
         STARTWORD();
         // printf("%s\n", currentWord.TabWord);
         if(stringComp(currentWord.TabWord, "START")){
-            startSpotify();
+            startSpotify(&q, &s, &LPlaylist);
         }
         else if(stringComp(currentWord.TabWord, "HELP")){
             helpSpotify();
         }
         else if(stringComp(currentWord.TabWord, "LOAD")){
-            loadSpotify();
+            loadSpotify(&q, &s, &LPlaylist);
         }
         else if(stringComp(currentWord.TabWord, "LIST")){
-            listSpotify();
+            listSpotify(&LPlaylist);
         }
         else if(stringComp(currentWord.TabWord, "PLAY")){
-            playSpotify(&s, &q);
+            playSpotify(&s, &q, &LPlaylist);
         }
         else if(stringComp(currentWord.TabWord, "QUEUE")){
-            queueSpotify(&q);
+            queueSpotify(&q, &LPlaylist);
         }
         else if(stringComp(currentWord.TabWord, "SONG")){
             songSpotify(&q, &s);
@@ -61,7 +61,7 @@ int main(){
             statusSpotify(&q, &s);
         }
         else if(stringComp(currentWord.TabWord, "QUIT")){
-            quitSpotify();
+            quitSpotify(&q, &s, &LPlaylist);
         }
         else if(stringComp(currentWord.TabWord, "disq")){
             displayQueue(q);

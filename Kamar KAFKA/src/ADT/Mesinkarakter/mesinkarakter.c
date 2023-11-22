@@ -19,7 +19,11 @@ void START(){ // CHANGE PITA TO FILE INPUT WHEN LOAD THEN BACK TO STDIN
    F.S. : currentChar adalah karakter pertama pada pita
           Jika currentChar != MARK maka EOP akan padam (false)
           Jika currentChar = MARK maka EOP akan menyala (true) */
+boolean IsEOF(){
+    // START();
+    return (feof(pita));
 
+}
 void ADV(){
     retval = fscanf(pita, "%c", &currentChar);
 }

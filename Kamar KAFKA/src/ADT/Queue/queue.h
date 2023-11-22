@@ -14,9 +14,9 @@ typedef struct {
         char nama_penyanyi[1000];
         char nama_album[100];
         char nama_lagu[100];
-        int idx_penyanyi;
-        int idx_album;
-        int idx_lagu;
+        int idx_penyanyi; // DO NOT USE THIS EVER, IT IS FOR DEBUGGING PURPOSE ONLY     
+        int idx_album; // DO NOT USE THIS EVER, IT IS FOR DEBUGGING PURPOSE ONLY 
+        int idx_lagu; // DO NOT USE THIS EVER, IT IS FOR DEBUGGING PURPOSE ONLY 
 } queueElType;
 /* Definisi elemen dan address */
 // typedef int queueElType;

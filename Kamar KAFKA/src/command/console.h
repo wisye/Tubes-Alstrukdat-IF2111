@@ -24,21 +24,21 @@
 #ifndef CONSOLE_H
 #define CONSOLE_H
 
-void startSpotify();
+void startSpotify(Queue *q, Stack *history, ListPlaylist *Playlist); //DONE
 /*Dibaca file konfigurasi default yang berisi daftar penyanyi serta album yang dimiliki*/
 
-int loadSpotify();
+int loadSpotify(Queue *q, Stack *history, ListPlaylist *Playlist); // DONE
 /*Dibaca save file input yang berisi list game yang dapat dimainkan, histori, dan scoreboard game*/
 
-void listSpotify();
+void listSpotify(ListPlaylist *Playlist);
 /*Menampilkan list penyanyi yang ada jika LIST DEFAULT
   Menampilkan list playlist yang ada pada pengguna jika LIST PLAYLIST*/
 
-void playSpotify(Stack *S, Queue *Q);
+void playSpotify(Stack *S, Queue *Q, ListPlaylist *Playlist);
 /*Memainkan lagu yang dipilih jika PLAY SONG
   Memainkan lagu berdasar id playlist jika PLAY PLAYLIST*/
 
-void queueSpotify(Queue *q);
+void queueSpotify(Queue *q, ListPlaylist *Playlist);
 /*Menambahkan lagu kedalam queue jika QUEUE SONG
   Menambahkan playlist dalam queue jika QUEUE PLAYLIST
   Menukar lagu pada urutan <x> <y> jika QUEUE SWAP <x> <y>
@@ -61,10 +61,10 @@ void playlistSpotify(ListPlaylist *Playlist);
 void statusSpotify(Queue *q, Stack *s);
 /*Menampilkan lagu yang sedang dimainkan beserta queue song yang ada dan dari playlist mana lagu itu diputar*/
 
-int saveSpotify();
+int saveSpotify(Queue *q, Stack *history, ListPlaylist *Playlist);
 /*Menyimpan state aplikasi terbaru kedalam suatu file jika SAVE <filename>*/
 
-void quitSpotify();
+void quitSpotify(Queue *q, Stack *history, ListPlaylist *Playlist);
 /*Keluar dari sesi aplikasi WayangWave (SPOTIFY)*/
 
 void helpSpotify();

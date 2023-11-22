@@ -37,5 +37,5 @@ boolean IsEOP();
 void closePita();
 
 void readFileChar(FILE * f);
-
+boolean IsEOF();
 #endif
