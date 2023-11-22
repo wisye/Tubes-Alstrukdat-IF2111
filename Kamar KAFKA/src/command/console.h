@@ -67,9 +67,9 @@ int saveSpotify(Queue *q, Stack *history, ListPlaylist *Playlist);
 void quitSpotify(Queue *q, Stack *history, ListPlaylist *Playlist);
 /*Keluar dari sesi aplikasi WayangWave (SPOTIFY)*/
 
-void helpSpotify();
+void helpSpotifyBeforeLoad();
 /*Menampilkan daftar command yang mungkin untuk dieksekusi dengan deskripsinya*/
-
+void helpSpotifyAfterLoad();
 
 
 #endif

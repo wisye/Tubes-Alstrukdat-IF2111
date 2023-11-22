@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "src/command/console.h"
 #include "welcome.h"
+#include "src/command/console.h"
 // #include "src/command/func.h"
 
 int main(){
@@ -27,7 +27,7 @@ int main(){
     Stack s;
     stackCreateEmpty(&s);
     ListPlaylist LPlaylist = MakeArrayDin();
-    printf("SELAMAT DATANG DI APLIKASI WAYANG WAVE\n");
+    // printf("SELAMAT DATANG DI APLIKASI WAYANG WAVE\n");
     welcome();
 
     
@@ -37,14 +37,25 @@ int main(){
         // printf("%s\n", currentWord.TabWord);
         if(stringComp(currentWord.TabWord, "START")){
             startSpotify(&q, &s, &LPlaylist);
+            break;
         }
         else if(stringComp(currentWord.TabWord, "HELP")){
-            helpSpotify();
+            helpSpotifyBeforeLoad();
         }
         else if(stringComp(currentWord.TabWord, "LOAD")){
             loadSpotify(&q, &s, &LPlaylist);
+            break;
         }
-        else if(stringComp(currentWord.TabWord, "LIST")){
+        else{
+            printf("Command tidak bisa dieksekusi\n");
+        }
+        // ADVWORD();
+    }
+    printf("GUNAKAN \"HELP;\" UNTUK MELIHAT DAFTAR COMMAND\n");
+    for(;;){
+        printf(">> ");
+        STARTWORD();
+        if(stringComp(currentWord.TabWord, "LIST")){
             listSpotify(&LPlaylist);
         }
         else if(stringComp(currentWord.TabWord, "PLAY")){
@@ -62,18 +73,26 @@ int main(){
         else if(stringComp(currentWord.TabWord, "STATUS")){
             statusSpotify(&q, &s);
         }
-        else if(stringComp(currentWord.TabWord, "QUIT")){
-            quitSpotify(&q, &s, &LPlaylist);
-        }
         else if(stringComp(currentWord.TabWord, "disq")){
             displayQueue(q);
         }
         else if(stringComp(currentWord.TabWord, "dislp")){
             PrintPlaylist(LPlaylist);
         }
-        else{
-            printf("invalid command\n");
+        else if(stringComp(currentWord.TabWord, "SAVE")){
+            saveSpotify(&q, &s, &LPlaylist);
         }
-        // ADVWORD();
+        else if(stringComp(currentWord.TabWord, "QUIT")){
+            quitSpotify(&q, &s, &LPlaylist);
+        }
+        else if(stringComp(currentWord.TabWord, "HELP")){
+            helpSpotifyAfterLoad();
+        }
+        else if(stringComp(currentWord.TabWord, "LOAD")){
+            printf("Command tidak bisa dieksekusi\n");
+        }
+        else{
+            printf("Command tidak diketahui!\n");
+        }
     }
 }
