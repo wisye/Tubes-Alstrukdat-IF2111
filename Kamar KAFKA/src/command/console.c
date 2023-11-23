@@ -5,11 +5,12 @@ ListDefault l;
 // Queue q;
 void startSpotify(Queue *q, Stack *history, ListPlaylist *Playlist){
     ADVWORD();
+    boolean p;
     stringCopy(currentWord.TabWord, "DEFAULT");
-    loadSpotify(q, history, Playlist);
+    loadSpotify(q, history, Playlist, &p);
 }
 /*Implementation of console.h goes here*/
-int loadSpotify(Queue *q, Stack *history, ListPlaylist *Playlist){
+int loadSpotify(Queue *q, Stack *history, ListPlaylist *Playlist, boolean *success){
     // printf("LOADED\n");
     int i = 0, j = 0, k = 0;
     FILE *file;
@@ -178,6 +179,7 @@ int loadSpotify(Queue *q, Stack *history, ListPlaylist *Playlist){
         Playlist->Neff = idx_playlist;
     }
     fclose(file);
+    *success = true;
     printf("Save file berhasil dibaca. WayangWave berhasil dijalankan.\n");
     return 0;
 }
@@ -537,15 +539,15 @@ void queueSpotify(Queue *q, ListPlaylist *Playlist){
     }
 
     else if(stringComp(currentWord.TabWord, "PLAYLIST")){
-        lList P;
+        lladdress P;
         
         printf("Masukkan ID playlist: ");
         STARTWORD();
         int IDPlaylist = wordToInt(currentWord);
-        P = Playlist->A[IDPlaylist-1];
-        while(P.linkedlistFirst != NULL){
-            enqueue(q, P.linkedlistFirst->info);
-            P.linkedlistFirst = P.linkedlistFirst->next;
+        P = (Playlist->A[IDPlaylist-1].linkedlistFirst);
+        while(P != NULL){
+            enqueue(q, P->info);
+            P = P->next;
         }
         printf("Berhasil menambahkan playlist \"%s\" ke queue\n", Playlist->A[IDPlaylist-1].namaPlaylist.TabWord);
     }
@@ -593,18 +595,20 @@ void queueSpotify(Queue *q, ListPlaylist *Playlist){
                 dequeue(q, &val);
                 enqueue(&temp, val);
             }
-            for(int i = queueIDX_HEAD(*q); i < queueIDX_TAIL(*q); i++){ //dequeue index setelah id yang di delete, simpan di before
+            dequeue(q, &val); //dequeue id yang di delete
+            for(int i = queueIDX_HEAD(*q); i <= queueIDX_TAIL(*q); i++){ //dequeue index setelah id yang di delete, simpan di before
                 dequeue(q, &val);
-                enqueue(&before, val);
+                //enqueue(&before, val);
+                enqueue(&temp, val);
             }
-            for(int i = 0; i < queueIDX_TAIL(temp)-queueIDX_HEAD(temp); i++){ //masukin val sebelum id yang di delete
+            for(int i = queueIDX_HEAD(temp); i <= queueIDX_TAIL(temp); i++){ //masukin val sebelum id yang di delete
                 dequeue(&temp, &val);
                 enqueue(q, val);
             }
-            for(int i = 0; i<queueIDX_TAIL(before)-queueIDX_HEAD(before);i++){ //masukin val setelah id yang di delete
-                dequeue(&temp, &val);
-                enqueue(q, val);
-            }
+            // for(int i = 0; i<queueIDX_TAIL(before)-queueIDX_HEAD(before);i++){ //masukin val setelah id yang di delete
+            //     dequeue(&temp, &val);
+            //     enqueue(q, val);
+            // }
             
         }
     }
@@ -873,7 +877,7 @@ void playlistSpotify(ListPlaylist *Playlist){
             // scanf("%d", &playlistID);
             STARTWORD();
             playlistID = wordToInt(currentWord);
-            int idx;
+            // int idx;
             // boolean diff=false;
             // for (int i=0; i<l.Penyanyi.Count; i++)
             // {
@@ -920,7 +924,15 @@ void playlistSpotify(ListPlaylist *Playlist){
             printf("Tidak ada playlist dengan playlist ID %d\n", playlistID);
             return;
         }
-
+        if(id1 < 0 || id1 > llNbElmt(Playlist->A[playlistID - 1])){
+            printf("Tidak ada lagu dengan urutan %d di playlist %s\n", id1+1, Playlist->A[playlistID - 1].namaPlaylist.TabWord);
+            return;
+        }
+        if(id2 < 0 || id2 > llNbElmt(Playlist->A[playlistID - 1])){
+            printf("Tidak ada lagu dengan urutan %d di playlist %s\n", id2+1, Playlist->A[playlistID - 1].namaPlaylist.TabWord);
+            return;
+        }
+        printf("AAAAA");
         lList *playlist = &(Playlist->A[playlistID - 1]);
         lladdress currentNode1 = NULL;
         lladdress prevNode1 = NULL;
@@ -979,7 +991,8 @@ void playlistSpotify(ListPlaylist *Playlist){
         STARTWORD();
         id = wordToInt(currentWord)-1;
         if (playlistID < 1 || playlistID > Playlist->Neff) {
-            printf("Tidak ada playlist dengan playlist ID %d", playlistID);
+            printf("Tidak ada playlist dengan playlist ID %d\n", playlistID);
+            return;
         }
         lList *playlist = &(Playlist->A[playlistID - 1]);
         lladdress currentNode = playlist->linkedlistFirst;
@@ -989,6 +1002,10 @@ void playlistSpotify(ListPlaylist *Playlist){
         //     prevNode = currentNode;
         //     currentNode = currentNode->next;
         // }
+        if (id < 0 || id > llNbElmt(*playlist)) {
+            printf("Tidak ada lagu dengan urutan %d di playlist %s\n", id+1, playlist->namaPlaylist.TabWord);
+            return;
+        }
         for(int i=0; i<id; i++){
             prevNode = currentNode;
             currentNode = currentNode->next;
@@ -998,7 +1015,7 @@ void playlistSpotify(ListPlaylist *Playlist){
         } else {
             playlist->linkedlistFirst = currentNode->next;
         }
-        printf("Lagu %s oleh %s telah dihapus dari playlist %s!", currentNode->info.nama_lagu, currentNode->info.nama_penyanyi, playlist->namaPlaylist.TabWord);
+        printf("Lagu %s oleh %s telah dihapus dari playlist %s!\n", currentNode->info.nama_lagu, currentNode->info.nama_penyanyi, playlist->namaPlaylist.TabWord);
         free(currentNode); 
     }
 
@@ -1011,6 +1028,9 @@ void playlistSpotify(ListPlaylist *Playlist){
         // printf("Masukkan ID Playlist yang dipilih : ");
         int playlistID;
         // scanf("%d", &playlistID);
+        stringCopy(currentWord.TabWord, "PLAYLIST");
+        listSpotify(Playlist);
+        printf("Masukkan ID Playlist yang dipilih : ");
         STARTWORD();
         playlistID = wordToInt(currentWord);
         if (playlistID < 1 || playlistID > Playlist->Neff)
@@ -1020,7 +1040,7 @@ void playlistSpotify(ListPlaylist *Playlist){
         else{
             int idx2 = playlistID - 1;
             printf("Playlist ID %d dengan judul %s berhasil dihapus.\n", playlistID, Playlist->A[idx2].namaPlaylist.TabWord);
-            lpDeleteAt(Playlist, playlistID);
+            lpDeleteAt(Playlist, idx2);
         }
     }
     
@@ -1052,7 +1072,7 @@ void statusSpotify(Queue *q, Stack *s){
             printf("%s - %s - %s\n", CurrentSong, CurrentAlbum, CurrentSinger);
         }
         printf("Queue:\n");
-        for (i = queueIDX_HEAD(*q); i <= (queueIDX_TAIL(*q)) ; i++){
+        for (i = queueIDX_HEAD(*q); i < (queueIDX_TAIL(*q)) ; i++){
             // dequeue(q, &val); // dequeue nama_penyanyi, nama_album, CurrentSong
             // enqueue(&q2, val); // enqueue nama_penyanyi, nama_album, CurrentSong
             printf("%d. %s - %s - %s\n", counter, q->buffer[i].nama_penyanyi, q->buffer[i].nama_album, q->buffer[i].nama_lagu);

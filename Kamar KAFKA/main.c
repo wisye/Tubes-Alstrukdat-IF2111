@@ -27,6 +27,7 @@ int main(){
     Stack s;
     stackCreateEmpty(&s);
     ListPlaylist LPlaylist = MakeArrayDin();
+    boolean success;
     // printf("SELAMAT DATANG DI APLIKASI WAYANG WAVE\n");
     welcome();
 
@@ -43,8 +44,10 @@ int main(){
             helpSpotifyBeforeLoad();
         }
         else if(stringComp(currentWord.TabWord, "LOAD")){
-            loadSpotify(&q, &s, &LPlaylist);
+            loadSpotify(&q, &s, &LPlaylist, &success);
+            if(success == true){
             break;
+            }
         }
         else{
             printf("Command tidak bisa dieksekusi\n");

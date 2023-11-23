@@ -27,7 +27,7 @@
 void startSpotify(Queue *q, Stack *history, ListPlaylist *Playlist); //DONE
 /*Dibaca file konfigurasi default yang berisi daftar penyanyi serta album yang dimiliki*/
 
-int loadSpotify(Queue *q, Stack *history, ListPlaylist *Playlist); // DONE
+int loadSpotify(Queue *q, Stack *history, ListPlaylist *Playlist, boolean *success); // DONE
 /*Dibaca save file input yang berisi list game yang dapat dimainkan, histori, dan scoreboard game*/
 
 void listSpotify(ListPlaylist *Playlist);
