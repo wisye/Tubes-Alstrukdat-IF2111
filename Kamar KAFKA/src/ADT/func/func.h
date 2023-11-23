@@ -1,5 +1,5 @@
 #include "../Mesinkata/mesinkata.h"
-#include "../ListDefault/listdefault.h"
+#include "../List/list.h"
 #include "../Penyanyi/penyanyi.h"
 
 boolean stringComp(char* str1, char* str2);
@@ -10,13 +10,13 @@ Word charToWord(char str[]);
 
 Line charToLine(char str[]);
 
-void showPenyanyi(ListDefault l);
+void showPenyanyi(ListPenyanyi l);
 
-int showAlbum(Line w, ListDefault l);
+int showAlbum(Line w, ListPenyanyi l);
 
-void showLagu(Word w, int idx_penyanyi, ListDefault l);
+void showLagu(Word w, int idx_penyanyi, ListPenyanyi l);
 
-boolean ListDefaultIsEmpty(ListDefault l);
+boolean ListPenyanyiIsEmpty(ListPenyanyi l);
 
 int stringLen(char *x);
 

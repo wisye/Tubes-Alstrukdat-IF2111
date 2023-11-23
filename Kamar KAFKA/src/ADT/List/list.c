@@ -1,130 +1,142 @@
 #include "list.h"
 // #include <stdio.h>
 
-List MakeList(){
-    List L;
-    int i;
-    for(i=0; i < ListMaxEl; i++){
-        L.A[i] = ListMark;
+ListPenyanyi MakeListPenyanyi(){
+    ListPenyanyi L;
+    int i, j;
+    L.count = 0;
+    for(i=0; i < ListPenyanyiMaxEl; i++){
+        L.A[i].nama_penyanyi.TabWord[0] = '\0';
+        L.A[i].nama_penyanyi.Length = 0;
+        L.A[i].album.Count = 0;
+        for(j=0; j < mapMaxEl; j++){
+            L.A[i].album.Elements[j].nama_album.TabWord[0] = '\0';
+            L.A[i].album.Elements[j].nama_album.Length = 0;
+            L.A[i].album.Elements[j].daftar_lagu.Count = 0;
+            for(int k=0; k < setMaxEl; k++){
+                L.A[i].album.Elements[j].daftar_lagu.Elements[k].TabWord[0] = '\0';
+                L.A[i].album.Elements[j].daftar_lagu.Elements[k].Length = 0;
+            }
+        }
     }
     return L;
 }
 
-boolean ListIsEmpty(List L){
-    return L.A[0] == ListMark;
-}
+// boolean ListPenyanyiIsEmpty(ListPenyanyi L){
+//     return L.count == 0;
+// }
 
-ListElType ListGet(List L, ListIdxType i){
-    return L.A[i];
-}
+// ListPenyanyiElType ListPenyanyiGet(ListPenyanyi L, ListPenyanyiIdxType i){
+//     return L.A[i];
+// }
 
-void ListSet(List *L, ListIdxType i, ListElType v){
-    (*L).A[i] = v;
-}
+// void ListPenyanyiSet(ListPenyanyi *L, ListPenyanyiIdxType i, ListPenyanyiElType v){
+//     (*L).A[i] = v;
+// }
 
-int ListLength(List L){
-    int i;
-    int sum = 0;
-    for(i=0; i<ListMaxEl; i++){
-        if(L.A[i] != ListMark){
-            sum++;
-        }
-        else{
-            return sum;
-        }
-    }
-}
+// int ListPenyanyiLength(ListPenyanyi L){
+//     int i;
+//     int sum = 0;
+//     for(i=0; i<ListPenyanyiMaxEl; i++){
+//         if(L.A[i] != ListPenyanyiMark){
+//             sum++;
+//         }
+//         else{
+//             return sum;
+//         }
+//     }
+// }
 
-ListIdxType ListFirstIdx(List L){
-    return 0;
-}
+// ListPenyanyiIdxType ListPenyanyiFirstIdx(ListPenyanyi L){
+//     return 0;
+// }
 
-ListIdxType ListLastIdx(List L){
-    return ListLength(L)-1;
-}
+// ListPenyanyiIdxType ListPenyanyiLastIdx(ListPenyanyi L){
+//     return ListPenyanyiLength(L)-1;
+// }
 
-boolean ListIsIdxValid (List L, ListIdxType i){
-    return ((i != -1) && (i >= 0) && (i < ListMaxEl));
-}
+// boolean ListPenyanyiIsIdxValid (ListPenyanyi L, ListPenyanyiIdxType i){
+//     return ((i != -1) && (i >= 0) && (i < ListPenyanyiMaxEl));
+// }
 
-boolean ListIsIdxEff (List L, ListIdxType i){
-    return ((i >= 0) && (i < ListLength(L)));
-}
+// boolean ListPenyanyiIsIdxEff (ListPenyanyi L, ListPenyanyiIdxType i){
+//     return ((i >= 0) && (i < ListPenyanyiLength(L)));
+// }
 
-boolean ListSearch(List L, ListElType X){
-    int i;
-    for(i=0; i<ListMaxEl; i++){
-        if(L.A[i] = X){
-            return true;
-        }
-    }
-    return false;
-}
+// boolean ListPenyanyiSearch(ListPenyanyi L, ListPenyanyiElType X){
+//     int i;
+//     for(i=0; i<ListPenyanyiMaxEl; i++){
+//         if(L.A[i] = X){
+//             return true;
+//         }
+//     }
+//     return false;
+// }
 
-void ListInsertFirst(List *L, ListElType X){
-    int i;
-    for(i=ListLength(*L); i>0; i--){
-        (*L).A[i] = (*L).A[i-1];
-    }
-    (*L).A[0] = X;
-}
+// void ListPenyanyiInsertFirst(ListPenyanyi *L, ListPenyanyiElType X){
+//     int i;
+//     for(i=ListPenyanyiLength(*L); i>0; i--){
+//         (*L).A[i] = (*L).A[i-1];
+//     }
+//     (*L).A[0] = X;
+// }
 
-void ListInsertAt(List *L, ListElType X, ListIdxType i){
-    int idx;
-    for(idx=ListLength(*L); idx>i; idx--){
-        (*L).A[idx] = (*L).A[idx-1];
-    }
-    (*L).A[i] = X;
-}
+// void ListPenyanyiInsertAt(ListPenyanyi *L, ListPenyanyiElType X, ListPenyanyiIdxType i){
+//     int idx;
+//     for(idx=ListPenyanyiLength(*L); idx>i; idx--){
+//         (*L).A[idx] = (*L).A[idx-1];
+//     }
+//     (*L).A[i] = X;
+// }
 
-void ListInsertLast(List *L, ListElType X){
-    int i=0;
-    while ((*L).A[i] != ListMark){
-        i++;
-    }
-    (*L).A[i] = X;
-}
+// void ListPenyanyiInsertLast(ListPenyanyi *L, ListPenyanyiElType X){
+//     int i=0;
+//     while ((*L).A[i] != ListPenyanyiMark){
+//         i++;
+//     }
+//     (*L).A[i] = X;
+// }
 
-void ListDeleteFirst(List *L){
-    int i;
-    for(i=0; i<=ListLength(*L); i++){
-        (*L).A[i] = (*L).A[i+1];
-    }
-}
+// void ListPenyanyiDeleteFirst(ListPenyanyi *L){
+//     int i;
+//     for(i=0; i<=ListPenyanyiLength(*L); i++){
+//         (*L).A[i] = (*L).A[i+1];
+//     }
+// }
 
-void ListDeleteAt(List *L, ListIdxType i){
-    int idx;
-    for(idx=i; idx<=ListLength(*L); idx++){
-        (*L).A[idx] = (*L).A[idx+1];
-    }
-    (*L).A[i] = ListMark;
-}
+// void ListPenyanyiDeleteAt(ListPenyanyi *L, ListPenyanyiIdxType i){
+//     int idx;
+//     for(idx=i; idx<=ListPenyanyiLength(*L); idx++){
+//         (*L).A[idx] = (*L).A[idx+1];
+//     }
+//     (*L).A[i] = ListPenyanyiMark;
+// }
 
-void ListDeleteLast(List *L){
-    int i = 0;
-    while((*L).A[i] != ListMark){
-        i++;
-    }
-}
+// void ListPenyanyiDeleteLast(ListPenyanyi *L){
+//     int i = 0;
+//     while((*L).A[i] != ListPenyanyiMark){
+//         i++;
+//     }
+// }
 
-List ListConcat(List L1, List L2){
-    List L3 = MakeList();
-    int i = 0;
-    int j = 0;
-    while((L1).A[i] != ListMark){
-        L3.A[i] = L1.A[i];
-        i++;
-    }
-    while((L2).A[j] != ListMark){
-        L3.A[i] = L2.A[j];
-        i++;
-        j++;
-    }
-    return L3;
-}
+// ListPenyanyi ListPenyanyiConcat(ListPenyanyi L1, ListPenyanyi L2){
+//     ListPenyanyi L3 = MakeListPenyanyi();
+//     int i = 0;
+//     int j = 0;
+//     while((L1).A[i] != ListPenyanyiMark){
+//         L3.A[i] = L1.A[i];
+//         i++;
+//     }
+//     while((L2).A[j] != ListPenyanyiMark){
+//         L3.A[i] = L2.A[j];
+//         i++;
+//         j++;
+//     }
+//     return L3;
+// }
 
 // int main(){
-//     List L = MakeList();
+//     ListPenyanyi L = MakeListPenyanyi();
 //     // L.A[1] = 123;
 //     boolean a = IsEmpty(L);
 //     printf("%d", a);
