@@ -13,7 +13,7 @@
 // ArrayDin Playlist;
 /* PROTOTYPE */
 /****************** TEST LIST KOSONG ******************/
-boolean IsEmpty (lList L){
+boolean llIsEmpty (lList L){
     return (llFirst(L) == llNil);
 }
 /* Mengirim true jika list kosong */
@@ -96,7 +96,7 @@ void llInsVFirst (lList *L, llinfotype X){
 void llInsVLast (lList *L, llinfotype X){
     lladdress P = llAlokasi(X);
     if(P != llNil){
-        if(IsEmpty(*L)){
+        if(llIsEmpty(*L)){
             llFirst(*L) = P;
         }
         else{
@@ -161,7 +161,7 @@ void llInsertAfter (lList *L, lladdress P, lladdress Prec){
 /*      P sudah dialokasi  */
 /* F.S. Insert P sebagai elemen sesudah elemen beralamat Prec */
 void llInsertLast (lList *L, lladdress P){
-    if(IsEmpty(*L)){
+    if(llIsEmpty(*L)){
         llFirst(*L) = P;
     }
     else{
@@ -349,7 +349,7 @@ void llInversList (lList *L){
 
 void llKonkat1 (lList *L1, lList *L2, lList *L3){
     llFirst(*L3) = llFirst(*L1);
-    if(IsEmpty(*L1)){
+    if(llIsEmpty(*L1)){
         llFirst(*L3) = llFirst(*L2);
     }
     else{
