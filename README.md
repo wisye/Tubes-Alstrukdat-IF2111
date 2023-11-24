@@ -204,19 +204,74 @@ save/test2.txt
 .
 ├── README.md
 ├── Kamar KAFKA			     # main folder
-      │   ├─── save			    
-            │   ├─── HADS.txt 			     
-            │   ├─── config.txt		
-            │   ├─── DaftarKataHangman.txt	
-            │   ├─── DinerDash.txt
-            │   ├─── drivermesinkata.txt		     
-      │   ├─── hangman.txt		
-      │   ├─── save.txt			     
-      │   ├─── save2.txt			     
-      │   ├─── save3.txt		     
-      │   ├─── snakeonmeteor.txt			     
-      │   └─── towerofhanoi.txt	                          
-│ 
+|      ├─── save			    
+|      │   ├─── HADS.txt 			     
+|      │   ├─── config.txt		
+|      │   ├─── test1.txt	
+|      │   ├─── test2.txt
+|      ├─── src
+|      |   ├─── ADT
+|      |      │   ├─── Album		     
+|      |      |      │   ├─── a.out	
+|      |      |      │   ├─── album.c		     
+|      |      |      │   ├─── album.h			     
+|      |      |      │   ├─── albumDriver	     
+|      |      |      │   ├─── albumDriver.c		     
+|      |      │   └─── globalvar
+|      |      |      │   ├─── globalvar.c
+|      |      |      │   ├─── globalvar.h                       
+|      |      │   ├─── List
+|      |      |      │   ├─── list.c
+|      |      |      │   ├─── list.h		     
+|      |      |      │   ├─── listDriver			     
+|      |      |      │   ├─── listDriver.c	 	     
+|      |      │   ├─── ListPlaylistDinamis
+|      |      |      │   ├─── listPlaylist.c		     
+|      |      |      │   ├─── listPlaylist.h			     
+|      |      |      │   ├─── listPlaylistDriver.c		
+|      |      │   ├─── Mesinkaraker
+|      |      |      │   ├─── a.out	
+|      |      |      │   ├─── mt.txt		     
+|      |      |      │   ├─── mesinkaraker.h			     
+|      |      |      │   ├─── mesinkaraker.c    
+|      |      |      │   ├─── mesinkarakerDriver.c
+|      |      |      │   ├─── test.txt		     
+|      |      │   ├─── Mesinkata		     
+|      |      |      │   ├─── mesinkata.h			     
+|      |      |      │   ├─── mesinkata.c
+|      |      |      │   ├─── mesinkataDriver.c
+|      |      |      │   ├─── test.txt			     
+|      |      │   ├─── Penyanyi
+|      |      |      │   ├─── Penyanyi.h
+|      |      |      │   ├─── Penyanyi.c		     
+|      |      |      │   ├─── PenyanyiDriver			     
+|      |      |      │   ├─── PenyanyiDriver.c
+|      |      |      │   ├─── a.out		     
+|      |      │   ├─── Playlist
+|      |      |      │   ├─── playlist.h
+|      |      |      │   ├─── playlist.c
+|      |      |      │   ├─── playlistDriver.c
+|      |      │   ├─── Queue	     
+|      |      |      │   ├─── a.out	
+|      |      |      │   ├─── queue.h		     
+|      |      |      │   ├─── queue.c			     
+|      |      |      │   ├─── queueDriver     
+|      |      |      │   ├─── queueDriver.c   
+|      |      │   ├─── Stack     
+|      |      |      │   ├─── a.out	
+|      |      |      │   ├─── stack.h		     
+|      |      |      │   ├─── stack.c			     
+|      |      |      │   ├─── stackDriver     
+|      |      |      │   ├─── stackDriver.c 
+|      |      │   ├─── boolean.h
+|      |      │   └─── func
+|      |      |      │   ├─── a.out	
+|      |      |      │   ├─── func.h		     
+|      |      |      │   ├─── func.c			     
+|      |      |      │   ├─── funcDriver     
+|      |      |      │   ├─── funcDriver.c 
+|      |   ├─── command
+
 ├── source
 │   ├─── boolean.h
 │   ├─── ADT				     # folder berisikan main
