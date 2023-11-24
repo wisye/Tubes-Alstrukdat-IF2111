@@ -47,7 +47,6 @@ save/test2.txt
 |      ├─── src
 |      |   ├─── ADT
 |      |      │   ├─── Album		     
-|      |      |      │   ├─── a.out	
 |      |      |      │   ├─── album.c		     
 |      |      |      │   ├─── album.h			     
 |      |      |      │   ├─── albumDriver	     
@@ -62,11 +61,12 @@ save/test2.txt
 |      |      |      │   ├─── listDriver.c	 	     
 |      |      │   ├─── ListPlaylistDinamis
 |      |      |      │   ├─── listPlaylist.c		     
-|      |      |      │   ├─── listPlaylist.h			     
+|      |      |      │   ├─── listPlaylist.h
+|      |      |      │   ├─── listPlaylistDriver		    
 |      |      |      │   └─── listPlaylistDriver.c		
 |      |      │   ├─── Mesinkaraker
-|      |      |      │   ├─── a.out	
-|      |      |      │   ├─── mt.txt		     
+|      |      |      │   ├─── mesinkarakterDriver.out	
+|      |      |      │   ├─── empty.txt		     
 |      |      |      │   ├─── mesinkaraker.h			     
 |      |      |      │   ├─── mesinkaraker.c    
 |      |      |      │   ├─── mesinkarakerDriver.c
@@ -74,39 +74,36 @@ save/test2.txt
 |      |      │   ├─── Mesinkata		     
 |      |      |      │   ├─── mesinkata.h			     
 |      |      |      │   ├─── mesinkata.c
+|      |      |      │   ├─── mesinkataDriver
 |      |      |      │   ├─── mesinkataDriver.c
 |      |      |      │   └─── test.txt			     
 |      |      │   ├─── Penyanyi
 |      |      |      │   ├─── Penyanyi.h
 |      |      |      │   ├─── Penyanyi.c		     
 |      |      |      │   ├─── PenyanyiDriver			     
-|      |      |      │   ├─── PenyanyiDriver.c
-|      |      |      │   └─── a.out		     
+|      |      |      │   └─── PenyanyiDriver.c     
 |      |      │   ├─── Playlist
 |      |      |      │   ├─── playlist.h
 |      |      |      │   ├─── playlist.c
+|      |      |      │   ├─── playlistDriver
 |      |      |      │   └─── playlistDriver.c
 |      |      │   ├─── Queue	     
-|      |      |      │   ├─── a.out	
 |      |      |      │   ├─── queue.h		     
 |      |      |      │   ├─── queue.c			     
 |      |      |      │   ├─── queueDriver     
 |      |      |      │   └─── queueDriver.c   
 |      |      │   ├─── Stack     
-|      |      |      │   ├─── a.out	
 |      |      |      │   ├─── stack.h		     
 |      |      |      │   ├─── stack.c			     
 |      |      |      │   ├─── stackDriver     
 |      |      |      │   └─── stackDriver.c 
 |      |      │   ├─── boolean.h
 |      |      │   └─── func                    
-|      |      |      │   ├─── a.out	
 |      |      |      │   ├─── func.h		     
 |      |      |      │   ├─── func.c			     
 |      |      |      │   ├─── funcDriver     
 |      |      |      │   └─── funcDriver.c 
 |      |   ├─── command                        #additional function
-|      |      │   ├─── a.out
 |      |      │   ├─── console.h
 |      |      │   └─── console.c
 |      ├─── docs
@@ -118,6 +115,8 @@ save/test2.txt
 ├── main.bat
 ├── main.c
 ├── main.sh
+├── peda-session-PenyanyiDriver.txt
+├── peda-session-funcDriver.txt
 ├── peda-session-main.txt
 ├── welcome.c
 └─── welcome.h
