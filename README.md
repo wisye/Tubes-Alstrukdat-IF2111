@@ -109,6 +109,10 @@ save/test2.txt
 |      |      │   ├─── a.out
 |      |      │   ├─── console.h
 |      |      │   └─── console.c
+|      ├─── docs
+|      │   ├─── Spesifikasi Tugas Besar IF2111 2023_2024.pdf		
+|      │   ├─── Form Asistensi Tugas Besar_TB_01_08.pdf
+|      │   └─── IF2111_TB_01_08.pdf
 ├── .gdb_history
 ├── main
 ├── main.bat
