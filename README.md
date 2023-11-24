@@ -65,6 +65,7 @@ save/test2.txt
 |      |      |      │   ├─── listPlaylistDriver		    
 |      |      |      │   └─── listPlaylistDriver.c		
 |      |      │   ├─── Mesinkaraker
+|      |      |      │   ├─── a.out	
 |      |      |      │   ├─── mesinkarakterDriver.out	
 |      |      |      │   ├─── empty.txt		     
 |      |      |      │   ├─── mesinkaraker.h			     
