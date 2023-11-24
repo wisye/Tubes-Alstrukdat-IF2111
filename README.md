@@ -63,6 +63,8 @@ save/test2.txt
           ├─── album.c
           
           ├─── album.h
+
+          ├─── albumDriver
           
           ├─── albumDriver.c
           
@@ -77,6 +79,8 @@ save/test2.txt
           ├─── list.c
           
           ├─── list.h
+
+          ├─── listDriver
           
           ├─── listDriver.c
           
@@ -85,16 +89,8 @@ save/test2.txt
           ├─── listPlaylist.c
           
           ├─── listPlatlist.h
-          
-        ├─── Map
-        
-          ├─── a.out
-          
-          ├─── map.c
-          
-          ├─── map.h
-          
-          ├─── mapDriver.c
+
+          ├─── listPlaylistDriver.c
           
         ├─── Mesinkarakter
         
@@ -125,6 +121,8 @@ save/test2.txt
           ├─── Penyanyi.c
           
           ├─── Penyanyi.h
+
+          ├─── PenyanyiDriver
           
           ├─── PenyanyiDriver.c
           
@@ -142,19 +140,11 @@ save/test2.txt
           
           ├─── queue.h
           
-          ├─── queuedeafult.c
+          ├─── queueDriver
+
+          ├─── queueDriver.c
           
           ├─── driverqueue.c
-          
-        ├─── Set
-        
-          ├─── a.out
-          
-          ├─── set.c
-          
-          ├─── set.h
-          
-          ├─── setDriver.c
           
         ├─── Stack
         
@@ -163,6 +153,8 @@ save/test2.txt
           ├─── stack.c
           
           ├─── stack.h
+
+          ├─── stackDriver
           
           ├─── stackDriver.c
           
@@ -175,6 +167,8 @@ save/test2.txt
           ├─── func.c
           
           ├─── func.h
+
+          ├─── funcDriver
           
           ├─── funcDriver.c
           
