@@ -111,14 +111,14 @@ save/test2.txt
 |      │   ├─── Spesifikasi Tugas Besar IF2111 2023_2024.pdf		
 |      │   ├─── Form Asistensi Tugas Besar_TB_01_08.pdf
 |      │   └─── IF2111_TB_01_08.pdf
-├── .gdb_history
-├── main
-├── main.bat
-├── main.c
-├── main.sh
-├── peda-session-PenyanyiDriver.txt
-├── peda-session-funcDriver.txt
-├── peda-session-main.txt
-├── welcome.c
-└─── welcome.h
+|      ├── .gdb_history
+|      ├── main
+|      ├── main.bat
+|      ├── main.c
+|      ├── main.sh
+|      ├── peda-session-PenyanyiDriver.txt
+|      ├── peda-session-funcDriver.txt
+|      ├── peda-session-main.txt
+|      ├── welcome.c
+|      └─── welcome.h
 "
