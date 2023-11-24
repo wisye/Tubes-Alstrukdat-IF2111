@@ -40,194 +40,164 @@ save/test2.txt
 
 ├── Kamar KAFKA			     # main folder
 
-|       ├─── save		
+|   ├─── save		
 
-|       |      ├─── HADS.txt
+      ├─── HADS.txt
     
-|       |      ├─── config.txt
+      ├─── config.txt
     
-|       |      ├─── pp.txt
+      ├─── pp.txt
     
-|       |       ├─── test1.txt
+      ├─── test1.txt
     
-|       |      ├─── test2.txt
+      ├─── test2.txt
     
 |   ├─── src 	
 
-|      ├─── ADT
+      ├─── ADT
       
-|        ├─── Album
+        ├─── Album
         
-|          ├─── a.out
+          ├─── a.out
           
-|          ├─── album.c
+          ├─── album.c
           
-|          ├─── album.h
+          ├─── album.h
           
-|          ├─── albumDriver.c
+          ├─── albumDriver.c
           
-|        ├─── globalvar
+        ├─── globalvar
         
-|          ├─── globalvar.c
+          ├─── globalvar.c
           
-|          ├─── globalvar.h
+          ├─── globalvar.h
           
-|        ├─── List
+        ├─── List
         
-|          ├─── list.c
+          ├─── list.c
           
-|          ├─── list.h
+          ├─── list.h
           
-|          ├─── listDriver.c
+          ├─── listDriver.c
           
-|        ├─── ListPlaylistDinamis
+        ├─── ListPlaylistDinamis
         
-|          ├─── listPlaylist.c
+          ├─── listPlaylist.c
           
-|          ├─── listPlatlist.h
+          ├─── listPlatlist.h
           
-|        ├─── Map
+        ├─── Map
         
-|          ├─── a.out
+          ├─── a.out
           
-|          ├─── map.c
+          ├─── map.c
           
-|          ├─── map.h
+          ├─── map.h
           
-|          ├─── mapDriver.c
+          ├─── mapDriver.c
           
-|        ├─── Mesinkarakter
+        ├─── Mesinkarakter
         
-|          ├─── a.out
+          ├─── a.out
           
-|          ├─── empty.txt
+          ├─── empty.txt
           
-|          ├─── mesinkarakter.c
+          ├─── mesinkarakter.c
           
-|          ├─── mesinkarakter.h
+          ├─── mesinkarakter.h
           
-|          ├─── mesinkarakterDriver.c
+          ├─── mesinkarakterDriver.c
           
-|          ├─── test.txt
+          ├─── test.txt
           
-|        ├─── Mesinkata
+        ├─── Mesinkata
         
-|          ├─── mesinkata.c
+          ├─── mesinkata.c
           
-|          ├─── mesinkata.h
+          ├─── mesinkata.h
           
-|          ├─── mesinkataDriver.c
+          ├─── mesinkataDriver.c
           
-|          ├─── test.txt
+          ├─── test.txt
          
-|        ├─── Penyanyi
+        ├─── Penyanyi
         
-|          ├─── Penyanyi.c
+          ├─── Penyanyi.c
           
-|          ├─── Penyanyi.h
+          ├─── Penyanyi.h
           
-|          ├─── PenyanyiDriver.c
+          ├─── PenyanyiDriver.c
           
-|          ├─── a.out
+          ├─── a.out
           
-|        ├─── Playlist
+        ├─── Playlist
         
-|          ├─── playlist.c
+          ├─── playlist.c
           
-|          ├─── playlist.h
+          ├─── playlist.h
           
-|        ├─── Queue
+        ├─── Queue
         
-|          ├─── queue.c
+          ├─── queue.c
           
-|          ├─── queue.h
+          ├─── queue.h
           
-|          ├─── queuedeafult.c
+          ├─── queuedeafult.c
           
-|          ├─── driverqueue.c
+          ├─── driverqueue.c
           
-|        ├─── Set
+        ├─── Set
         
-|          ├─── a.out
+          ├─── a.out
           
-|          ├─── set.c
+          ├─── set.c
           
-|          ├─── set.h
+          ├─── set.h
           
-|          ├─── setDriver.c
+          ├─── setDriver.c
           
-|        ├─── Stack
+        ├─── Stack
         
-|          ├─── a.out
+          ├─── a.out
           
-|          ├─── stack.c
+          ├─── stack.c
           
-|          ├─── stack.h
+          ├─── stack.h
           
-|          ├─── stackDriver.c
+          ├─── stackDriver.c
           
-|        ├─── boolean.h
+        ├─── boolean.h
         
-|        ├─── func
+        ├─── func
         
-|          ├─── a.out
+          ├─── a.out
           
-|          ├─── func.c
+          ├─── func.c
           
-|          ├─── func.h
+          ├─── func.h
           
-|          ├─── funcDriver.c
+          ├─── funcDriver.c
           
-|      ├─── command
+      ├─── command
       
-|        ├─── a.out
+        ├─── a.out
         
-|        ├─── console.c
+        ├─── console.c
         
-|        ├─── console.h
+        ├─── console.h
         
-│   ├─── .gdb_history	
+   ├─── .gdb_history	
 
-│   ├─── main
+   ├─── main
 
-│   ├─── main.bat
+   ├─── main.bat
 
-│   ├─── main.c	     
+   ├─── main.c	     
 
-│   ├─── main.sh		
+   ├─── main.sh		
 
+   ├─── peda-session-main.txt
 
-.
-├── bin
-│   ├── Makefile
-│   └── sample_savedata
-├── save
-│   ├── user1.txt  # file yang disimpan oleh user1
-│   ├── user2.txt  # file yang disimpan oleh user 2
-│   └── config.txt         # config yang akan dibaca
-├── docs                  
-│   ├── Spesifikasi....pdf
-│   ├── IF2111_Form..._01.xlsx
-│   └── IF2111_TB..._01.pdf
-├── src
-│   ├── boolean.h
-│   ├── console.c         # Implementation of all commands
-│   ├── console.h
-│   ├── main.c            # Simply calls the Game function in console
-│   ├── ADT               # Location of all the data structures used by this game.
-│   │                     # Every subfolder will have a header, a c implementation and a driver.
-│   │   ├── kata
-│   │   ├── listlinier    
-│   │   ├── mesinkar      
-│   │   ├── mesinkata    
-│   │   ├── stack 
-└── └── └── player
-README.MD
+   ├─── welcome.c		
 
-
-
-│   ├─── peda-session-main.txt
-
-│   ├─── welcome.c		
-
-│   └─── welcome.h                          
+   └─── welcome.h                          
