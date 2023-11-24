@@ -40,19 +40,19 @@ save/test2.txt
 
 ├── Kamar KAFKA			     # main folder
 
-│   ├─── save		
+|   ├─── save		
 
-    |  ├─── HADS.txt
+      ├─── HADS.txt
     
-    |  ├─── config.txt
+      ├─── config.txt
     
-    |  ├─── pp.txt
+      ├─── pp.txt
     
-    |  ├─── test1.txt
+      ├─── test1.txt
     
-    |  ├─── test2.txt
+      ├─── test2.txt
     
-│   ├─── src 	
+|   ├─── src 	
 
       ├─── ADT
       
@@ -193,7 +193,11 @@ save/test2.txt
 │   ├─── main.bat
 
 │   ├─── main.c	     
-│   ├─── main.sh			     
-│   ├─── peda-session-main.txt			        
-│   ├─── welcome.c			     
+
+│   ├─── main.sh		
+
+│   ├─── peda-session-main.txt
+
+│   ├─── welcome.c		
+
 │   └─── welcome.h                          
