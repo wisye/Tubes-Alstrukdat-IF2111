@@ -99,13 +99,13 @@ save/test2.txt
 |      |      |      │   ├─── stackDriver     
 |      |      |      │   └─── stackDriver.c 
 |      |      │   ├─── boolean.h
-|      |      │   └─── func
+|      |      │   └─── func                    
 |      |      |      │   ├─── a.out	
 |      |      |      │   ├─── func.h		     
 |      |      |      │   ├─── func.c			     
 |      |      |      │   ├─── funcDriver     
 |      |      |      │   └─── funcDriver.c 
-|      |   ├─── command
+|      |   ├─── command                        #additional function
 |      |      │   ├─── a.out
 |      |      │   ├─── console.h
 |      |      │   └─── console.c
