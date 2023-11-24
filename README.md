@@ -34,183 +34,16 @@ save/test1.txt
 
 save/test2.txt
 
-# Struktur Program
-"
-
-├── README.md
-
-├── Kamar KAFKA			     # main folder
-
-|   ├─── save		
-
-      ├─── HADS.txt
-    
-      ├─── config.txt
-    
-      ├─── pp.txt
-    
-      ├─── test1.txt
-    
-      ├─── test2.txt
-    
-|   ├─── src 	
-
-      ├─── ADT
-      
-        ├─── Album
-        
-          ├─── a.out
-          
-          ├─── album.c
-          
-          ├─── album.h
-
-          ├─── albumDriver
-          
-          ├─── albumDriver.c
-          
-        ├─── globalvar
-        
-          ├─── globalvar.c
-          
-          ├─── globalvar.h
-          
-        ├─── List
-        
-          ├─── list.c
-          
-          ├─── list.h
-
-          ├─── listDriver
-          
-          ├─── listDriver.c
-          
-        ├─── ListPlaylistDinamis
-        
-          ├─── listPlaylist.c
-          
-          ├─── listPlatlist.h
-
-          ├─── listPlaylistDriver.c
-          
-        ├─── Mesinkarakter
-        
-          ├─── a.out
-          
-          ├─── empty.txt
-          
-          ├─── mesinkarakter.c
-          
-          ├─── mesinkarakter.h
-          
-          ├─── mesinkarakterDriver.c
-          
-          ├─── test.txt
-          
-        ├─── Mesinkata
-        
-          ├─── mesinkata.c
-          
-          ├─── mesinkata.h
-          
-          ├─── mesinkataDriver.c
-          
-          ├─── test.txt
-         
-        ├─── Penyanyi
-        
-          ├─── Penyanyi.c
-          
-          ├─── Penyanyi.h
-
-          ├─── PenyanyiDriver
-          
-          ├─── PenyanyiDriver.c
-          
-          ├─── a.out
-          
-        ├─── Playlist
-        
-          ├─── playlist.c
-          
-          ├─── playlist.h
-          
-        ├─── Queue
-        
-          ├─── queue.c
-          
-          ├─── queue.h
-          
-          ├─── queueDriver
-
-          ├─── queueDriver.c
-          
-          ├─── driverqueue.c
-          
-        ├─── Stack
-        
-          ├─── a.out
-          
-          ├─── stack.c
-          
-          ├─── stack.h
-
-          ├─── stackDriver
-          
-          ├─── stackDriver.c
-          
-        ├─── boolean.h
-        
-        ├─── func
-        
-          ├─── a.out
-          
-          ├─── func.c
-          
-          ├─── func.h
-
-          ├─── funcDriver
-          
-          ├─── funcDriver.c
-          
-      ├─── command
-      
-        ├─── a.out
-        
-        ├─── console.c
-        
-        ├─── console.h
-        
-   ├─── .gdb_history	
-
-   ├─── main
-
-   ├─── main.bat
-
-   ├─── main.c	     
-
-   ├─── main.sh		
-
-   ├─── peda-session-main.txt
-
-   ├─── welcome.c		
-
-   └─── welcome.h                          
-
-"
-
-
-"
 ## Struktur Program
 ```
-.
+"
 ├── README.md
 ├── Kamar KAFKA			     # main folder
 |      ├─── save			    
 |      │   ├─── HADS.txt 			     
 |      │   ├─── config.txt		
 |      │   ├─── test1.txt	
-|      │   ├─── test2.txt
+|      │   └─── test2.txt
 |      ├─── src
 |      |   ├─── ADT
 |      |      │   ├─── Album		     
@@ -218,10 +51,10 @@ save/test2.txt
 |      |      |      │   ├─── album.c		     
 |      |      |      │   ├─── album.h			     
 |      |      |      │   ├─── albumDriver	     
-|      |      |      │   ├─── albumDriver.c		     
-|      |      │   └─── globalvar
+|      |      |      │   └─── albumDriver.c		     
+|      |      │   ├─── globalvar
 |      |      |      │   ├─── globalvar.c
-|      |      |      │   ├─── globalvar.h                       
+|      |      |      │   └─── globalvar.h                       
 |      |      │   ├─── List
 |      |      |      │   ├─── list.c
 |      |      |      │   ├─── list.h		     
@@ -230,106 +63,58 @@ save/test2.txt
 |      |      │   ├─── ListPlaylistDinamis
 |      |      |      │   ├─── listPlaylist.c		     
 |      |      |      │   ├─── listPlaylist.h			     
-|      |      |      │   ├─── listPlaylistDriver.c		
+|      |      |      │   └─── listPlaylistDriver.c		
 |      |      │   ├─── Mesinkaraker
 |      |      |      │   ├─── a.out	
 |      |      |      │   ├─── mt.txt		     
 |      |      |      │   ├─── mesinkaraker.h			     
 |      |      |      │   ├─── mesinkaraker.c    
 |      |      |      │   ├─── mesinkarakerDriver.c
-|      |      |      │   ├─── test.txt		     
+|      |      |      │   └─── test.txt		     
 |      |      │   ├─── Mesinkata		     
 |      |      |      │   ├─── mesinkata.h			     
 |      |      |      │   ├─── mesinkata.c
 |      |      |      │   ├─── mesinkataDriver.c
-|      |      |      │   ├─── test.txt			     
+|      |      |      │   └─── test.txt			     
 |      |      │   ├─── Penyanyi
 |      |      |      │   ├─── Penyanyi.h
 |      |      |      │   ├─── Penyanyi.c		     
 |      |      |      │   ├─── PenyanyiDriver			     
 |      |      |      │   ├─── PenyanyiDriver.c
-|      |      |      │   ├─── a.out		     
+|      |      |      │   └─── a.out		     
 |      |      │   ├─── Playlist
 |      |      |      │   ├─── playlist.h
 |      |      |      │   ├─── playlist.c
-|      |      |      │   ├─── playlistDriver.c
+|      |      |      │   └─── playlistDriver.c
 |      |      │   ├─── Queue	     
 |      |      |      │   ├─── a.out	
 |      |      |      │   ├─── queue.h		     
 |      |      |      │   ├─── queue.c			     
 |      |      |      │   ├─── queueDriver     
-|      |      |      │   ├─── queueDriver.c   
+|      |      |      │   └─── queueDriver.c   
 |      |      │   ├─── Stack     
 |      |      |      │   ├─── a.out	
 |      |      |      │   ├─── stack.h		     
 |      |      |      │   ├─── stack.c			     
 |      |      |      │   ├─── stackDriver     
-|      |      |      │   ├─── stackDriver.c 
+|      |      |      │   └─── stackDriver.c 
 |      |      │   ├─── boolean.h
 |      |      │   └─── func
 |      |      |      │   ├─── a.out	
 |      |      |      │   ├─── func.h		     
 |      |      |      │   ├─── func.c			     
 |      |      |      │   ├─── funcDriver     
-|      |      |      │   ├─── funcDriver.c 
+|      |      |      │   └─── funcDriver.c 
 |      |   ├─── command
-
-├── source
-│   ├─── boolean.h
-│   ├─── ADT				     # folder berisikan main
-│   │      ├─── array
-│   │      │       ├─── arraydin.h
-│   │      │       ├─── arraydin.c
-│   │      │       ├─── driver_arraydin.c
-│   │      │       ├─── arraymap.h
-│   │      │       ├─── arraymap.c
-│   │      │       └─── driver_arraymap.c
-│   │      │
-│   │      ├─── map
-│   │      │       ├─── map.h
-│   │      │       ├─── map.c
-│   │      │       └─── driver_map.c
-│   │      │
-│   │      ├─── mesinkarakter
-│   │      │       ├─── mesinkarakter.h
-│   │      │       ├─── mesinkarakter.c
-│   │      │       └─── driver_mesinkar.c
-│   │      │
-│   │      ├─── mesinkata
-│   │      │       ├─── mesinkata.h
-│   │      │       ├─── mesinkata.c
-│   │      │       └─── driver_mesinkar.c
-│   │      │
-│   │      ├─── queue
-│   │      │       ├─── queue.h
-│   │      │       ├─── queue.c
-│   │      │       └─── driver_queue.c
-│   │      │
-│   │      ├─── queuedinerdash
-│   │      │       ├─── queue.h
-│   │      │       ├─── queue.c
-│   │      │       └─── driver_queue.c
-│   │      │
-│   │      └─── stack
-│   │      │       ├─── stack.h
-│   │      │       ├─── stack.c
-│   │      │       └─── driver_stack.c
-│   │      └─── listdp
-│   │              ├─── listdp.h
-│   │              ├─── listdp.c
-│   │              └─── driver_listdp.c
-│   │
-│   └─── command
-│          ├─── console.h
-│          └─── console.c
-│
-│
-└── docs 
-     ├─── Spesifikasi Tugas Besar 1 IF2111 2022_2023.docx
-     ├─── IF2111_TB1_02_08.pdf
-     ├─── Form Asistensi Tugas Besar_TB1_02_08.pdf
-     ├─── Spesifikasi Tugas Besar 2 IF2111 2022_2023.docx
-     ├─── IF2111_TB2_02_08.pdf
-     └─── Form Asistensi Tugas Besar_TB2_02_08.pdf
- ```
+|      |      │   ├─── a.out
+|      |      │   ├─── console.h
+|      |      │   └─── console.c
+├── .gdb_history
+├── main
+├── main.bat
+├── main.c
+├── main.sh
+├── peda-session-main.txt
+├── welcome.c
+└─── welcome.h
 "
