@@ -50,6 +50,7 @@ int main(){
             }
         }
         else{
+            STARTLINE();
             printf("Command tidak bisa dieksekusi\n");
         }
         // ADVWORD();
@@ -95,6 +96,7 @@ int main(){
             printf("Command tidak bisa dieksekusi\n");
         }
         else{
+            STARTLINE();
             printf("Command tidak diketahui!\n");
         }
     }
