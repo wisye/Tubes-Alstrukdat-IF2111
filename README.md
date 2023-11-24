@@ -37,167 +37,167 @@ save/test2.txt
 # Struktur Program
 
 ├── README.md
-|
+
 ├── Kamar KAFKA			     # main folder
-|
+
 |   ├─── save		
-|
+
 |      ├─── HADS.txt
-|    
+    
 |      ├─── config.txt
-|    
+    
 |      ├─── pp.txt
-|    
+    
 |      ├─── test1.txt
-|    
+    
 |      ├─── test2.txt
-|    
+    
 |   ├─── src 	
-|
+
 |      ├─── ADT
-|      
+      
 |        ├─── Album
-|        
+        
 |          ├─── a.out
-|          
+          
 |          ├─── album.c
-|          
+          
 |          ├─── album.h
-|          
+          
 |          ├─── albumDriver.c
-|          
+          
 |        ├─── globalvar
-|        
+        
 |          ├─── globalvar.c
-|          
+          
 |          ├─── globalvar.h
-|          
+          
 |        ├─── List
-|        
+        
 |          ├─── list.c
-|          
+          
 |          ├─── list.h
-|          
+          
 |          ├─── listDriver.c
-|          
+          
 |        ├─── ListPlaylistDinamis
-|        
+        
 |          ├─── listPlaylist.c
-|          
+          
 |          ├─── listPlatlist.h
-|          
+          
 |        ├─── Map
-|        
+        
 |          ├─── a.out
-|          
+          
 |          ├─── map.c
-|          
+          
 |          ├─── map.h
-|          
+          
 |          ├─── mapDriver.c
-|          
+          
 |        ├─── Mesinkarakter
-|        
+        
 |          ├─── a.out
-|          
+          
 |          ├─── empty.txt
-|          
+          
 |          ├─── mesinkarakter.c
-|          
+          
 |          ├─── mesinkarakter.h
-|          
+          
 |          ├─── mesinkarakterDriver.c
-|          
+          
 |          ├─── test.txt
-|          
+          
 |        ├─── Mesinkata
-|        
+        
 |          ├─── mesinkata.c
-|          
+          
 |          ├─── mesinkata.h
-|          
+          
 |          ├─── mesinkataDriver.c
-|          
+          
 |          ├─── test.txt
-|          
+         
 |        ├─── Penyanyi
-|        
+        
 |          ├─── Penyanyi.c
-|          
+          
 |          ├─── Penyanyi.h
-|          
+          
 |          ├─── PenyanyiDriver.c
-|          
+          
 |          ├─── a.out
-|          
+          
 |        ├─── Playlist
-|        
+        
 |          ├─── playlist.c
-|          
+          
 |          ├─── playlist.h
-|          
+          
 |        ├─── Queue
-|        
+        
 |          ├─── queue.c
-|          
+          
 |          ├─── queue.h
-|          
+          
 |          ├─── queuedeafult.c
-|          
+          
 |          ├─── driverqueue.c
-|          
+          
 |        ├─── Set
-|        
+        
 |          ├─── a.out
-|          
+          
 |          ├─── set.c
-|          
+          
 |          ├─── set.h
-|          
+          
 |          ├─── setDriver.c
-|          
+          
 |        ├─── Stack
-|        
+        
 |          ├─── a.out
-|          
+          
 |          ├─── stack.c
-|          
+          
 |          ├─── stack.h
-|          
+          
 |          ├─── stackDriver.c
-|          
+          
 |        ├─── boolean.h
-|        
+        
 |        ├─── func
-|        
+        
 |          ├─── a.out
-|          
+          
 |          ├─── func.c
-|          
+          
 |          ├─── func.h
-|          
+          
 |          ├─── funcDriver.c
-|          
+          
 |      ├─── command
-|      
+      
 |        ├─── a.out
-|        
+        
 |        ├─── console.c
-|        
+        
 |        ├─── console.h
-|        
+        
 │   ├─── .gdb_history	
-|
+
 │   ├─── main
-|
+
 │   ├─── main.bat
-|
+
 │   ├─── main.c	     
-|
+
 │   ├─── main.sh		
-|
+
 │   ├─── peda-session-main.txt
-|
+
 │   ├─── welcome.c		
-|
+
 │   └─── welcome.h                          
