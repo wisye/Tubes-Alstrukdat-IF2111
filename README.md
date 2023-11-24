@@ -202,22 +202,21 @@ save/test2.txt
 ## Struktur Program
 ```
 .
-├── a.exe
 ├── README.md
-├── main.c				     # main program
-├── data
-│   ├─── BannerRNG.txt 			    
-│   ├─── bnmo.txt 			     
-│   ├─── config.txt		
-│   ├─── DaftarKataHangman.txt	
-│   ├─── DinerDash.txt
-│   ├─── drivermesinkata.txt		     
-│   ├─── hangman.txt		
-│   ├─── save.txt			     
-│   ├─── save2.txt			     
-│   ├─── save3.txt		     
-│   ├─── snakeonmeteor.txt			     
-│   └─── towerofhanoi.txt	                          
+├── Kamar KAFKA			     # main folder
+      |
+      │   ├─── BannerRNG.txt 			    
+      │   ├─── bnmo.txt 			     
+      │   ├─── config.txt		
+      │   ├─── DaftarKataHangman.txt	
+      │   ├─── DinerDash.txt
+      │   ├─── drivermesinkata.txt		     
+      │   ├─── hangman.txt		
+      │   ├─── save.txt			     
+      │   ├─── save2.txt			     
+      │   ├─── save3.txt		     
+      │   ├─── snakeonmeteor.txt			     
+      │   └─── towerofhanoi.txt	                          
 │ 
 ├── source
 │   ├─── boolean.h
