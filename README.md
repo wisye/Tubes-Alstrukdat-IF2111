@@ -204,13 +204,12 @@ save/test2.txt
 .
 ├── README.md
 ├── Kamar KAFKA			     # main folder
-      |
-      │   ├─── BannerRNG.txt 			    
-      │   ├─── bnmo.txt 			     
-      │   ├─── config.txt		
-      │   ├─── DaftarKataHangman.txt	
-      │   ├─── DinerDash.txt
-      │   ├─── drivermesinkata.txt		     
+      │   ├─── save			    
+            │   ├─── HADS.txt 			     
+            │   ├─── config.txt		
+            │   ├─── DaftarKataHangman.txt	
+            │   ├─── DinerDash.txt
+            │   ├─── drivermesinkata.txt		     
       │   ├─── hangman.txt		
       │   ├─── save.txt			     
       │   ├─── save2.txt			     
