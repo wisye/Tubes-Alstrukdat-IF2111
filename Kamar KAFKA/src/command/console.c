@@ -704,7 +704,7 @@ void songSpotify(Queue *q, Stack *history){
             printf("\"%s\" oleh \"%s\"\n", ID.nama_lagu, ID.nama_penyanyi);
         }
     }
-    if(stringComp(currentWord.TabWord, "PREVIOUS")){
+    else if(stringComp(currentWord.TabWord, "PREVIOUS")){
         stackinfotype prev, temp;
         Queue tempq;
         CreateQueue(&tempq);

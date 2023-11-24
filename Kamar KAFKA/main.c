@@ -96,7 +96,10 @@ int main(){
             printf("Command tidak bisa dieksekusi\n");
         }
         else{
-            STARTLINE();
+            // char temp[100];
+            // stringCopy(temp, currentWord.TabWord);
+            // ADVWORD();
+            // if(!stringComp(currentWord.TabWord, temp)) STARTLINE();
             printf("Command tidak diketahui!\n");
         }
     }

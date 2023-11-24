@@ -41,7 +41,6 @@ void setDelete(SetAlbum *S, setinfotype Elmt){
         while (!stringComp(S->Elements[i].TabWord, Elmt.TabWord)){
             i++;
         }
-        i--;
         while (i < S->Count){
             S->Elements[i] = S->Elements[i+1];
             i++;

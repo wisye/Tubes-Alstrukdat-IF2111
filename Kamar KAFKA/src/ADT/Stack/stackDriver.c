@@ -1,7 +1,18 @@
+#include "src/ADT/Mesinkata/mesinkata.h"
+#include "src/ADT/List/list.h"
+#include "src/ADT/Queue/queue.h"
+#include "src/ADT/Stack/stack.h"
+#include "src/ADT/func/func.h"
+#include "src/ADT/Album/album.h"
+#include "src/ADT/globalvar/globalvar.h"
+#include "src/ADT/Penyanyi/penyanyi.h"
+#include "src/ADT/Playlist/playlist.h"
+#include "src/ADT/ListPlaylistDinamis/listPlaylist.h"
 #include <stdio.h>
-#include "stack.h"
+#include <stdlib.h>
+#include <string.h>
 
-int main() {
+int main(){
     Stack S;
     stackinfotype X;
 
@@ -12,10 +23,13 @@ int main() {
     } else {
         printf("CreateEmpty test failed.\n");
     }
-
+    stringCopy(X.nama_penyanyi, "penyanyix");
+    stringCopy(X.nama_album, "albumx");
+    stringCopy(X.nama_lagu, "lagux");
+    X.idx_penyanyi = 1;
     // Test Push and stackIsFull
     for (int i = 0; i < stackMaxEl; i++) {
-        Push(&S, i);
+        Push(&S, X);
     }
     if (stackIsFull(S)) {
         printf("Push and IsFull test passed.\n");
@@ -26,10 +40,6 @@ int main() {
     // Test Pop and stackIsEmpty
     for (int i = stackMaxEl - 1; i >= 0; i--) {
         Pop(&S, &X);
-        if (X != i) {
-            printf("Pop test failed.\n");
-            break;
-        }
     }
     if (stackIsEmpty(S)) {
         printf("Pop and IsEmpty test passed.\n");

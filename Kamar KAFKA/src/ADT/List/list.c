@@ -1,25 +1,23 @@
 #include "list.h"
 // #include <stdio.h>
 
-ListPenyanyi MakeListPenyanyi(){
-    ListPenyanyi L;
+void MakeListPenyanyi(ListPenyanyi *L){
     int i, j;
-    L.count = 0;
+    L->count = 0;
     for(i=0; i < ListPenyanyiMaxEl; i++){
-        L.A[i].nama_penyanyi.TabWord[0] = '\0';
-        L.A[i].nama_penyanyi.Length = 0;
-        L.A[i].album.Count = 0;
+        L->A[i].nama_penyanyi.TabWord[0] = '\0';
+        L->A[i].nama_penyanyi.Length = 0;
+        L->A[i].album.Count = 0;
         for(j=0; j < mapMaxEl; j++){
-            L.A[i].album.Elements[j].nama_album.TabWord[0] = '\0';
-            L.A[i].album.Elements[j].nama_album.Length = 0;
-            L.A[i].album.Elements[j].daftar_lagu.Count = 0;
+            L->A[i].album.Elements[j].nama_album.TabWord[0] = '\0';
+            L->A[i].album.Elements[j].nama_album.Length = 0;
+            L->A[i].album.Elements[j].daftar_lagu.Count = 0;
             for(int k=0; k < setMaxEl; k++){
-                L.A[i].album.Elements[j].daftar_lagu.Elements[k].TabWord[0] = '\0';
-                L.A[i].album.Elements[j].daftar_lagu.Elements[k].Length = 0;
+                L->A[i].album.Elements[j].daftar_lagu.Elements[k].TabWord[0] = '\0';
+                L->A[i].album.Elements[j].daftar_lagu.Elements[k].Length = 0;
             }
         }
     }
-    return L;
 }
 
 // boolean ListPenyanyiIsEmpty(ListPenyanyi L){
