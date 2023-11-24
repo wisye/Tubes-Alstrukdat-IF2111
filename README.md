@@ -4,9 +4,13 @@ Notes : untuk history commit Harry buat fungsi play dan save ada di branch Harry
 # Dibuat oleh Kelompok 08 K01
 
 18222059	Eleanor Cordelia
+
 18222095	Wisyendra Lunarmalam
+
 18222081	Harry Truman Suhalim
+
 18222099	Dahayu Ramania Aurasindu
+
 18222071 	Richie Leonardo
 
 # Deskripsi Singkat Laporan
