@@ -196,6 +196,36 @@ save/test2.txt
 
 │   ├─── main.sh		
 
+
+.
+├── bin
+│   ├── Makefile
+│   └── sample_savedata
+├── save
+│   ├── user1.txt  # file yang disimpan oleh user1
+│   ├── user2.txt  # file yang disimpan oleh user 2
+│   └── config.txt         # config yang akan dibaca
+├── docs                  
+│   ├── Spesifikasi....pdf
+│   ├── IF2111_Form..._01.xlsx
+│   └── IF2111_TB..._01.pdf
+├── src
+│   ├── boolean.h
+│   ├── console.c         # Implementation of all commands
+│   ├── console.h
+│   ├── main.c            # Simply calls the Game function in console
+│   ├── ADT               # Location of all the data structures used by this game.
+│   │                     # Every subfolder will have a header, a c implementation and a driver.
+│   │   ├── kata
+│   │   ├── listlinier    
+│   │   ├── mesinkar      
+│   │   ├── mesinkata    
+│   │   ├── stack 
+└── └── └── player
+README.MD
+
+
+
 │   ├─── peda-session-main.txt
 
 │   ├─── welcome.c		
